@@ -173,13 +173,8 @@ export const IndustriesSection: React.FC = () => {
                           {/* Expanded Card Content */}
                           <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[65%]">
                             <div>
-                              {/* Top Number */}
-                              <span className="font-mono text-xs sm:text-[13px] font-semibold text-violet-primary tracking-wider block mb-4">
-                                {item.number}
-                              </span>
-
-                              {/* Icon */}
-                              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-6 shadow-sm">
+                              {/* Icon Symbol */}
+                              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-5 sm:mb-6 shadow-sm">
                                 <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-violet-primary" />
                               </div>
 
@@ -221,19 +216,14 @@ export const IndustriesSection: React.FC = () => {
                         }}
                         onClick={() => setActiveIndex(idx)}
                         onMouseEnter={() => setActiveIndex(idx)}
-                        className="flex-1 min-w-[62px] sm:min-w-[74px] lg:min-w-0 group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 py-7 px-2.5 sm:px-3 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
+                        className="flex-1 min-w-[62px] sm:min-w-[74px] lg:min-w-0 group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 pt-8 sm:pt-9 lg:pt-10 pb-7 sm:pb-8 px-2.5 sm:px-3 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
                       >
                         {/* Top Indicator Accent on Hover */}
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        {/* Top: Number & Icon */}
-                        <div className="flex flex-col items-center gap-3">
-                          <span className="font-mono text-[11px] sm:text-xs font-semibold text-violet-primary tracking-wider">
-                            {item.number}
-                          </span>
-                          <div className="w-9 h-9 rounded-full bg-[#F4EFFC] flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
-                            <Icon className="w-4 h-4 text-violet-primary" />
-                          </div>
+                        {/* Top: Icon Symbol */}
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F4EFFC] flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
+                          <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-violet-primary" />
                         </div>
 
                         {/* Center: Vertical Rotated Label */}
