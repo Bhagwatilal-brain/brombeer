@@ -18,6 +18,7 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
   const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const wrappersRef = useRef<(HTMLSpanElement | null)[]>([]);
   const sweepRef = useRef<gsap.core.Tween | null>(null);
   const prefersReduced = useReducedMotion();
 
@@ -27,6 +28,7 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
     if (prefersReduced) return;
 
     const elements = wordsRef.current.filter(Boolean);
+    const wrappers = wrappersRef.current.filter(Boolean);
     if (!elements.length) return;
 
     const ctx = gsap.context(() => {
@@ -49,6 +51,12 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
           duration: 0.9,
           ease: 'power3.out',
           stagger: 0.08,
+          onComplete: () => {
+            // Unclip overflow once animation finishes so descenders/ascenders are never cut
+            wrappers.forEach((w) => {
+              if (w) w.style.overflow = 'visible';
+            });
+          },
         }
       );
 
@@ -94,7 +102,7 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
       ref={containerRef}
       onMouseEnter={handleMouseEnter}
       className={cn(
-        'font-outfit font-extrabold tracking-[-0.035em] leading-[1.04] text-text-primary select-none cursor-default',
+        'font-outfit font-extrabold tracking-[-0.025em] leading-[1.14] text-text-primary select-none cursor-default',
         className
       )}
       aria-label={words}
@@ -107,14 +115,17 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
         return (
           <span
             key={`${word}-${index}`}
-            className="inline-block overflow-hidden py-1.5 align-top mr-[0.24em] last:mr-0"
+            ref={(el) => {
+              wrappersRef.current[index] = el;
+            }}
+            className="inline-block overflow-hidden py-3 px-1.5 -my-3 -mx-1.5 align-baseline mr-[0.24em] last:mr-0"
           >
             <span
               ref={(el) => {
                 wordsRef.current[index] = el;
               }}
               className={cn(
-                'inline-block will-change-transform will-change-[filter]',
+                'inline-block will-change-transform will-change-[filter] pt-1 pb-3 px-1',
                 isHighlighted
                   ? 'bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent drop-shadow-sm'
                   : 'bg-[linear-gradient(110deg,#15131C_0%,#15131C_35%,#7650E8_50%,#C8B8FA_55%,#15131C_70%,#15131C_100%)] bg-[length:260%_100%] bg-clip-text text-transparent'
