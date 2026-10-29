@@ -160,7 +160,7 @@ export const MinimalCTA: React.FC = () => {
           {/* Headline with GSAP Cinematic Slide-Up */}
           <h2
             onMouseEnter={handleHeadlineHover}
-            className="font-outfit font-extrabold text-4xl sm:text-6xl md:text-7xl text-text-primary tracking-[-0.035em] leading-[1.05] cursor-default"
+            className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl text-text-primary tracking-[-0.035em] leading-[1.05] cursor-default"
           >
             {/* Primary line: "Let's build something" */}
             <span className="block">

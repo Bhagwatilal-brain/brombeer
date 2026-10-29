@@ -114,7 +114,7 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
       ref={containerRef}
       onMouseEnter={handleMouseEnter}
       className={cn(
-        'font-outfit font-extrabold tracking-[-0.03em] leading-[1.02] text-text-primary select-none cursor-default',
+        'font-sans font-extrabold tracking-[-0.03em] leading-[1.02] text-text-primary select-none cursor-default',
         className
       )}
       aria-label={fullText}

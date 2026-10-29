@@ -13,7 +13,7 @@ export const ResponsibleAIPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">RESPONSIBLE AI GOVERNANCE</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             Build AI with Confidence, Control, and Accountability.
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
@@ -40,7 +40,7 @@ export const ResponsibleAIPage: React.FC = () => {
             <span className="text-xs uppercase tracking-wider text-violet-primary font-mono font-semibold block mb-2">
               COMPREHENSIVE SAFEGUARDS
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
               Our Responsible AI Framework
             </h2>
           </div>
@@ -122,7 +122,7 @@ export const ResponsibleAIPage: React.FC = () => {
       <Container>
         <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-14 text-center space-y-6 shadow-xl shadow-violet-primary/10">
           <span className="eyebrow inline-block">GOVERNANCE & TRUST</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
             Innovation Needs the Right Safeguards.
           </h2>
           <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">

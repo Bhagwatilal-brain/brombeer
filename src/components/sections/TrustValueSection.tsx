@@ -124,7 +124,7 @@ export const TrustValueSection: React.FC = () => {
             {/* Headline with cinematic word-by-word reveal */}
             <motion.h2
               variants={headlineContainerVariants}
-              className="text-3xl sm:text-4xl lg:text-[44px] font-outfit font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1] mb-5"
+              className="text-3xl sm:text-4xl lg:text-[44px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1] mb-5"
             >
               {HEADLINE_WORDS.map((word, idx) => (
                 <motion.span

@@ -11,7 +11,7 @@ export const SolutionsPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">OUR CAPABILITIES</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             AI Solutions Built Around Your Business.
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
@@ -37,7 +37,7 @@ export const SolutionsPage: React.FC = () => {
           <span className="text-xs font-mono font-semibold text-violet-primary uppercase tracking-widest block">
             STRATEGIC CAPABILITIES
           </span>
-          <h2 className="text-2xl sm:text-3xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
+          <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
             One AI Strategy. The Right Capabilities for Each Challenge.
           </h2>
           <p className="text-text-secondary text-sm sm:text-base leading-relaxed">

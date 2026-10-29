@@ -8,7 +8,7 @@ export const PrivacyPage: React.FC = () => {
         <div className="space-y-10 text-sm text-text-secondary leading-relaxed">
           <div>
             <span className="eyebrow block">LEGAL GOVERNANCE</span>
-            <h1 className="text-3xl sm:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] mt-1">
+            <h1 className="text-3xl sm:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em] mt-1">
               Privacy Policy
             </h1>
             <p className="text-xs text-text-secondary mt-2">

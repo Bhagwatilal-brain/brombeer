@@ -210,7 +210,7 @@ export const EmotionalMetrics: React.FC = () => {
                 ref={(el) => {
                   valueRefs.current[idx] = el;
                 }}
-                className="font-outfit font-extrabold text-5xl sm:text-6xl text-transparent bg-clip-text bg-[linear-gradient(110deg,#28164D_0%,#28164D_35%,#7650E8_50%,#C8B8FA_56%,#7650E8_65%,#28164D_85%,#28164D_100%)] bg-[length:260%_100%] tracking-tight leading-none will-change-transform will-change-[filter] select-none"
+                className="font-sans font-extrabold text-5xl sm:text-6xl text-transparent bg-clip-text bg-[linear-gradient(110deg,#28164D_0%,#28164D_35%,#7650E8_50%,#C8B8FA_56%,#7650E8_65%,#28164D_85%,#28164D_100%)] bg-[length:260%_100%] tracking-tight leading-none will-change-transform will-change-[filter] select-none"
                 style={
                   prefersReduced
                     ? undefined
@@ -228,7 +228,7 @@ export const EmotionalMetrics: React.FC = () => {
                 ref={(el) => {
                   labelRefs.current[idx] = el;
                 }}
-                className="font-outfit text-sm font-semibold text-text-primary tracking-tight transition-colors group-hover:text-violet-primary"
+                className="font-sans text-sm font-semibold text-text-primary tracking-tight transition-colors group-hover:text-violet-primary"
                 style={prefersReduced ? undefined : { opacity: 0 }}
               >
                 {m.label}

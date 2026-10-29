@@ -11,7 +11,7 @@ export const IndustriesPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">SECTOR SPECIALIZATION</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             AI That Understands Your Industry.
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
@@ -102,7 +102,7 @@ export const IndustriesPage: React.FC = () => {
       <Container>
         <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-14 text-center space-y-6 shadow-xl shadow-violet-primary/10">
           <span className="eyebrow inline-block">SECTOR-SPECIFIC SOLUTIONS</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
             Your Industry Has Unique Challenges. <br />
             <span className="italic text-violet-primary">Your AI Solution Should Reflect Them.</span>
           </h2>

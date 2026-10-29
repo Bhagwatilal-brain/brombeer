@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => {
       <Container size="narrow">
         <div className="space-y-6">
           <span className="eyebrow block">404 ERROR</span>
-          <h1 className="text-4xl sm:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
+          <h1 className="text-4xl sm:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
             This Page Seems to Have Taken a Different Path.
           </h1>
           <p className="text-text-secondary text-base max-w-md mx-auto leading-relaxed">

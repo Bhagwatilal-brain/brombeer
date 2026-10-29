@@ -31,7 +31,7 @@ export const FinalCTASection: React.FC = () => {
             eyebrow="START YOUR TRANSFORMATION"
             eyebrowIcon={<Sparkles className="w-3.5 h-3.5 text-violet-primary" />}
             title="Your Next Business Advantage Could Start with AI."
-            titleClassName="text-3xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]"
+            titleClassName="text-3xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]"
             description="Tell us what you want to improve, automate, or build. We will help you architect a tailored AI strategy and production roadmap."
             descriptionClassName="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl mx-auto font-light"
             align="center"

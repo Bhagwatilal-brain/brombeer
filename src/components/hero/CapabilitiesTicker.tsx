@@ -27,7 +27,7 @@ export const CapabilitiesTicker: React.FC = () => {
             key={`${item}-${index}`}
             className="flex items-center flex-shrink-0 group cursor-default"
           >
-            <span className="font-outfit text-xs sm:text-sm font-medium tracking-wide text-text-secondary/85 group-hover:text-violet-primary transition-colors duration-200 px-5 sm:px-7 whitespace-nowrap">
+            <span className="font-sans text-xs sm:text-sm font-medium tracking-wide text-text-secondary/85 group-hover:text-violet-primary transition-colors duration-200 px-5 sm:px-7 whitespace-nowrap">
               {item}
             </span>
 

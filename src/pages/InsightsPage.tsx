@@ -9,7 +9,7 @@ export const InsightsPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-4">
           <span className="eyebrow block">RESEARCH & PERSPECTIVES</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.06]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.06]">
             Ideas, Perspectives, and Practical AI Guidance.
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
