@@ -160,7 +160,7 @@ export const IndustriesSection: React.FC = () => {
                             <img
                               src={item.image}
                               alt={item.title}
-                              className="w-full h-full object-cover object-center mix-blend-multiply opacity-85 sm:opacity-90 transition-opacity duration-500"
+                              className="w-full h-full object-cover object-center mix-blend-multiply opacity-40 sm:opacity-45 transition-opacity duration-500"
                               style={{
                                 maskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, black 50%)',
                                 WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, black 50%)',
