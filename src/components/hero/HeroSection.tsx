@@ -36,9 +36,13 @@ export const HeroSection: React.FC = () => {
               </motion.div>
 
               {/* Modern Futuristic Geometric Headline with GSAP Cinematic Slide-Up & Iridescent Light Sweep */}
-              <div className="text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.14]">
+              <div className="text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.02] tracking-[-0.03em]">
                 <GsapTextEffect
-                  words="Intelligence That Moves Businesses Forward."
+                  lines={[
+                    'Intelligence That',
+                    'Moves Businesses',
+                    'Forward.'
+                  ]}
                   highlightWords={['Moves', 'Businesses', 'Forward.']}
                   delay={0.15}
                 />
