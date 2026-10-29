@@ -118,42 +118,42 @@ export const ResponsibleAISection: React.FC = () => {
             const Icon = principle.icon;
             return (
               <ScrollReveal key={principle.number} delay={idx * 0.06}>
-                <div className="group relative p-7 rounded-[1.75rem] h-full flex flex-col justify-between bg-white/95 backdrop-blur-sm border border-white hover:border-violet-primary/40 hover:bg-white hover:shadow-xl hover:shadow-violet-primary/10 transition-all duration-300 overflow-hidden min-h-[300px]">
-                  {/* Subtle top indicator on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/12 hover:-translate-y-1 transition-all duration-300 overflow-hidden min-h-[340px]">
+                  {/* Top purple glowing line */}
+                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
 
                   {/* Background Illustration 1: Top-Right Soft Geometry Circle (Reference Image Style) */}
-                  <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-violet-primary/8 via-violet-primary/4 to-transparent group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] pointer-events-none" />
 
                   {/* Background Illustration 2: Subtle Geometric Concentric Rings SVG */}
                   <svg
-                    className="absolute -right-5 -bottom-5 w-32 h-32 text-violet-primary/10 group-hover:text-violet-primary/22 transition-all duration-500 pointer-events-none select-none"
+                    className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none"
                     viewBox="0 0 120 120"
                     fill="none"
                     aria-hidden="true"
                   >
-                    <circle cx="85" cy="85" r="28" stroke="currentColor" strokeWidth="1.2" strokeDasharray="3 3" />
-                    <circle cx="85" cy="85" r="46" stroke="currentColor" strokeWidth="1" />
-                    <circle cx="85" cy="85" r="64" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
+                    <circle cx="85" cy="85" r="28" stroke="#111014" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.8" />
+                    <circle cx="85" cy="85" r="46" stroke="#111014" strokeWidth="1.2" opacity="0.8" />
+                    <circle cx="85" cy="85" r="64" stroke="#111014" strokeWidth="1" opacity="0.5" />
                   </svg>
 
                   <div className="space-y-4 relative z-10">
-                    {/* Header: Colorful Icon Badge + Badge */}
+                    {/* Header: Circular Icon Badge + Badge */}
                     <div className="flex items-center justify-between">
-                      <div className={`w-11 h-11 rounded-2xl ${principle.badgeBg} flex items-center justify-center border border-white/40 group-hover:scale-110 transition-all duration-300`}>
-                        <Icon className="w-5 h-5 text-white" />
+                      <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${principle.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-105 transition-transform duration-300`}>
+                        <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <span className="text-[10px] font-mono tracking-wider px-2.5 py-1 rounded-full bg-white text-violet-deep border border-border-subtle/50 font-medium select-none shadow-sm">
+                      <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm">
                         {principle.badge}
                       </span>
                     </div>
 
                     {/* Title & Tagline */}
-                    <div>
-                      <h4 className="text-xl font-serif text-text-primary tracking-tight transition-transform duration-300 group-hover:translate-x-1">
+                    <div className="pt-1">
+                      <h4 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1">
                         {principle.title}
                       </h4>
-                      <p className="text-xs font-medium text-violet-primary mt-1">
+                      <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5">
                         {principle.tagline}
                       </p>
                     </div>
@@ -165,10 +165,10 @@ export const ResponsibleAISection: React.FC = () => {
                   </div>
 
                   {/* Bottom Action Link */}
-                  <div className="pt-4 mt-4 border-t border-border-subtle/30 flex items-center text-xs relative z-10">
+                  <div className="pt-4 mt-6 border-t border-[#ECE8F5] flex items-center text-xs relative z-10">
                     <a
                       href="/responsible-ai"
-                      className="text-xs sm:text-[13px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
+                      className="text-xs sm:text-[13.5px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
                     >
                       <span>Read Policy</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />

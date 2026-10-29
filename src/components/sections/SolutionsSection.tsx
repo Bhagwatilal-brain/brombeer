@@ -23,88 +23,88 @@ const SOLUTIONS_CARDS: SolutionCardItem[] = [
     number: '01',
     title: 'Generative AI & LLM Engineering',
     tagline: 'Private Foundation Models & Fine-Tuning',
-    badge: 'LLM & Multimodal',
-    description: 'Make enterprise knowledge accessible and turn natural-language prompts into productive automated business workflows.',
+    badge: 'LLM & Multi-Modal',
+    description: 'Make enterprise knowledge accessible and turn natural-language interactions into productive automated business workflows.',
     linkText: 'Explore Generative AI',
-    icon: <Sparkles className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#6366F1] to-[#8B5CF6] shadow-md shadow-indigo-500/20 text-white',
+    icon: <Sparkles className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#4F46E5] to-[#7C3AED] shadow-lg shadow-indigo-500/25 text-white',
   },
   {
     id: 'ai-agents',
     number: '02',
-    title: 'AI Agents & Intelligent Automation',
-    tagline: 'Autonomous Orchestration & Tool Calling',
+    title: 'AI Agents & Automation',
+    tagline: 'Autonomous Tool Calling & Multi-Agent Workflows',
     badge: 'Autonomous Agents',
     description: 'Move beyond repetitive manual processes with intelligent agents that interpret requests, query APIs, and coordinate business actions.',
     linkText: 'Explore AI Automation',
-    icon: <Bot className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#3B82F6] to-[#60A5FA] shadow-md shadow-blue-500/20 text-white',
+    icon: <Bot className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#2563EB] to-[#60A5FA] shadow-lg shadow-blue-500/25 text-white',
   },
   {
     id: 'enterprise-knowledge',
     number: '03',
-    title: 'Enterprise AI & Knowledge Assistants',
-    tagline: 'Grounded Retrieval & Source Verification',
+    title: 'Enterprise Knowledge Assistants',
+    tagline: 'Factual Grounding & Anti-Hallucination Gates',
     badge: 'Enterprise RAG',
     description: 'Enable staff to query internal documents, wikis, and databases with verifiable source citations and strict access boundaries.',
     linkText: 'Explore Knowledge AI',
-    icon: <MessageSquareText className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#7C3AED] to-[#A78BFA] shadow-md shadow-purple-500/20 text-white',
+    icon: <MessageSquareText className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] shadow-lg shadow-purple-500/25 text-white',
   },
   {
     id: 'computer-vision',
     number: '04',
-    title: 'Computer Vision & Image Intelligence',
+    title: 'Computer Vision & Inspection',
     tagline: 'Line-Speed Defect & Spatial Analysis',
     badge: 'Vision & Edge AI',
     description: 'Empower systems to inspect physical assets, detect anomalies in real time, analyze feeds, and guide visual operations.',
     linkText: 'Explore Computer Vision',
-    icon: <Eye className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#06B6D4] to-[#38BDF8] shadow-md shadow-cyan-500/20 text-white',
+    icon: <Eye className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#0891B2] to-[#38BDF8] shadow-lg shadow-cyan-500/25 text-white',
   },
   {
     id: 'predictive-analytics',
     number: '05',
-    title: 'Machine Learning & Predictive Analytics',
+    title: 'Machine Learning & Analytics',
     tagline: 'Time-Series & Demand Forecasting',
     badge: 'Predictive ML',
     description: 'Transform telemetry and historical enterprise records into forward-looking forecasts, anomaly detection, and decision support.',
     linkText: 'Explore Predictive ML',
-    icon: <TrendingUp className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#10B981] to-[#34D399] shadow-md shadow-emerald-500/20 text-white',
+    icon: <TrendingUp className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#059669] to-[#34D399] shadow-lg shadow-emerald-500/25 text-white',
   },
   {
     id: 'document-intelligence',
     number: '06',
-    title: 'Document Intelligence & Data Extraction',
-    tagline: 'Automated Ingestion & Multi-Format Parsing',
+    title: 'Document Intelligence',
+    tagline: 'Automated Ingestion & Key-Value Extraction',
     badge: 'OCR & Document NLP',
     description: 'Eliminate manual document handling by extracting structured tabular data and entities from PDFs, invoices, and regulatory forms.',
     linkText: 'Explore Document AI',
-    icon: <FileText className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#F59E0B] to-[#FBBF24] shadow-md shadow-amber-500/20 text-white',
+    icon: <FileText className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#D97706] to-[#FBBF24] shadow-lg shadow-amber-500/25 text-white',
   },
   {
     id: 'ai-app-development',
     number: '07',
-    title: 'AI-Powered Application Development',
-    tagline: 'Cloud-Native & High-Throughput APIs',
-    badge: 'Full-Stack AI Apps',
+    title: 'AI Application Development',
+    tagline: 'Cloud-Native Scalable API Architecture',
+    badge: 'Full-Stack AI',
     description: 'Build enterprise-grade web, mobile, and backend applications engineered around custom AI capabilities and intuitive UX.',
     linkText: 'Build an AI Application',
-    icon: <Boxes className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#2563EB] to-[#60A5FA] shadow-md shadow-blue-600/20 text-white',
+    icon: <Boxes className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#1D4ED8] to-[#38BDF8] shadow-lg shadow-blue-600/25 text-white',
   },
   {
     id: 'ai-consulting',
     number: '08',
     title: 'AI Consulting & Strategy',
-    tagline: 'Feasibility, Architecture & ROI Roadmaps',
+    tagline: 'Feasibility, Governance & ROI Roadmaps',
     badge: 'Strategic Advisory',
     description: 'Make informed technology decisions on model viability, privacy governance, compute budgeting, and measurable organizational ROI.',
     linkText: 'Plan Your AI Strategy',
-    icon: <Compass className="w-5 h-5 text-white" />,
-    badgeBg: 'bg-gradient-to-tr from-[#EC4899] to-[#F43F5E] shadow-md shadow-pink-500/20 text-white',
+    icon: <Compass className="w-6 h-6 text-white" />,
+    badgeBg: 'bg-gradient-to-tr from-[#DB2777] to-[#F43F5E] shadow-lg shadow-pink-500/25 text-white',
   },
 ];
 
@@ -148,46 +148,46 @@ export const SolutionsSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* 8 Cards Grid (4 Columns x 2 Rows) styled like Responsible AI cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* 8 Cards Grid matching reference image card design */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SOLUTIONS_CARDS.map((card, idx) => (
             <ScrollReveal key={card.id} direction="up" delay={0.06 * (idx % 4)}>
-              <div className="group relative p-6 sm:p-7 rounded-[1.75rem] h-full flex flex-col justify-between bg-white/95 backdrop-blur-sm border border-white hover:border-violet-primary/40 hover:bg-white hover:shadow-xl hover:shadow-violet-primary/10 transition-all duration-300 overflow-hidden min-h-[320px]">
-                {/* Subtle top indicator on hover */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/12 hover:-translate-y-1 transition-all duration-300 overflow-hidden min-h-[340px]">
+                {/* Top purple glowing line */}
+                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
 
-                {/* Background Illustration 1: Top-Right Soft Geometry Circle */}
-                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-violet-primary/8 via-violet-primary/4 to-transparent group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
+                {/* Top-Right Soft Geometry Circle (Reference Image Style) */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] pointer-events-none" />
 
-                {/* Background Illustration 2: Subtle Geometric Concentric Rings SVG */}
+                {/* Bottom-Right Concentric Rings SVG matching reference image */}
                 <svg
-                  className="absolute -right-5 -bottom-5 w-32 h-32 text-violet-primary/10 group-hover:text-violet-primary/22 transition-all duration-500 pointer-events-none select-none"
+                  className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none"
                   viewBox="0 0 120 120"
                   fill="none"
                   aria-hidden="true"
                 >
-                  <circle cx="85" cy="85" r="28" stroke="currentColor" strokeWidth="1.2" strokeDasharray="3 3" />
-                  <circle cx="85" cy="85" r="46" stroke="currentColor" strokeWidth="1" />
-                  <circle cx="85" cy="85" r="64" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
+                  <circle cx="85" cy="85" r="28" stroke="#111014" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.8" />
+                  <circle cx="85" cy="85" r="46" stroke="#111014" strokeWidth="1.2" opacity="0.8" />
+                  <circle cx="85" cy="85" r="64" stroke="#111014" strokeWidth="1" opacity="0.5" />
                 </svg>
 
                 <div className="space-y-4 relative z-10">
-                  {/* Header: Colorful Icon Badge + Pill Badge */}
+                  {/* Header: Circular Icon Badge + Pill Badge */}
                   <div className="flex items-center justify-between">
-                    <div className={`w-11 h-11 rounded-2xl ${card.badgeBg} flex items-center justify-center border border-white/40 group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${card.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-105 transition-transform duration-300`}>
                       {card.icon}
                     </div>
-                    <span className="text-[10px] font-mono tracking-wider px-2.5 py-1 rounded-full bg-white text-violet-deep border border-border-subtle/50 font-medium select-none shadow-sm">
+                    <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm">
                       {card.badge}
                     </span>
                   </div>
 
                   {/* Title & Tagline */}
-                  <div>
-                    <h4 className="text-xl font-serif text-text-primary tracking-tight transition-transform duration-300 group-hover:translate-x-1">
+                  <div className="pt-1">
+                    <h3 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1">
                       {card.title}
-                    </h4>
-                    <p className="text-xs font-medium text-violet-primary mt-1">
+                    </h3>
+                    <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5">
                       {card.tagline}
                     </p>
                   </div>
@@ -198,11 +198,11 @@ export const SolutionsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Bottom Action Link */}
-                <div className="pt-4 mt-4 border-t border-border-subtle/30 flex items-center text-xs relative z-10">
+                {/* Bottom Action Link with Divider */}
+                <div className="pt-4 mt-6 border-t border-[#ECE8F5] flex items-center text-xs relative z-10">
                   <a
                     href={`/solutions#${card.id}`}
-                    className="text-xs sm:text-[13px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
+                    className="text-xs sm:text-[13.5px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
                   >
                     <span>{card.linkText}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
