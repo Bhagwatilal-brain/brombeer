@@ -112,22 +112,48 @@ export const ResponsibleAISection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* 6 Visual Trust Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {TRUST_PILLARS.map((principle, idx) => {
+        {/* 6 Visual Trust Cards with Staggered Scroll Entrance & Hover Animations */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.1, margin: '0px 0px -60px 0px' }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.08,
+                delayChildren: 0.1,
+              },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+        >
+          {TRUST_PILLARS.map((principle) => {
             const Icon = principle.icon;
             return (
-              <ScrollReveal key={principle.number} delay={idx * 0.06}>
-                <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/12 hover:-translate-y-1 transition-all duration-300 overflow-hidden min-h-[340px]">
-                  {/* Top purple glowing line */}
-                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
+              <motion.div
+                key={principle.number}
+                variants={{
+                  hidden: { opacity: 0, y: 30, filter: 'blur(5px)' },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+                  },
+                }}
+                className="h-full"
+              >
+                <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/14 hover:-translate-y-2 transition-all duration-300 overflow-hidden min-h-[340px]">
+                  {/* Top purple glowing line that intensifies on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-75 group-hover:opacity-100 group-hover:h-[3.5px] transition-all duration-300" />
 
-                  {/* Background Illustration 1: Top-Right Soft Geometry Circle (Reference Image Style) */}
-                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] pointer-events-none" />
+                  {/* Background Illustration 1: Top-Right Soft Geometry Circle that expands on hover */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
 
-                  {/* Background Illustration 2: Subtle Geometric Concentric Rings SVG */}
+                  {/* Background Illustration 2: Subtle Geometric Concentric Rings SVG that gently scales and rotates on hover */}
                   <svg
-                    className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none"
+                    className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"
                     viewBox="0 0 120 120"
                     fill="none"
                     aria-hidden="true"
@@ -140,20 +166,20 @@ export const ResponsibleAISection: React.FC = () => {
                   <div className="space-y-4 relative z-10">
                     {/* Header: Circular Icon Badge + Badge */}
                     <div className="flex items-center justify-between">
-                      <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${principle.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-105 transition-transform duration-300`}>
+                      <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${principle.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-110 transition-transform duration-300`}>
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm">
+                      <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm transition-colors duration-200 group-hover:border-violet-primary/40 group-hover:text-violet-primary">
                         {principle.badge}
                       </span>
                     </div>
 
                     {/* Title & Tagline */}
                     <div className="pt-1">
-                      <h4 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1">
+                      <h4 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[#181126]">
                         {principle.title}
                       </h4>
-                      <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5">
+                      <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5 transition-colors duration-200">
                         {principle.tagline}
                       </p>
                     </div>
@@ -171,14 +197,14 @@ export const ResponsibleAISection: React.FC = () => {
                       className="text-xs sm:text-[13.5px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
                     >
                       <span>Read Policy</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </a>
                   </div>
                 </div>
-              </ScrollReveal>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

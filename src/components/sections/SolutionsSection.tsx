@@ -2,8 +2,8 @@ import React from 'react';
 import { ArrowRight, ArrowUpRight, Sparkles, Bot, MessageSquareText, Eye, TrendingUp, FileText, Boxes, Compass } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Container } from '../layout/Container';
-import { ScrollReveal } from '../animations/ScrollReveal';
 import { ScrollTextReveal } from '../animations/ScrollTextReveal';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 interface SolutionCardItem {
   id: string;
@@ -109,6 +109,36 @@ const SOLUTIONS_CARDS: SolutionCardItem[] = [
 ];
 
 export const SolutionsSection: React.FC = () => {
+  const prefersReduced = useReducedMotion();
+
+  // Staggered cascade entrance for the cards grid when scrolled into view
+  const cardsContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardItemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      filter: 'blur(5px)',
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
     <section id="solutions" className="py-14 sm:py-18 lg:py-24 bg-[#F8F7FD] relative overflow-hidden">
       {/* Background Soft Accents & Radial Gradients */}
@@ -148,20 +178,26 @@ export const SolutionsSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* 8 Cards Grid matching reference image card design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SOLUTIONS_CARDS.map((card, idx) => (
-            <ScrollReveal key={card.id} direction="up" delay={0.06 * (idx % 4)}>
-              <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/12 hover:-translate-y-1 transition-all duration-300 overflow-hidden min-h-[340px]">
-                {/* Top purple glowing line */}
-                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
+        {/* 8 Cards Grid with Scroll Appearance & Interactive Micro-Animations */}
+        <motion.div
+          initial={prefersReduced ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.1, margin: '0px 0px -60px 0px' }}
+          variants={cardsContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {SOLUTIONS_CARDS.map((card) => (
+            <motion.div key={card.id} variants={cardItemVariants} className="h-full">
+              <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/14 hover:-translate-y-2 transition-all duration-300 overflow-hidden min-h-[340px]">
+                {/* Top purple glowing line that intensifies on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-75 group-hover:opacity-100 group-hover:h-[3.5px] transition-all duration-300" />
 
-                {/* Top-Right Soft Geometry Circle (Reference Image Style) */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] pointer-events-none" />
+                {/* Top-Right Soft Geometry Circle that expands on hover */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
 
-                {/* Bottom-Right Concentric Rings SVG matching reference image */}
+                {/* Bottom-Right Concentric Rings SVG that gently scales and rotates on hover */}
                 <svg
-                  className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none"
+                  className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"
                   viewBox="0 0 120 120"
                   fill="none"
                   aria-hidden="true"
@@ -172,22 +208,22 @@ export const SolutionsSection: React.FC = () => {
                 </svg>
 
                 <div className="space-y-4 relative z-10">
-                  {/* Header: Circular Icon Badge + Pill Badge */}
+                  {/* Header: Circular Icon Badge with Scale Effect + Pill Badge */}
                   <div className="flex items-center justify-between">
-                    <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${card.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-105 transition-transform duration-300`}>
+                    <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${card.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-110 transition-transform duration-300`}>
                       {card.icon}
                     </div>
-                    <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm">
+                    <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm transition-colors duration-200 group-hover:border-violet-primary/40 group-hover:text-violet-primary">
                       {card.badge}
                     </span>
                   </div>
 
-                  {/* Title & Tagline */}
+                  {/* Title & Tagline with smooth hover motion */}
                   <div className="pt-1">
-                    <h3 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1">
+                    <h3 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[#181126]">
                       {card.title}
                     </h3>
-                    <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5">
+                    <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5 transition-colors duration-200">
                       {card.tagline}
                     </p>
                   </div>
@@ -198,20 +234,20 @@ export const SolutionsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Bottom Action Link with Divider */}
+                {/* Bottom Action Link with Divider and Arrow Spring on Hover */}
                 <div className="pt-4 mt-6 border-t border-[#ECE8F5] flex items-center text-xs relative z-10">
                   <a
                     href={`/solutions#${card.id}`}
                     className="text-xs sm:text-[13.5px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
                   >
                     <span>{card.linkText}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                   </a>
                 </div>
               </div>
-            </ScrollReveal>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );
