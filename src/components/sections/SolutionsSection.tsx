@@ -194,7 +194,7 @@ export const SolutionsSection: React.FC = () => {
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-75 group-hover:opacity-100 group-hover:h-[3.5px] transition-all duration-300" />
 
                 {/* Top-Right Soft Geometry Circle that expands on hover */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB] group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB]/40 group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
 
                 {/* Bottom-Right Concentric Rings SVG that gently scales and rotates on hover */}
                 <svg
