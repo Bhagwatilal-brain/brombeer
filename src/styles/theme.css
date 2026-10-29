@@ -1,0 +1,16 @@
+﻿:root {
+  --background: #FFFFFF;
+  --background-soft: #FAF9FF;
+  --surface-lavender: #F0EDFC;
+  --hero-lavender: #EAE6FA;
+  --violet-light: #C8B8FA;
+  --violet-primary: #7650E8;
+  --violet-deep: #4B2DA8;
+  --purple-dark: #28164D;
+  --text-primary: #111014;
+  --text-secondary: #666371;
+  --border-subtle: rgba(104, 83, 165, 0.18);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --spotlight-color: rgba(118, 80, 232, 0.14);
+}
