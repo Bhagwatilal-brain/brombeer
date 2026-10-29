@@ -117,8 +117,8 @@ export const IndustriesSection: React.FC = () => {
     <section id="industries" className="py-14 sm:py-20 lg:py-26 bg-background relative overflow-hidden">
       <Container size="wide">
         {/* Main Bounded Container Housing Header on Left and Interactive Accordion on Right */}
-        <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-br from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] border border-[#6853A5]/20 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+        <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-br from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] border border-[#6853A5]/20 p-6 sm:p-8 md:p-9 lg:p-10 xl:p-12 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-10 items-center">
             
             {/* Left Column: Heading Block & Copy */}
             <div className="lg:col-span-4 xl:col-span-4">
@@ -136,8 +136,8 @@ export const IndustriesSection: React.FC = () => {
             {/* Right Column: Interactive Horizontal Accordion Deck */}
             <div className="lg:col-span-8 xl:col-span-8 w-full">
               <ScrollReveal direction="up" delay={0.15}>
-                {/* Horizontal Deck with enlarged height so content never cuts */}
-                <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 h-[520px] sm:h-[550px] lg:h-[560px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
+                {/* Horizontal Deck with expanded height so cards have maximum breathing room */}
+                <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 h-[530px] sm:h-[560px] lg:h-[580px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
                   {INDUSTRY_ITEMS.map((item, idx) => {
                     const isExpanded = activeIndex === idx;
                     const Icon = item.icon;
@@ -152,7 +152,8 @@ export const IndustriesSection: React.FC = () => {
                             stiffness: 280,
                             damping: 28,
                           }}
-                          className="flex-[5] min-w-[320px] sm:min-w-[420px] lg:min-w-0 relative rounded-[2.25rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-2xl shadow-violet-primary/10 p-8 sm:p-10 lg:p-11 flex flex-col justify-between overflow-hidden select-none cursor-default"
+                          style={{ flex: 7.2 }}
+                          className="min-w-[340px] sm:min-w-[460px] lg:min-w-0 relative rounded-[2.25rem] sm:rounded-[2.5rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-2xl shadow-violet-primary/10 p-8 sm:p-10 lg:p-12 flex flex-col justify-between overflow-hidden select-none cursor-default"
                         >
                           {/* Background Artwork Illustration with Smooth Gradient Mist Mask */}
                           <div className="absolute top-0 right-0 bottom-0 w-[55%] sm:w-[60%] pointer-events-none select-none overflow-hidden flex items-center justify-end">
@@ -172,7 +173,7 @@ export const IndustriesSection: React.FC = () => {
                           <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
 
                           {/* Expanded Card Content */}
-                          <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[65%]">
+                          <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[70%] lg:max-w-[65%]">
                             <div>
                               {/* Icon Symbol */}
                               <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-5 sm:mb-6 shadow-sm">
@@ -185,7 +186,7 @@ export const IndustriesSection: React.FC = () => {
                               </h3>
 
                               {/* Description */}
-                              <p className="text-xs sm:text-[14px] lg:text-[14.5px] font-dm text-[#666371] leading-relaxed font-normal max-w-sm">
+                              <p className="text-xs sm:text-[14px] lg:text-[14.5px] font-dm text-[#666371] leading-relaxed font-normal max-w-md">
                                 {item.description}
                               </p>
                             </div>
@@ -215,9 +216,10 @@ export const IndustriesSection: React.FC = () => {
                           stiffness: 280,
                           damping: 28,
                         }}
+                        style={{ flex: 1 }}
                         onClick={() => setActiveIndex(idx)}
                         onMouseEnter={() => setActiveIndex(idx)}
-                        className="flex-1 min-w-[62px] sm:min-w-[74px] lg:min-w-0 group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 pt-8 sm:pt-9 lg:pt-10 pb-7 sm:pb-8 px-2.5 sm:px-3 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
+                        className="min-w-[58px] sm:min-w-[68px] lg:min-w-0 group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 pt-7 sm:pt-8 lg:pt-9 pb-6 sm:pb-7 px-2 sm:px-2.5 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
                       >
                         {/* Top Indicator Accent on Hover */}
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
