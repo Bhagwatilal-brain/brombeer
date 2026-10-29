@@ -200,3 +200,4 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
     </motion.div>
   );
 };
+
