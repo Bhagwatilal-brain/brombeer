@@ -129,7 +129,7 @@ export const NeuralPipeline: React.FC = () => {
               </span>
             </div>
 
-            <h3 className="font-serif text-2xl sm:text-3xl text-text-primary tracking-tight leading-tight">
+            <h3 className="font-sans font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-tight">
               {stages[activeStage].name}
             </h3>
 

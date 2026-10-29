@@ -54,7 +54,7 @@ export const PillarsSection: React.FC = () => {
         <div className="max-w-2xl mx-auto text-center space-y-4 mb-16">
           <ScrollReveal>
             <span className="eyebrow block">CAPABILITIES</span>
-            <h2 className="text-3xl sm:text-5xl font-serif text-text-primary tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
               Four Pillars of Quiet Power.
             </h2>
           </ScrollReveal>
@@ -80,7 +80,7 @@ export const PillarsSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <h3 className="font-serif text-2xl text-text-primary tracking-tight">{p.title}</h3>
+                      <h3 className="font-sans font-bold text-2xl text-text-primary tracking-tight">{p.title}</h3>
                       <p className="text-xs sm:text-sm font-medium text-violet-primary italic">{p.headline}</p>
                     </div>
 

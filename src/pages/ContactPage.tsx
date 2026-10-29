@@ -52,7 +52,7 @@ export const ContactPage: React.FC = () => {
           {/* Header */}
           <div className="text-center space-y-4">
             <span className="eyebrow inline-block">PAGE 9: CONTACT US</span>
-            <h1 className="text-3xl sm:text-5xl font-serif text-text-primary tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
               Let’s Talk About Your AI Project.
             </h1>
             <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
@@ -67,7 +67,7 @@ export const ContactPage: React.FC = () => {
                 <div className="w-16 h-16 rounded-full bg-surface-lavender text-violet-primary flex items-center justify-center mx-auto border border-violet-light/40">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif text-text-primary">
+                <h3 className="text-2xl font-sans font-bold text-text-primary">
                   Enquiry Received
                 </h3>
                 <p className="text-text-secondary text-sm max-w-md mx-auto leading-relaxed">
@@ -99,7 +99,7 @@ export const ContactPage: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-serif text-text-primary">
+                  <h3 className="text-xl font-sans font-bold text-text-primary">
                     Tell Us About Your Project
                   </h3>
                   <p className="text-xs text-text-secondary mt-1">

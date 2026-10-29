@@ -180,7 +180,7 @@ export const IndustriesSection: React.FC = () => {
                               </div>
 
                               {/* Title */}
-                              <h3 className="font-serif text-2xl sm:text-[30px] lg:text-[32px] font-normal text-[#111014] tracking-tight leading-[1.18] mb-4">
+                              <h3 className="font-sans font-bold text-2xl sm:text-[30px] lg:text-[32px] text-[#111014] tracking-tight leading-[1.18] mb-4">
                                 {item.title}
                               </h3>
 
@@ -230,7 +230,7 @@ export const IndustriesSection: React.FC = () => {
                         {/* Center: Vertical Rotated Label */}
                         <div className="flex-1 flex items-center justify-center py-6 my-auto">
                           <span
-                            className="font-serif text-[14.5px] sm:text-[15.5px] text-[#1E1142] whitespace-nowrap tracking-tight font-normal group-hover:text-violet-primary transition-colors"
+                            className="font-sans text-[14.5px] sm:text-[15.5px] text-[#1E1142] whitespace-nowrap tracking-tight font-semibold group-hover:text-violet-primary transition-colors"
                             style={{
                               writingMode: 'vertical-rl',
                               transform: 'rotate(180deg)',

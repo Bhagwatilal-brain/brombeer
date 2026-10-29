@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Solution } from '../../types';
 import { SpotlightCard } from '../animations/SpotlightCard';
 import { ArrowUpRight, Check } from 'lucide-react';
@@ -25,7 +25,7 @@ export const SolutionFeature: React.FC<SolutionFeatureProps> = ({ solution, inde
         </div>
 
         <div>
-          <h3 className="text-xl sm:text-2xl font-serif text-text-primary tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-sans font-bold text-text-primary tracking-tight">
             {solution.title}
           </h3>
           <p className="text-text-secondary text-sm mt-2 leading-relaxed">

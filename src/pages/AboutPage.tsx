@@ -67,7 +67,7 @@ export const AboutPage: React.FC = () => {
             <span className="text-xs font-mono font-semibold text-violet-primary uppercase tracking-widest block">
               OUR MISSION
             </span>
-            <h3 className="font-serif text-2xl text-text-primary">
+            <h3 className="font-sans font-bold text-2xl text-text-primary">
               Solving Practical Problems
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
@@ -79,7 +79,7 @@ export const AboutPage: React.FC = () => {
             <span className="text-xs font-mono font-semibold text-violet-primary uppercase tracking-widest block">
               OUR VISION
             </span>
-            <h3 className="font-serif text-2xl text-text-primary">
+            <h3 className="font-sans font-bold text-2xl text-text-primary">
               Thoughtful, Measurable Value
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
@@ -94,7 +94,7 @@ export const AboutPage: React.FC = () => {
         <Container>
           <div className="max-w-2xl mb-12 space-y-3">
             <span className="eyebrow block">CORE VALUES</span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-text-primary tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-sans font-bold text-text-primary tracking-tight">
               What We Stand For
             </h2>
             <p className="text-xs sm:text-sm text-text-secondary">
@@ -114,7 +114,7 @@ export const AboutPage: React.FC = () => {
                     <div className="w-10 h-10 rounded-2xl bg-surface-lavender text-violet-primary flex items-center justify-center border border-white">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-serif text-lg text-text-primary">
+                    <h3 className="font-sans font-bold text-lg text-text-primary">
                       {item.title}
                     </h3>
                   </div>
@@ -135,7 +135,7 @@ export const AboutPage: React.FC = () => {
             <div className="w-9 h-9 rounded-xl bg-surface-lavender text-violet-primary flex items-center justify-center font-bold text-xs">
               HQ
             </div>
-            <h3 className="font-serif text-2xl text-text-primary">
+            <h3 className="font-sans font-bold text-2xl text-text-primary">
               Our Relationship with Brombeer IT Systems
             </h3>
           </div>
@@ -154,7 +154,7 @@ export const AboutPage: React.FC = () => {
       <Container>
         <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-16 text-center space-y-6 shadow-xl shadow-violet-primary/10">
           <span className="eyebrow inline-block">INTELLIGENCE THAT MOVES BUSINESS FORWARD</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
             Discover the Opportunity. Build the Right Solution.
           </h2>
           <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">

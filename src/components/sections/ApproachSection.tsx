@@ -212,9 +212,9 @@ export const ApproachSection: React.FC = () => {
                             {step.displayNumber}
                           </span>
 
-                          {/* Step Title in Editorial Serif font (Exact Sampled Hex: #F2F2F8) */}
+                          {/* Step Title in Plus Jakarta Sans bold font (Exact Sampled Hex: #F2F2F8) */}
                           <h3
-                            className={`text-2xl sm:text-3xl lg:text-[2.2rem] font-serif tracking-tight leading-tight font-normal transition-all duration-300 ${
+                            className={`text-2xl sm:text-3xl lg:text-[2.2rem] font-sans tracking-tight leading-tight font-bold transition-all duration-300 ${
                               isPassedOrActive
                                 ? 'text-white'
                                 : 'text-[#F2F2F8] group-hover:text-white'

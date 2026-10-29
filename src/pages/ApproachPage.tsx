@@ -12,8 +12,11 @@ export const ApproachPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">OUR APPROACH</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-text-primary tracking-tight leading-[1.05]">
-            A Clear Path from AI Idea to Implementation.
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-tight leading-[1.05]">
+            A Clear Path from AI Idea to{' '}
+            <span className="text-violet-primary">
+              Implementation.
+            </span>
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
             AI projects work best when business objectives, technical decisions, risk management, and delivery expectations are aligned from the beginning. Brombeer AI follows a structured approach that helps organizations evaluate opportunities, test assumptions, and develop solutions suited to their operating environment.
@@ -39,7 +42,7 @@ export const ApproachPage: React.FC = () => {
             <span className="text-xs uppercase tracking-wider text-violet-primary font-mono font-semibold block mb-2">
               METHODICAL EXECUTION
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-text-primary">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-bold text-text-primary">
               The Six-Phase Delivery Lifecycle
             </h2>
           </div>
@@ -61,7 +64,7 @@ export const ApproachPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-serif text-text-primary tracking-tight">
+                    <h3 className="text-2xl font-sans font-bold text-text-primary tracking-tight">
                       Phase {phase.number}: {phase.name}
                     </h3>
                     <p className="text-sm font-medium text-violet-primary mt-1">
@@ -106,7 +109,7 @@ export const ApproachPage: React.FC = () => {
         <Container>
           <div className="max-w-3xl mb-12 space-y-3">
             <span className="eyebrow block">OUTCOME-FOCUSED METRICS</span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-text-primary tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-sans font-bold text-text-primary tracking-tight">
               Define Outcomes Before Measuring Results.
             </h2>
             <p className="text-text-secondary text-sm sm:text-base leading-relaxed">
@@ -142,7 +145,7 @@ export const ApproachPage: React.FC = () => {
         <div className="space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="eyebrow block">GUIDING ETHOS</span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-text-primary tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-sans font-bold text-text-primary tracking-tight">
               Our Principles
             </h2>
             <p className="text-xs sm:text-sm text-text-secondary">
@@ -160,7 +163,7 @@ export const ApproachPage: React.FC = () => {
                   <span className="text-xs font-mono font-semibold text-violet-primary block mb-2">
                     0{idx + 1}
                   </span>
-                  <h3 className="font-serif text-lg text-text-primary leading-snug">
+                  <h3 className="font-sans font-bold text-lg text-text-primary leading-snug">
                     {pr.title}
                   </h3>
                 </div>
@@ -177,7 +180,7 @@ export const ApproachPage: React.FC = () => {
       <Container>
         <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-14 text-center space-y-6 shadow-xl shadow-violet-primary/10">
           <span className="eyebrow inline-block">LET'S COLLABORATE</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
             Let’s Define the Right First Step.
           </h2>
           <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">

@@ -45,7 +45,7 @@ export const IndustriesPage: React.FC = () => {
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border-subtle/40">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-serif text-text-primary">
+                  <h2 className="text-2xl sm:text-3xl font-sans font-bold text-text-primary">
                     {ind.name}
                   </h2>
                   <p className="text-sm font-medium text-violet-primary mt-1">

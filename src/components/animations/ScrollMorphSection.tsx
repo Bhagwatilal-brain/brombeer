@@ -128,7 +128,7 @@ export const ScrollMorphSection: React.FC = () => {
 
               {/* Headline & Punchy Synopsis */}
               <div>
-                <h3 className="text-2xl md:text-3xl font-serif text-text-primary leading-tight">
+                <h3 className="text-2xl md:text-3xl font-sans font-bold text-text-primary leading-tight">
                   {activeCase.headline}
                 </h3>
                 <p className="text-text-secondary text-sm md:text-base mt-2.5 leading-relaxed font-light">
@@ -158,7 +158,7 @@ export const ScrollMorphSection: React.FC = () => {
               {/* 2 Big Visual Impact Metrics */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 rounded-2xl bg-surface-lavender/30 border border-white">
-                  <div className="font-serif text-3xl sm:text-4xl font-bold text-violet-primary">
+                  <div className="font-sans text-3xl sm:text-4xl font-extrabold text-violet-primary">
                     {metrics.kpi1}
                   </div>
                   <div className="text-xs text-text-secondary mt-1 font-medium">
@@ -166,7 +166,7 @@ export const ScrollMorphSection: React.FC = () => {
                   </div>
                 </div>
                 <div className="p-4 rounded-2xl bg-surface-lavender/30 border border-white">
-                  <div className="font-serif text-3xl sm:text-4xl font-bold text-violet-deep">
+                  <div className="font-sans text-3xl sm:text-4xl font-extrabold text-violet-deep">
                     {metrics.kpi2}
                   </div>
                   <div className="text-xs text-text-secondary mt-1 font-medium">

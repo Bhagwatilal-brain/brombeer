@@ -70,7 +70,7 @@ export const ResponsibleAIPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-serif text-text-primary tracking-tight">
+                      <h3 className="text-xl font-sans font-bold text-text-primary tracking-tight">
                         {principle.title}
                       </h3>
                       <p className="text-xs text-text-secondary mt-2 leading-relaxed">
@@ -106,7 +106,7 @@ export const ResponsibleAIPage: React.FC = () => {
             <div className="w-10 h-10 rounded-2xl bg-surface-lavender text-violet-primary flex items-center justify-center">
               <AlertTriangle className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-2xl text-text-primary">
+            <h3 className="font-sans font-bold text-2xl text-text-primary">
               Responsible AI Is Context-Specific
             </h3>
           </div>

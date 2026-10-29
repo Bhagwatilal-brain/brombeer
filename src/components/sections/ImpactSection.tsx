@@ -31,7 +31,7 @@ export const ImpactSection: React.FC = () => {
           {kpis.map((kpi, idx) => (
             <ScrollReveal key={kpi.label} delay={idx * 0.08}>
               <div className="p-8 rounded-3xl bg-[#FAF9FF] border border-[#6853A5]/12 hover:border-violet-primary/40 hover:bg-white hover:shadow-xl transition-all duration-300 space-y-2">
-                <div className="font-serif text-4xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-violet-primary to-violet-deep font-bold tracking-tight">
+                <div className="font-sans text-4xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-violet-primary to-violet-deep font-extrabold tracking-tight">
                   {kpi.value}
                 </div>
                 <h4 className="text-sm font-semibold text-text-primary pt-1">

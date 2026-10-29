@@ -21,7 +21,7 @@ export const PrivacyPage: React.FC = () => {
           </div>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">1. Information We Collect</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">1. Information We Collect</h3>
             <p>
               Depending on how you use the website, we may collect information that you provide directly, such as your name, business email address, company name, job title, country, and the details of your enquiry.
             </p>
@@ -34,7 +34,7 @@ export const PrivacyPage: React.FC = () => {
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">2. How We Use Information</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">2. How We Use Information</h3>
             <p>Information may be used to:</p>
             <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm">
               <li>Respond to enquiries and requests</li>
@@ -51,7 +51,7 @@ export const PrivacyPage: React.FC = () => {
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">3. Cookies and Similar Technologies</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">3. Cookies and Similar Technologies</h3>
             <p>
               The website may use necessary cookies or similar technologies to support its operation. Analytics or marketing technologies, if implemented, should be disclosed and managed in accordance with applicable requirements and user choices.
             </p>
@@ -61,7 +61,7 @@ export const PrivacyPage: React.FC = () => {
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">4. Information Sharing</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">4. Information Sharing</h3>
             <p>
               Information may be shared with authorized personnel and service providers who support website hosting, communications, security, analytics, or business operations, where necessary and appropriately controlled.
             </p>
@@ -74,7 +74,7 @@ export const PrivacyPage: React.FC = () => {
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">5. International Data Transfers</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">5. International Data Transfers</h3>
             <p>
               Depending on the service providers and infrastructure used, information may be processed or stored in countries other than the country from which it was submitted.
             </p>
@@ -84,42 +84,42 @@ export const PrivacyPage: React.FC = () => {
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">6. Data Retention</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">6. Data Retention</h3>
             <p>
               Personal information should be retained only for as long as necessary for the purposes for which it was collected, subject to legal, contractual, and operational requirements. The actual retention periods depend on the category of information and the reason it is processed.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">7. Data Security</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">7. Data Security</h3>
             <p>
               We consider appropriate technical and organizational measures to protect information against unauthorized access, disclosure, alteration, or loss. No method of internet transmission or electronic storage can be guaranteed to be completely secure.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">8. Your Privacy Rights</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">8. Your Privacy Rights</h3>
             <p>
               Depending on applicable law, you may have rights to request access to, correction of, deletion of, or other actions concerning your personal information. Requests will be handled according to the applicable legal requirements and any relevant exceptions.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">9. Third-Party Websites and Services</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">9. Third-Party Websites and Services</h3>
             <p>
               The website may link to third-party websites or services. Their privacy practices are governed by their own policies.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h3 className="text-xl font-serif text-text-primary">10. Changes to This Policy</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">10. Changes to This Policy</h3>
             <p>
               This Privacy Policy may be updated to reflect changes in website functionality, business practices, or legal requirements. The updated version should be published with a revised date.
             </p>
           </section>
 
           <section className="space-y-3 pt-4 border-t border-border-subtle/30">
-            <h3 className="text-xl font-serif text-text-primary">11. Contact Us</h3>
+            <h3 className="text-xl font-sans font-bold text-text-primary">11. Contact Us</h3>
             <p>For privacy-related enquiries, contact:</p>
             <div className="p-4 rounded-xl bg-white border border-border-subtle/40 space-y-1 text-xs">
               <p><strong>Email:</strong> contact@brombeersystems.com</p>

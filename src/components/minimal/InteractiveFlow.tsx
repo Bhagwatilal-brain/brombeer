@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,7 +37,7 @@ export const InteractiveFlow: React.FC = () => {
         <div className="text-center space-y-4 mb-14">
           <ScrollReveal>
             <span className="eyebrow block">KINETIC FLOW</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-primary tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
               How the Mind Moves.
             </h2>
             <p className="text-xs sm:text-sm text-text-secondary/70 font-light max-w-md mx-auto">
@@ -63,7 +63,7 @@ export const InteractiveFlow: React.FC = () => {
                 <span className={`text-[11px] font-mono block mb-1 ${isActive ? 'text-violet-primary' : 'text-text-secondary/60'}`}>
                   {st.num}
                 </span>
-                <span className={`font-serif text-lg sm:text-xl font-bold block ${isActive ? 'text-text-primary' : 'text-text-secondary'}`}>
+                <span className={`font-sans text-lg sm:text-xl font-bold block ${isActive ? 'text-text-primary' : 'text-text-secondary'}`}>
                   {st.title}
                 </span>
               </button>

@@ -20,7 +20,7 @@ export const UseCaseFeature: React.FC<UseCaseFeatureProps> = ({ useCase }) => {
         </div>
 
         <div>
-          <h3 className="text-2xl font-serif text-text-primary leading-tight">
+          <h3 className="text-2xl font-sans font-bold text-text-primary leading-tight">
             {useCase.headline}
           </h3>
           <p className="text-text-secondary text-xs sm:text-sm mt-2 leading-relaxed">

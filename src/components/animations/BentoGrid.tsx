@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { cn } from '../../lib/utils';
 
 export const BentoGrid = ({
@@ -46,7 +46,7 @@ export const BentoGridItem = ({
       <div className="group-hover/bento:translate-x-1 transition duration-200 space-y-2">
         <div className="flex items-center gap-2">
           {icon}
-          <div className="font-serif font-bold text-text-primary text-xl tracking-tight">
+          <div className="font-sans font-bold text-text-primary text-xl tracking-tight">
             {title}
           </div>
         </div>

@@ -73,7 +73,7 @@ export const SolutionsPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl font-serif text-text-primary tracking-tight">
+                  <h2 className="text-2xl sm:text-3xl font-sans font-bold text-text-primary tracking-tight">
                     {sol.title}
                   </h2>
                   <p className="text-sm font-medium text-violet-primary">

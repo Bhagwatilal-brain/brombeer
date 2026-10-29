@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { InsightArticle } from '../../types';
 import { SpotlightCard } from '../animations/SpotlightCard';
 import { ArrowUpRight, Clock } from 'lucide-react';
@@ -22,7 +22,7 @@ export const InsightCard: React.FC<InsightCardProps> = ({ article }) => {
         </div>
 
         <div>
-          <h3 className="text-xl sm:text-2xl font-serif text-text-primary tracking-tight leading-snug group-hover:text-violet-primary transition-colors">
+          <h3 className="text-xl sm:text-2xl font-sans font-bold text-text-primary tracking-tight leading-snug group-hover:text-violet-primary transition-colors">
             {article.title}
           </h3>
           <p className="text-text-secondary text-sm mt-2.5 leading-relaxed line-clamp-3">

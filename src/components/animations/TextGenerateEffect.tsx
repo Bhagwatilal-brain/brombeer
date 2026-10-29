@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { motion, stagger, useAnimate } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
@@ -53,7 +53,7 @@ export const TextGenerateEffect: React.FC<TextGenerateEffectProps> = ({
   };
 
   return (
-    <div className={cn('font-serif', className)}>
+    <div className={cn('font-sans', className)}>
       <div className="mt-1">
         <div className="leading-snug tracking-tight">
           {renderWords()}

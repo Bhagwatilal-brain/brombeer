@@ -28,13 +28,13 @@ export const WhyBrombeerSection: React.FC = () => {
           {WHY_BROMBEER_PILLARS.map((p, idx) => (
             <ScrollReveal key={p.number} delay={idx * 0.06}>
               <div className="group grid gap-4 py-8 border-b border-[#E1DFEF] transition-colors md:grid-cols-[80px_1fr_1.4fr] md:items-baseline hover:bg-[#F9F8FD]/60 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xl cursor-default">
-                {/* Number 01-05 in Periwinkle Italic Serif */}
-                <span className="font-serif italic text-3xl text-[#9581EF] font-light">
+                {/* Number 01-05 */}
+                <span className="font-sans font-bold text-3xl text-[#9581EF]">
                   {p.number}
                 </span>
 
                 {/* Pillar Title with smooth 500ms slide right hover animation */}
-                <h3 className="font-serif text-2xl sm:text-3xl text-[#1E1142] font-normal tracking-tight transition-transform duration-500 group-hover:translate-x-2 group-hover:text-violet-primary">
+                <h3 className="font-sans text-2xl sm:text-3xl text-[#1E1142] font-bold tracking-tight transition-transform duration-500 group-hover:translate-x-2 group-hover:text-violet-primary">
                   {p.title}
                 </h3>
 

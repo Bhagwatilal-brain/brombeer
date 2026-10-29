@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Industry } from '../../types';
 import { SpotlightCard } from '../animations/SpotlightCard';
 import { ArrowUpRight } from 'lucide-react';
@@ -18,7 +18,7 @@ export const IndustryFeature: React.FC<IndustryFeatureProps> = ({ industry }) =>
         </div>
 
         <div>
-          <h3 className="text-xl sm:text-2xl font-serif text-text-primary tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-sans font-bold text-text-primary tracking-tight">
             {industry.name}
           </h3>
           <p className="text-xs font-medium text-violet-primary mt-1">

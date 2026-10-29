@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
 
@@ -17,7 +17,7 @@ export const ManifestoSection: React.FC = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-text-primary tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-tight leading-[1.12]">
               "We believe intelligence should feel calm, purposeful, and{' '}
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-violet-primary via-[#9E7EFF] to-violet-deep">
                 deeply human.
@@ -37,7 +37,7 @@ export const ManifestoSection: React.FC = () => {
           <ScrollReveal delay={0.1}>
             <div className="p-8 rounded-3xl bg-[#FAF9FF]/80 border border-white hover:border-violet-light/50 transition-all duration-500 hover:shadow-xl hover:shadow-violet-primary/5 space-y-3 text-center">
               <span className="text-xs font-mono text-violet-primary font-semibold block">01 / CLARITY</span>
-              <h3 className="font-serif text-2xl text-text-primary">Instant Truth</h3>
+              <h3 className="font-sans font-bold text-2xl text-text-primary">Instant Truth</h3>
               <p className="text-xs text-text-secondary/80 font-light leading-relaxed">
                 Transforming thousands of fragmented documents into calm, verified understanding.
               </p>
@@ -47,7 +47,7 @@ export const ManifestoSection: React.FC = () => {
           <ScrollReveal delay={0.2}>
             <div className="p-8 rounded-3xl bg-[#FAF9FF]/80 border border-white hover:border-violet-light/50 transition-all duration-500 hover:shadow-xl hover:shadow-violet-primary/5 space-y-3 text-center">
               <span className="text-xs font-mono text-violet-primary font-semibold block">02 / VELOCITY</span>
-              <h3 className="font-serif text-2xl text-text-primary">Silent Flow</h3>
+              <h3 className="font-sans font-bold text-2xl text-text-primary">Silent Flow</h3>
               <p className="text-xs text-text-secondary/80 font-light leading-relaxed">
                 Replacing weeks of manual administrative toil with seconds of effortless precision.
               </p>
@@ -57,7 +57,7 @@ export const ManifestoSection: React.FC = () => {
           <ScrollReveal delay={0.3}>
             <div className="p-8 rounded-3xl bg-[#FAF9FF]/80 border border-white hover:border-violet-light/50 transition-all duration-500 hover:shadow-xl hover:shadow-violet-primary/5 space-y-3 text-center">
               <span className="text-xs font-mono text-violet-primary font-semibold block">03 / TRUST</span>
-              <h3 className="font-serif text-2xl text-text-primary">Human Sanctuary</h3>
+              <h3 className="font-sans font-bold text-2xl text-text-primary">Human Sanctuary</h3>
               <p className="text-xs text-text-secondary/80 font-light leading-relaxed">
                 Sovereign data boundaries and explicit human authority over every consequential step.
               </p>

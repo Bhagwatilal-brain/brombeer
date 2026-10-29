@@ -221,7 +221,7 @@ export const SolutionsSection: React.FC = () => {
 
                   {/* Title & Tagline with smooth hover motion */}
                   <div className="pt-1">
-                    <h3 className="text-xl sm:text-[22px] font-serif text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[#181126]">
+                    <h3 className="text-xl sm:text-[22px] font-sans font-bold text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[#181126]">
                       {card.title}
                     </h3>
                     <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5 transition-colors duration-200">
