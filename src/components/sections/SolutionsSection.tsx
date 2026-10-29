@@ -203,9 +203,9 @@ export const SolutionsSection: React.FC = () => {
                   fill="none"
                   aria-hidden="true"
                 >
-                  <circle cx="85" cy="85" r="28" stroke="#111014" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.8" />
-                  <circle cx="85" cy="85" r="46" stroke="#111014" strokeWidth="1.2" opacity="0.8" />
-                  <circle cx="85" cy="85" r="64" stroke="#111014" strokeWidth="1" opacity="0.5" />
+                  <circle cx="85" cy="85" r="28" stroke="#111014" strokeWidth="1" strokeDasharray="3 3" opacity="0.2" />
+                  <circle cx="85" cy="85" r="46" stroke="#111014" strokeWidth="1" opacity="0.18" />
+                  <circle cx="85" cy="85" r="64" stroke="#111014" strokeWidth="1" opacity="0.1" />
                 </svg>
 
                 <div className="space-y-4 relative z-10">
