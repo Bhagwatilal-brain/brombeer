@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Landmark,
   Shield,
@@ -25,7 +25,7 @@ interface IndustryCardData {
   icon: React.ComponentType<{ className?: string }>;
   accentColor: string;
   badgeBg: string;
-  illustration: React.ReactNode;
+  image: string;
 }
 
 const INDUSTRY_ITEMS: IndustryCardData[] = [
@@ -40,58 +40,7 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: Landmark,
     accentColor: '#7650E8',
     badgeBg: 'bg-gradient-to-tr from-[#6366F1] to-[#8B5CF6]',
-    illustration: (
-      <svg
-        className="w-full h-full text-violet-primary/20"
-        viewBox="0 0 360 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        {/* Soft Radial Aura */}
-        <circle cx="260" cy="200" r="140" fill="currentColor" fillOpacity="0.12" />
-        
-        {/* Neoclassical Dome & Colonnade Architectural Silhouette */}
-        <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-          {/* Lantern & Finial */}
-          <line x1="260" y1="50" x2="260" y2="70" strokeWidth="2" />
-          <circle cx="260" cy="46" r="4" fill="currentColor" />
-          <path d="M252 70h16v14h-16z" fill="currentColor" fillOpacity="0.1" />
-
-          {/* Upper Dome Curve */}
-          <path d="M220 120 C220 78, 300 78, 300 120 Z" fill="currentColor" fillOpacity="0.15" />
-          <path d="M232 120 C232 90, 288 90, 288 120" strokeDasharray="3 3" />
-          <line x1="214" y1="120" x2="306" y2="120" strokeWidth="2" />
-
-          {/* Drum / Rotunda */}
-          <path d="M216 120v28h88v-28" />
-          <line x1="228" y1="120" x2="228" y2="148" />
-          <line x1="244" y1="120" x2="244" y2="148" />
-          <line x1="260" y1="120" x2="260" y2="148" />
-          <line x1="276" y1="120" x2="276" y2="148" />
-          <line x1="292" y1="120" x2="292" y2="148" />
-          <line x1="208" y1="148" x2="312" y2="148" strokeWidth="2" />
-
-          {/* Triangular Pediment */}
-          <polygon points="260,160 190,190 330,190" fill="currentColor" fillOpacity="0.12" strokeWidth="1.8" />
-          <circle cx="260" cy="180" r="5" fill="currentColor" fillOpacity="0.4" />
-
-          {/* Grand Colonnade Pillars */}
-          <line x1="192" y1="190" x2="328" y2="190" strokeWidth="2.2" />
-          <line x1="202" y1="190" x2="202" y2="280" strokeWidth="2" />
-          <line x1="222" y1="190" x2="222" y2="280" strokeWidth="2" />
-          <line x1="242" y1="190" x2="242" y2="280" strokeWidth="2" />
-          <line x1="262" y1="190" x2="262" y2="280" strokeWidth="2" />
-          <line x1="282" y1="190" x2="282" y2="280" strokeWidth="2" />
-          <line x1="302" y1="190" x2="302" y2="280" strokeWidth="2" />
-          <line x1="318" y1="190" x2="318" y2="280" strokeWidth="2" />
-
-          {/* Base Steps */}
-          <line x1="184" y1="280" x2="336" y2="280" strokeWidth="2.5" />
-          <line x1="176" y1="288" x2="344" y2="288" strokeWidth="2.5" />
-          <line x1="168" y1="296" x2="352" y2="296" strokeWidth="2.5" />
-        </g>
-      </svg>
-    ),
+    image: '/images/industry_solutions/Lavender Capitol Fading into Mist.png',
   },
   {
     id: 'defence-security',
@@ -104,34 +53,7 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: Shield,
     accentColor: '#3B82F6',
     badgeBg: 'bg-gradient-to-tr from-[#3B82F6] to-[#60A5FA]',
-    illustration: (
-      <svg
-        className="w-full h-full text-blue-500/20"
-        viewBox="0 0 360 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="260" cy="200" r="130" fill="currentColor" fillOpacity="0.1" />
-        <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.85">
-          {/* Radar Circles */}
-          <circle cx="260" cy="200" r="100" strokeDasharray="4 4" />
-          <circle cx="260" cy="200" r="68" />
-          <circle cx="260" cy="200" r="36" />
-          
-          {/* Central Shield Crest */}
-          <path
-            d="M260 140 L300 160 L300 220 Q300 260 260 280 Q220 260 220 220 L220 160 Z"
-            fill="currentColor"
-            fillOpacity="0.15"
-            strokeWidth="2"
-          />
-          <path d="M260 156 L286 172 L286 216 Q286 248 260 264 Q234 248 234 216 L234 172 Z" strokeDasharray="3 3" />
-          
-          {/* Scanning Sweep Vector Line */}
-          <line x1="260" y1="200" x2="350" y2="130" strokeWidth="2" strokeDasharray="6 3" />
-        </g>
-      </svg>
-    ),
+    image: '/images/industry_solutions/Violet Radar Over Misty Mountains.png',
   },
   {
     id: 'healthcare',
@@ -144,32 +66,7 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: HeartPulse,
     accentColor: '#EC4899',
     badgeBg: 'bg-gradient-to-tr from-[#EC4899] to-[#F43F5E]',
-    illustration: (
-      <svg
-        className="w-full h-full text-pink-500/20"
-        viewBox="0 0 360 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="260" cy="200" r="130" fill="currentColor" fillOpacity="0.1" />
-        <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.85">
-          {/* Heart Emblem */}
-          <path
-            d="M260 260 C210 210, 210 160, 235 145 C255 132, 260 155, 260 155 C260 155, 265 132, 285 145 C310 160, 310 210, 260 260 Z"
-            fill="currentColor"
-            fillOpacity="0.14"
-            strokeWidth="2"
-          />
-          {/* Heartbeat EKG Pulse Wave */}
-          <path
-            d="M180 200 L230 200 L242 175 L255 225 L268 185 L278 208 L288 200 L340 200"
-            strokeWidth="2.2"
-          />
-          {/* Medical Cross Aura */}
-          <circle cx="260" cy="180" r="50" strokeDasharray="4 4" />
-        </g>
-      </svg>
-    ),
+    image: '/images/industry_solutions/Futuristic Lavender Hospital Campus.png',
   },
   {
     id: 'logistics',
@@ -182,32 +79,7 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: Truck,
     accentColor: '#F59E0B',
     badgeBg: 'bg-gradient-to-tr from-[#F59E0B] to-[#FBBF24]',
-    illustration: (
-      <svg
-        className="w-full h-full text-amber-500/20"
-        viewBox="0 0 360 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="260" cy="200" r="130" fill="currentColor" fillOpacity="0.1" />
-        <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-          {/* Global Transit Network Iso-Grid */}
-          <path d="M260 130 L330 170 L330 250 L260 290 L190 250 L190 170 Z" fill="currentColor" fillOpacity="0.1" strokeWidth="1.8" />
-          <line x1="260" y1="130" x2="260" y2="290" strokeDasharray="3 3" />
-          <line x1="190" y1="170" x2="330" y2="250" strokeDasharray="3 3" />
-          <line x1="330" y1="170" x2="190" y2="250" strokeDasharray="3 3" />
-
-          {/* Route Nodes */}
-          <circle cx="260" cy="130" r="6" fill="currentColor" />
-          <circle cx="330" cy="170" r="5" fill="currentColor" />
-          <circle cx="190" cy="170" r="5" fill="currentColor" />
-          <circle cx="260" cy="210" r="7" fill="currentColor" />
-          <circle cx="330" cy="250" r="5" fill="currentColor" />
-          <circle cx="190" cy="250" r="5" fill="currentColor" />
-          <circle cx="260" cy="290" r="6" fill="currentColor" />
-        </g>
-      </svg>
-    ),
+    image: '/images/industry_solutions/Lavender Port_ Cranes and Cargo.png',
   },
   {
     id: 'manufacturing',
@@ -220,31 +92,7 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: Factory,
     accentColor: '#10B981',
     badgeBg: 'bg-gradient-to-tr from-[#10B981] to-[#34D399]',
-    illustration: (
-      <svg
-        className="w-full h-full text-emerald-500/20"
-        viewBox="0 0 360 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="260" cy="200" r="130" fill="currentColor" fillOpacity="0.1" />
-        <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-          {/* Precision Industrial Gear */}
-          <circle cx="260" cy="200" r="60" fill="currentColor" fillOpacity="0.12" strokeWidth="2" />
-          <circle cx="260" cy="200" r="28" fill="white" strokeWidth="2" />
-          <circle cx="260" cy="200" r="14" fill="currentColor" />
-          
-          {/* Gear Teeth Array */}
-          <path d="M252 134h16v12h-16z" fill="currentColor" />
-          <path d="M252 254h16v12h-16z" fill="currentColor" />
-          <path d="M194 192h12v16h-12z" fill="currentColor" />
-          <path d="M314 192h12v16h-12z" fill="currentColor" />
-          
-          {/* Satellite Telemetry Ring */}
-          <circle cx="260" cy="200" r="95" strokeDasharray="4 4" />
-        </g>
-      </svg>
-    ),
+    image: '/images/industry_solutions/Futuristic Lavender Robotic Assembly Line.png',
   },
   {
     id: 'enterprise-services',
@@ -257,30 +105,7 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: Users,
     accentColor: '#7C3AED',
     badgeBg: 'bg-gradient-to-tr from-[#7C3AED] to-[#A78BFA]',
-    illustration: (
-      <svg
-        className="w-full h-full text-purple-500/20"
-        viewBox="0 0 360 400"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="260" cy="200" r="130" fill="currentColor" fillOpacity="0.1" />
-        <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.85">
-          {/* Constellation Nodes of Organizations */}
-          <circle cx="260" cy="150" r="18" fill="currentColor" fillOpacity="0.15" strokeWidth="2" />
-          <circle cx="210" cy="240" r="15" fill="currentColor" fillOpacity="0.15" strokeWidth="2" />
-          <circle cx="310" cy="240" r="15" fill="currentColor" fillOpacity="0.15" strokeWidth="2" />
-          
-          {/* Interconnecting Network Bridges */}
-          <line x1="260" y1="168" x2="210" y2="225" strokeWidth="2" />
-          <line x1="260" y1="168" x2="310" y2="225" strokeWidth="2" />
-          <line x1="225" y1="240" x2="295" y2="240" strokeWidth="2" strokeDasharray="4 4" />
-          
-          {/* Surrounding Orbit Ring */}
-          <circle cx="260" cy="210" r="90" strokeDasharray="3 3" />
-        </g>
-      </svg>
-    ),
+    image: '/images/industry_solutions/Lavender High-Rise Boardroom Panorama.png',
   },
 ];
 
@@ -288,24 +113,21 @@ export const IndustriesSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const prefersReduced = useReducedMotion();
 
-  const activeItem = INDUSTRY_ITEMS[activeIndex];
-  const ActiveIcon = activeItem.icon;
-
   return (
-    <section id="industries" className="py-14 sm:py-18 lg:py-24 bg-background relative overflow-hidden">
+    <section id="industries" className="py-14 sm:py-20 lg:py-26 bg-background relative overflow-hidden">
       <Container size="wide">
         {/* Main Bounded Container Housing Header on Left and Interactive Accordion on Right */}
-        <div className="rounded-[2.25rem] sm:rounded-[2.75rem] bg-gradient-to-br from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] border border-[#6853A5]/20 p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-br from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] border border-[#6853A5]/20 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             
             {/* Left Column: Heading Block & Copy */}
             <div className="lg:col-span-4 xl:col-span-4">
               <ScrollTextReveal
                 eyebrow="INDUSTRY SOLUTIONS"
                 title="AI for the Challenges That Matter Most"
-                titleClassName="text-3xl sm:text-4xl lg:text-[40px] font-serif font-normal text-[#111014] tracking-tight leading-[1.12] mb-4"
+                titleClassName="text-3xl sm:text-4xl lg:text-[42px] font-serif font-normal text-[#111014] tracking-tight leading-[1.12] mb-4"
                 description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
-                descriptionClassName="text-text-secondary text-[14px] sm:text-[15px] leading-relaxed font-light"
+                descriptionClassName="text-text-secondary text-[14px] sm:text-[15.5px] leading-relaxed font-light"
                 maxWidth="max-w-md"
               />
             </div>
@@ -313,8 +135,8 @@ export const IndustriesSection: React.FC = () => {
             {/* Right Column: Interactive Horizontal Accordion Deck */}
             <div className="lg:col-span-8 xl:col-span-8 w-full">
               <ScrollReveal direction="up" delay={0.15}>
-                {/* Horizontal Deck for Tablets & Desktops */}
-                <div className="flex flex-row items-stretch gap-2 sm:gap-3 h-[430px] sm:h-[450px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
+                {/* Horizontal Deck with enlarged height so content never cuts */}
+                <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 h-[520px] sm:h-[550px] lg:h-[560px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
                   {INDUSTRY_ITEMS.map((item, idx) => {
                     const isExpanded = activeIndex === idx;
                     const Icon = item.icon;
@@ -329,18 +151,27 @@ export const IndustriesSection: React.FC = () => {
                             stiffness: 280,
                             damping: 28,
                           }}
-                          className="flex-[4] min-w-[280px] sm:min-w-[340px] lg:min-w-0 relative rounded-[2rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-xl shadow-violet-primary/8 p-7 sm:p-9 flex flex-col justify-between overflow-hidden select-none cursor-default"
+                          className="flex-[5] min-w-[320px] sm:min-w-[420px] lg:min-w-0 relative rounded-[2.25rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-2xl shadow-violet-primary/10 p-8 sm:p-10 lg:p-11 flex flex-col justify-between overflow-hidden select-none cursor-default"
                         >
-                          {/* Background Artwork Illustration with Soft Blend */}
-                          <div className="absolute top-0 right-0 bottom-0 w-[55%] pointer-events-none select-none overflow-hidden flex items-center justify-end opacity-40 sm:opacity-50">
-                            {item.illustration}
+                          {/* Background Artwork Illustration with Smooth Gradient Mist Mask */}
+                          <div className="absolute top-0 right-0 bottom-0 w-[55%] sm:w-[60%] pointer-events-none select-none overflow-hidden flex items-center justify-end">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-full object-cover object-center mix-blend-multiply opacity-85 sm:opacity-90 transition-opacity duration-500"
+                              style={{
+                                maskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, black 50%)',
+                                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, black 50%)',
+                              }}
+                              loading="lazy"
+                            />
                           </div>
 
                           {/* Top purple glowing line */}
-                          <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
+                          <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
 
                           {/* Expanded Card Content */}
-                          <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[70%]">
+                          <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[65%]">
                             <div>
                               {/* Top Number */}
                               <span className="font-mono text-xs sm:text-[13px] font-semibold text-violet-primary tracking-wider block mb-4">
@@ -348,29 +179,29 @@ export const IndustriesSection: React.FC = () => {
                               </span>
 
                               {/* Icon */}
-                              <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-6 shadow-sm">
-                                <Icon className="w-6 h-6 text-violet-primary" />
+                              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-6 shadow-sm">
+                                <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-violet-primary" />
                               </div>
 
                               {/* Title */}
-                              <h3 className="font-serif text-2xl sm:text-[28px] font-normal text-[#111014] tracking-tight leading-[1.2] mb-3.5">
+                              <h3 className="font-serif text-2xl sm:text-[30px] lg:text-[32px] font-normal text-[#111014] tracking-tight leading-[1.18] mb-4">
                                 {item.title}
                               </h3>
 
                               {/* Description */}
-                              <p className="text-xs sm:text-[13.5px] text-[#666371] leading-relaxed font-light">
+                              <p className="text-xs sm:text-[14px] lg:text-[14.5px] text-[#666371] leading-relaxed font-light max-w-sm">
                                 {item.description}
                               </p>
                             </div>
 
                             {/* Explore Solutions Pill Button */}
-                            <div className="pt-4">
+                            <div className="pt-6">
                               <a
                                 href={item.href}
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#EDE7FA] hover:bg-[#E3DAF8] text-[#6E48E5] font-semibold text-xs tracking-wide transition-colors shadow-sm select-none group"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#EDE7FA] hover:bg-[#E3DAF8] text-[#6E48E5] font-semibold text-xs sm:text-[13px] tracking-wide transition-colors shadow-sm select-none group"
                               >
                                 <span>Explore Solutions</span>
-                                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                               </a>
                             </div>
                           </div>
@@ -390,7 +221,7 @@ export const IndustriesSection: React.FC = () => {
                         }}
                         onClick={() => setActiveIndex(idx)}
                         onMouseEnter={() => setActiveIndex(idx)}
-                        className="flex-1 min-w-[58px] sm:min-w-[68px] lg:min-w-0 group relative rounded-[1.75rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 py-6 px-2 sm:px-3 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
+                        className="flex-1 min-w-[62px] sm:min-w-[74px] lg:min-w-0 group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 py-7 px-2.5 sm:px-3 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
                       >
                         {/* Top Indicator Accent on Hover */}
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -400,15 +231,15 @@ export const IndustriesSection: React.FC = () => {
                           <span className="font-mono text-[11px] sm:text-xs font-semibold text-violet-primary tracking-wider">
                             {item.number}
                           </span>
-                          <div className="w-8 h-8 rounded-full bg-[#F4EFFC] flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
+                          <div className="w-9 h-9 rounded-full bg-[#F4EFFC] flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
                             <Icon className="w-4 h-4 text-violet-primary" />
                           </div>
                         </div>
 
                         {/* Center: Vertical Rotated Label */}
-                        <div className="flex-1 flex items-center justify-center py-4 my-auto">
+                        <div className="flex-1 flex items-center justify-center py-6 my-auto">
                           <span
-                            className="font-serif text-[14px] sm:text-[15px] text-[#1E1142] whitespace-nowrap tracking-tight font-normal group-hover:text-violet-primary transition-colors"
+                            className="font-serif text-[14.5px] sm:text-[15.5px] text-[#1E1142] whitespace-nowrap tracking-tight font-normal group-hover:text-violet-primary transition-colors"
                             style={{
                               writingMode: 'vertical-rl',
                               transform: 'rotate(180deg)',
