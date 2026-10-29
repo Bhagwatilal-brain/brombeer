@@ -13,7 +13,10 @@ export const UseCasesPage: React.FC = () => {
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">ENTERPRISE USE CASES</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
-            From Business Challenges to AI-Powered Solutions.
+            From Business Challenges to{' '}
+            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              AI-Powered Solutions.
+            </span>
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
             The best AI use cases start with a problem worth solving. Explore practical ways AI can support workflows, make information more accessible, and help teams make better-informed decisions.
@@ -46,7 +49,10 @@ export const UseCasesPage: React.FC = () => {
         <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-14 text-center space-y-6 shadow-xl shadow-violet-primary/10">
           <span className="eyebrow inline-block">CUSTOM WORKFLOWS</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
-            Have a Specific Operational Challenge in Mind?
+            Have a Specific{' '}
+            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              Operational Challenge in Mind?
+            </span>
           </h2>
           <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
             We collaborate with your engineering and operational leaders to validate whether AI is the right fit, engineer proof-of-concept prototypes, and deploy production-grade solutions.

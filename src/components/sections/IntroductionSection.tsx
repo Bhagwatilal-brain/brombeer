@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { NeuralPipeline } from '../animations/NeuralPipeline';
 
 export const IntroductionSection: React.FC = () => {
@@ -9,24 +10,17 @@ export const IntroductionSection: React.FC = () => {
       <Container>
         {/* Editorial Architecture Header */}
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-10 sm:mb-12">
-          <ScrollReveal>
-            <span className="eyebrow inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-violet-primary animate-pulse" />
-              SYSTEM ARCHITECTURE
-            </span>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.1]">
-              How Intelligence Connects with Action.
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.15}>
-            <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-              We combine artificial intelligence with practical engineering to build systems that automate operations, unlock enterprise data, and scale human decision-making.
-            </p>
-          </ScrollReveal>
+          <ScrollTextReveal
+            eyebrow="SYSTEM ARCHITECTURE"
+            eyebrowIcon={<span className="w-2 h-2 rounded-full bg-violet-primary animate-pulse inline-block" />}
+            title="How Intelligence Connects with Action."
+            highlightWords={['Connects', 'with', 'Action.']}
+            titleClassName="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.1] mb-4"
+            description="We combine artificial intelligence with practical engineering to build systems that automate operations, unlock enterprise data, and scale human decision-making."
+            descriptionClassName="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light"
+            align="center"
+            maxWidth="max-w-3xl mx-auto"
+          />
 
           {/* Visual Architecture Chips */}
           <ScrollReveal delay={0.2}>

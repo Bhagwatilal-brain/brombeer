@@ -14,7 +14,10 @@ export const ResponsibleAIPage: React.FC = () => {
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">RESPONSIBLE AI GOVERNANCE</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
-            Build AI with Confidence, Control, and Accountability.
+            Build AI with Confidence,{' '}
+            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              Control, and Accountability.
+            </span>
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
             AI systems can create meaningful value, but they also introduce risks involving accuracy, privacy, security, bias, and inappropriate automation. Brombeer AI takes a practical approach to responsible AI, incorporating relevant safeguards into the design, development, evaluation, and operation of each solution.
@@ -41,7 +44,10 @@ export const ResponsibleAIPage: React.FC = () => {
               COMPREHENSIVE SAFEGUARDS
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
-              Our Responsible AI Framework
+              Our{' '}
+              <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+                Responsible AI Framework
+              </span>
             </h2>
           </div>
 

@@ -156,6 +156,7 @@ export const SolutionsSection: React.FC = () => {
             <ScrollTextReveal
               eyebrow="OUR AI SOLUTIONS"
               title="Intelligent Technology. Purposeful Outcomes."
+              highlightWords={['Purposeful', 'Outcomes.']}
               description="We build AI capabilities that address different stages of the business value chain, from understanding information to automating decisions and improving operational performance."
               maxWidth="max-w-2xl"
             />

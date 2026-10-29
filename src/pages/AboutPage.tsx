@@ -38,7 +38,10 @@ export const AboutPage: React.FC = () => {
         <div className="p-8 sm:p-14 rounded-[2.5rem] bg-white border border-[#6853A5]/15 shadow-sm space-y-6 max-w-5xl">
           <span className="eyebrow block">ORIGIN & PURPOSE</span>
           <h2 className="text-3xl sm:text-4xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
-            Turning AI Possibilities into Practical Applications.
+            Turning AI Possibilities into{' '}
+            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              Practical Applications.
+            </span>
           </h2>
           <div className="space-y-4 text-text-secondary text-sm sm:text-base leading-relaxed">
             <p>

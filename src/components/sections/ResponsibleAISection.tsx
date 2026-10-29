@@ -89,6 +89,7 @@ export const ResponsibleAISection: React.FC = () => {
             <SectionHeading
               eyebrow="RESPONSIBLE AI"
               title="Innovation You Can Understand and Govern."
+              highlightWords={['Understand', 'and', 'Govern.']}
               description="Enterprise AI engineered with output reliability, data privacy, access controls, and explicit human oversight."
             />
           </div>

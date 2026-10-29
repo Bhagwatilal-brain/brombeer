@@ -20,6 +20,7 @@ export const ImpactSection: React.FC = () => {
               align="center"
               eyebrow="MEASURABLE IMPACT"
               title="Built for Measurable Business Outcomes."
+              highlightWords={['Measurable', 'Business', 'Outcomes.']}
               description="We evaluate projects against real business outcomes, operational efficiency, and risk reduction rather than technical novelty alone."
             />
           </ScrollReveal>

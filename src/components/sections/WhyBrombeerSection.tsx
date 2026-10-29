@@ -15,7 +15,8 @@ export const WhyBrombeerSection: React.FC = () => {
             eyebrow="WHY BROMBEER AI?"
             eyebrowClassName="text-[11px] sm:text-xs font-mono tracking-[0.24em] text-[#8E7EB8] font-semibold"
             title="More Than AI Technology. A Partner in Practical Transformation."
-            titleClassName="text-3xl sm:text-5xl lg:text-[3.5rem] font-serif text-[#1E1142] tracking-tight leading-[1.08] font-normal"
+            highlightWords={['Practical', 'Transformation.']}
+            titleClassName="text-3xl sm:text-5xl lg:text-[3.5rem] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.08]"
             description="Successful AI implementation requires more than access to a model. It requires an understanding of the business, dependable engineering, reliable data, thoughtful integration, and clear accountability."
             descriptionClassName="text-[#665D82] text-sm sm:text-base leading-relaxed max-w-2xl font-light pt-1"
             maxWidth="max-w-4xl"

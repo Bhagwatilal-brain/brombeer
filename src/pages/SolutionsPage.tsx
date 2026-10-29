@@ -12,7 +12,10 @@ export const SolutionsPage: React.FC = () => {
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">OUR CAPABILITIES</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
-            AI Solutions Built Around Your Business.
+            AI Solutions Built{' '}
+            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              Around Your Business.
+            </span>
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
             From intelligent assistants to predictive systems and computer vision, Brombeer AI develops tailored solutions that connect artificial intelligence to real business workflows. We help organizations select suitable technologies, integrate them into existing environments, and build AI applications around practical operational needs.
@@ -38,7 +41,10 @@ export const SolutionsPage: React.FC = () => {
             STRATEGIC CAPABILITIES
           </span>
           <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
-            One AI Strategy. The Right Capabilities for Each Challenge.
+            One AI Strategy.{' '}
+            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              The Right Capabilities for Each Challenge.
+            </span>
           </h2>
           <p className="text-text-secondary text-sm sm:text-base leading-relaxed">
             Not every business problem requires the same AI approach. Some require the ability to understand and generate language. Others depend on visual recognition, statistical prediction, structured data processing, or carefully controlled workflow automation. We help identify the capabilities that fit your requirements, then design and implement an appropriate solution.
