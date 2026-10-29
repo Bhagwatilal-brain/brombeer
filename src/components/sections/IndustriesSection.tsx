@@ -125,7 +125,7 @@ export const IndustriesSection: React.FC = () => {
               <ScrollTextReveal
                 eyebrow="INDUSTRY SOLUTIONS"
                 title="AI for the Challenges That Matter Most"
-                titleClassName="text-3xl sm:text-4xl lg:text-[42px] font-serif font-normal text-[#111014] tracking-tight leading-[1.12] mb-4"
+                titleClassName="text-3xl sm:text-4xl lg:text-[44px] font-outfit font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1] mb-4"
                 description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
                 descriptionClassName="text-text-secondary text-[14px] sm:text-[15.5px] leading-relaxed font-light"
                 maxWidth="max-w-md"

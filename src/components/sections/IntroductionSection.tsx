@@ -17,7 +17,7 @@ export const IntroductionSection: React.FC = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-primary tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.1]">
               How Intelligence Connects with Action.
             </h2>
           </ScrollReveal>

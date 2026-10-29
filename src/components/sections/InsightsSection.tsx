@@ -26,7 +26,7 @@ export const InsightsSection: React.FC = () => {
               <ScrollTextReveal
                 eyebrow="INSIGHTS"
                 title="Ideas, Perspectives, and Practical AI Guidance."
-                titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-serif font-normal text-[#111014] tracking-tight leading-[1.12]"
+                titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-outfit font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1]"
                 maxWidth="max-w-3xl"
               />
 

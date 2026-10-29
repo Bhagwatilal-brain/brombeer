@@ -12,7 +12,7 @@ export const UseCasesPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">ENTERPRISE USE CASES</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-text-primary tracking-tight leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             From Business Challenges to AI-Powered Solutions.
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
@@ -45,7 +45,7 @@ export const UseCasesPage: React.FC = () => {
       <Container>
         <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-14 text-center space-y-6 shadow-xl shadow-violet-primary/10">
           <span className="eyebrow inline-block">CUSTOM WORKFLOWS</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
             Have a Specific Operational Challenge in Mind?
           </h2>
           <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">

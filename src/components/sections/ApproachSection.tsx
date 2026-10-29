@@ -124,7 +124,7 @@ export const ApproachSection: React.FC = () => {
               eyebrow="HOW WE WORK"
               eyebrowClassName="text-[11px] sm:text-xs font-mono tracking-[0.24em] text-[#A69FBA]"
               title="From AI Opportunity to Operational Impact"
-              titleClassName="text-2xl sm:text-3xl lg:text-[2.25rem] font-serif text-[#F2F2F8] tracking-tight leading-[1.2] max-w-[340px] font-normal"
+              titleClassName="text-2xl sm:text-3xl lg:text-[2.4rem] font-outfit font-extrabold text-[#F2F2F8] tracking-[-0.03em] leading-[1.15] max-w-[360px]"
               maxWidth="max-w-[380px]"
               action={
                 <a

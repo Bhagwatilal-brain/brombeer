@@ -21,8 +21,9 @@ export default {
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Outfit"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        outfit: ['"Outfit"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
       },
       borderRadius: {
         '2xl': '1.25rem',

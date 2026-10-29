@@ -80,7 +80,7 @@ export const UseCasesSection: React.FC = () => {
           <ScrollTextReveal
             eyebrow="AI USE CASES"
             title="Real Problems. Intelligent Possibilities."
-            titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-normal text-[#111014] tracking-tight leading-[1.08] mb-4"
+            titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-outfit font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.08] mb-4"
             description="Explore how AI can support practical business workflows."
             maxWidth="max-w-3xl"
           />

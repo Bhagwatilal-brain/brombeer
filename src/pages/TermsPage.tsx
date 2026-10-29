@@ -8,7 +8,7 @@ export const TermsPage: React.FC = () => {
         <div className="space-y-10 text-sm text-text-secondary leading-relaxed">
           <div>
             <span className="eyebrow block">TERMS OF USE</span>
-            <h1 className="text-3xl sm:text-5xl font-serif text-text-primary tracking-tight mt-1">
+            <h1 className="text-3xl sm:text-5xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] mt-1">
               Terms and Conditions
             </h1>
             <p className="text-xs text-text-secondary mt-2">

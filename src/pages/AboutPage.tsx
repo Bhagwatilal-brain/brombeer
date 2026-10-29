@@ -13,7 +13,7 @@ export const AboutPage: React.FC = () => {
       <Container>
         <div className="max-w-3xl space-y-6">
           <span className="eyebrow block">ABOUT BROMBEER AI</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-text-primary tracking-tight leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             {ABOUT_CONTENT.headline}
           </h1>
           <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
@@ -37,7 +37,7 @@ export const AboutPage: React.FC = () => {
       <Container>
         <div className="p-8 sm:p-14 rounded-[2.5rem] bg-white border border-[#6853A5]/15 shadow-sm space-y-6 max-w-5xl">
           <span className="eyebrow block">ORIGIN & PURPOSE</span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-outfit font-extrabold text-text-primary tracking-[-0.03em]">
             Turning AI Possibilities into Practical Applications.
           </h2>
           <div className="space-y-4 text-text-secondary text-sm sm:text-base leading-relaxed">
