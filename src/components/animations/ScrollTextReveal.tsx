@@ -224,7 +224,7 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
         <motion.div
           variants={descriptionVariants}
           className={cn(
-            'text-text-secondary text-[14.5px] sm:text-[15.5px] leading-relaxed font-light will-change-transform will-change-[filter]',
+            'text-text-secondary text-[14.5px] sm:text-[15.5px] font-dm leading-relaxed font-light will-change-transform will-change-[filter]',
             descriptionClassName
           )}
         >

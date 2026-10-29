@@ -62,7 +62,7 @@ export const HeroSection: React.FC = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="max-w-xl text-text-secondary text-base sm:text-lg leading-relaxed"
+                className="max-w-xl text-text-secondary text-base sm:text-lg leading-relaxed font-dm font-normal"
               >
                 <p>
                   Turn complex business challenges into intelligent digital systems. We architect production-grade AI designed around your operational workflows, enterprise data, and measurable ROI.

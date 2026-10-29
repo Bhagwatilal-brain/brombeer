@@ -50,7 +50,7 @@ export const BentoGridItem = ({
             {title}
           </div>
         </div>
-        <div className="font-normal text-text-secondary text-xs sm:text-sm leading-relaxed">
+        <div className="font-dm font-normal text-text-secondary text-xs sm:text-sm leading-relaxed">
           {description}
         </div>
         {cta && <div className="pt-2">{cta}</div>}

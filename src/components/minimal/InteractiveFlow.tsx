@@ -84,7 +84,7 @@ export const InteractiveFlow: React.FC = () => {
             <span className="text-xs font-semibold px-3 py-1 rounded-full bg-surface-lavender text-violet-primary border border-violet-light/30">
               {steps[activeStep].sub}
             </span>
-            <p className="text-sm sm:text-base text-text-secondary font-light max-w-lg mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base font-dm text-text-secondary font-normal max-w-lg mx-auto leading-relaxed">
               {steps[activeStep].detail}
             </p>
             <div className="pt-2 text-[11px] font-mono text-text-secondary/60">

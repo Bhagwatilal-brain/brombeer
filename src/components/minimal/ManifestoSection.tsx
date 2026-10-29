@@ -26,7 +26,7 @@ export const ManifestoSection: React.FC = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="text-text-secondary/80 text-base sm:text-xl font-light max-w-xl mx-auto leading-relaxed">
+            <p className="text-text-secondary/80 text-base sm:text-xl font-dm font-normal max-w-xl mx-auto leading-relaxed">
               True technological sophistication is not measured by complexity. It is felt in the sudden absence of friction.
             </p>
           </ScrollReveal>
@@ -38,7 +38,7 @@ export const ManifestoSection: React.FC = () => {
             <div className="p-8 rounded-3xl bg-[#FAF9FF]/80 border border-white hover:border-violet-light/50 transition-all duration-500 hover:shadow-xl hover:shadow-violet-primary/5 space-y-3 text-center">
               <span className="text-xs font-mono text-violet-primary font-semibold block">01 / CLARITY</span>
               <h3 className="font-sans font-bold text-2xl text-text-primary">Instant Truth</h3>
-              <p className="text-xs text-text-secondary/80 font-light leading-relaxed">
+              <p className="text-xs text-text-secondary/80 font-dm font-normal leading-relaxed">
                 Transforming thousands of fragmented documents into calm, verified understanding.
               </p>
             </div>
@@ -48,7 +48,7 @@ export const ManifestoSection: React.FC = () => {
             <div className="p-8 rounded-3xl bg-[#FAF9FF]/80 border border-white hover:border-violet-light/50 transition-all duration-500 hover:shadow-xl hover:shadow-violet-primary/5 space-y-3 text-center">
               <span className="text-xs font-mono text-violet-primary font-semibold block">02 / VELOCITY</span>
               <h3 className="font-sans font-bold text-2xl text-text-primary">Silent Flow</h3>
-              <p className="text-xs text-text-secondary/80 font-light leading-relaxed">
+              <p className="text-xs text-text-secondary/80 font-dm font-normal leading-relaxed">
                 Replacing weeks of manual administrative toil with seconds of effortless precision.
               </p>
             </div>
@@ -58,7 +58,7 @@ export const ManifestoSection: React.FC = () => {
             <div className="p-8 rounded-3xl bg-[#FAF9FF]/80 border border-white hover:border-violet-light/50 transition-all duration-500 hover:shadow-xl hover:shadow-violet-primary/5 space-y-3 text-center">
               <span className="text-xs font-mono text-violet-primary font-semibold block">03 / TRUST</span>
               <h3 className="font-sans font-bold text-2xl text-text-primary">Human Sanctuary</h3>
-              <p className="text-xs text-text-secondary/80 font-light leading-relaxed">
+              <p className="text-xs text-text-secondary/80 font-dm font-normal leading-relaxed">
                 Sovereign data boundaries and explicit human authority over every consequential step.
               </p>
             </div>

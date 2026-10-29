@@ -25,12 +25,12 @@ export const InsightCard: React.FC<InsightCardProps> = ({ article }) => {
           <h3 className="text-xl sm:text-2xl font-sans font-bold text-text-primary tracking-tight leading-snug group-hover:text-violet-primary transition-colors">
             {article.title}
           </h3>
-          <p className="text-text-secondary text-sm mt-2.5 leading-relaxed line-clamp-3">
+          <p className="text-text-secondary text-sm mt-2.5 leading-relaxed line-clamp-3 font-dm">
             {article.excerpt}
           </p>
         </div>
 
-        <div className="p-3 rounded-xl bg-surface-lavender/50 border border-white text-xs text-text-secondary space-y-1">
+        <div className="p-3 rounded-xl bg-surface-lavender/50 border border-white text-xs text-text-secondary space-y-1 font-dm">
           <span className="font-semibold text-text-primary block">Key Insight:</span>
           <p className="italic">{article.keyTakeaway}</p>
         </div>

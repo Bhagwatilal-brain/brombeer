@@ -21,10 +21,10 @@ export const IndustryFeature: React.FC<IndustryFeatureProps> = ({ industry }) =>
           <h3 className="text-xl sm:text-2xl font-sans font-bold text-text-primary tracking-tight">
             {industry.name}
           </h3>
-          <p className="text-xs font-medium text-violet-primary mt-1">
+          <p className="text-xs font-dm font-medium text-violet-primary mt-1">
             {industry.tagline}
           </p>
-          <p className="text-text-secondary text-sm mt-2 leading-relaxed">
+          <p className="text-text-secondary text-sm mt-2 leading-relaxed font-dm">
             {industry.description}
           </p>
         </div>

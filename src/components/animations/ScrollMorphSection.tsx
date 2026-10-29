@@ -131,7 +131,7 @@ export const ScrollMorphSection: React.FC = () => {
                 <h3 className="text-2xl md:text-3xl font-sans font-bold text-text-primary leading-tight">
                   {activeCase.headline}
                 </h3>
-                <p className="text-text-secondary text-sm md:text-base mt-2.5 leading-relaxed font-light">
+                <p className="text-text-secondary text-sm md:text-base mt-2.5 leading-relaxed font-dm font-normal">
                   {activeCase.solution}
                 </p>
               </div>

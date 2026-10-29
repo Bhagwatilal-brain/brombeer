@@ -180,13 +180,13 @@ export const ResponsibleAISection: React.FC = () => {
                       <h4 className="text-xl sm:text-[22px] font-sans font-bold text-[#111014] tracking-tight leading-[1.25] transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[#181126]">
                         {principle.title}
                       </h4>
-                      <p className="text-xs sm:text-[13px] font-medium text-violet-primary mt-1.5 transition-colors duration-200">
+                      <p className="text-xs sm:text-[13px] font-dm font-medium text-violet-primary mt-1.5 transition-colors duration-200">
                         {principle.tagline}
                       </p>
                     </div>
 
                     {/* Punchy 1-line guarantee */}
-                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm font-dm text-text-secondary leading-relaxed font-normal">
                       {principle.guarantee}
                     </p>
                   </div>
@@ -195,7 +195,7 @@ export const ResponsibleAISection: React.FC = () => {
                   <div className="pt-4 mt-6 border-t border-[#ECE8F5] flex items-center text-xs relative z-10">
                     <a
                       href="/responsible-ai"
-                      className="text-xs sm:text-[13.5px] font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
+                      className="text-xs sm:text-[13.5px] font-dm font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
                     >
                       <span>Read Policy</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />

@@ -185,7 +185,7 @@ export const IndustriesSection: React.FC = () => {
                               </h3>
 
                               {/* Description */}
-                              <p className="text-xs sm:text-[14px] lg:text-[14.5px] text-[#666371] leading-relaxed font-light max-w-sm">
+                              <p className="text-xs sm:text-[14px] lg:text-[14.5px] font-dm text-[#666371] leading-relaxed font-normal max-w-sm">
                                 {item.description}
                               </p>
                             </div>
@@ -194,7 +194,7 @@ export const IndustriesSection: React.FC = () => {
                             <div className="pt-6">
                               <a
                                 href={item.href}
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#EDE7FA] hover:bg-[#E3DAF8] text-[#6E48E5] font-semibold text-xs sm:text-[13px] tracking-wide transition-colors shadow-sm select-none group"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#EDE7FA] hover:bg-[#E3DAF8] text-[#6E48E5] font-dm font-semibold text-xs sm:text-[13px] tracking-wide transition-colors shadow-sm select-none group"
                               >
                                 <span>Explore Solutions</span>
                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

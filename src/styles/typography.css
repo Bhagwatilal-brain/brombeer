@@ -1,4 +1,5 @@
-h1, h2, h3, .font-display, .font-outfit, .font-sans {
+/* Section & Card Headings / Titles: Plus Jakarta Sans */
+h1, h2, h3, h4, h5, h6, .font-display, .font-heading, .font-jakarta, .font-sans {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: -0.03em;
 }
@@ -15,6 +16,17 @@ h1, h2, h3, .font-display, .font-outfit, .font-sans {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--violet-primary);
+}
+
+/* Body text for sections, cards, and general content: DM Sans */
+body,
+p,
+li,
+blockquote,
+.font-body,
+.font-dm {
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .text-fluid-headline {

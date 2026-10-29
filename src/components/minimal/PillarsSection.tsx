@@ -79,12 +79,12 @@ export const PillarsSection: React.FC = () => {
                       <span className="text-xs font-mono text-text-secondary/60">{p.number}</span>
                     </div>
 
-                    <div className="space-y-1.5">
+                    <div className="space-y-1.5 font-dm">
                       <h3 className="font-sans font-bold text-2xl text-text-primary tracking-tight">{p.title}</h3>
                       <p className="text-xs sm:text-sm font-medium text-violet-primary italic">{p.headline}</p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-text-secondary font-light leading-relaxed pt-1">
+                    <p className="text-xs sm:text-sm font-dm text-text-secondary font-normal leading-relaxed pt-1">
                       {p.description}
                     </p>
                   </div>

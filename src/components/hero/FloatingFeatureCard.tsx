@@ -28,7 +28,7 @@ export const FloatingFeatureCard: React.FC<FloatingFeatureCardProps> = ({
         <h5 className="text-xs sm:text-sm font-semibold text-text-primary tracking-tight">
           {title}
         </h5>
-        <p className="text-[11px] sm:text-xs text-text-secondary leading-snug mt-0.5">
+        <p className="text-[11px] sm:text-xs font-dm text-text-secondary leading-snug mt-0.5">
           {subtitle}
         </p>
       </div>

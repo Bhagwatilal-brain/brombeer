@@ -225,7 +225,7 @@ export const ApproachSection: React.FC = () => {
 
                           {/* Step Description (Exact Sampled Hex: #8F85B1) */}
                           <p
-                            className={`text-xs sm:text-sm leading-relaxed max-w-lg font-light transition-colors duration-300 ${
+                            className={`text-xs sm:text-sm font-dm leading-relaxed max-w-lg font-normal transition-colors duration-300 ${
                               isPassedOrActive ? 'text-[#D8D2EB]' : 'text-[#8F85B1] group-hover:text-[#B8B0D2]'
                             }`}
                           >

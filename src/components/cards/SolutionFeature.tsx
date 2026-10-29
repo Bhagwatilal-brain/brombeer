@@ -28,7 +28,7 @@ export const SolutionFeature: React.FC<SolutionFeatureProps> = ({ solution, inde
           <h3 className="text-xl sm:text-2xl font-sans font-bold text-text-primary tracking-tight">
             {solution.title}
           </h3>
-          <p className="text-text-secondary text-sm mt-2 leading-relaxed">
+          <p className="text-text-secondary text-sm mt-2 leading-relaxed font-dm">
             {solution.description}
           </p>
         </div>
@@ -38,7 +38,7 @@ export const SolutionFeature: React.FC<SolutionFeatureProps> = ({ solution, inde
           <span className="text-[11px] font-semibold uppercase tracking-wider text-violet-primary block">
             Key Capabilities
           </span>
-          <ul className="space-y-1.5">
+          <ul className="space-y-1.5 font-dm">
             {solution.capabilities.slice(0, 4).map((cap, i) => (
               <li key={i} className="flex items-center gap-2 text-xs text-text-secondary">
                 <Check className="w-3.5 h-3.5 text-violet-primary flex-shrink-0" />

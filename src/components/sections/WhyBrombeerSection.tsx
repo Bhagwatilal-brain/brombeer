@@ -39,7 +39,7 @@ export const WhyBrombeerSection: React.FC = () => {
                 </h3>
 
                 {/* Descriptive Paragraph */}
-                <p className="text-xs sm:text-sm leading-relaxed text-[#665D82] font-light">
+                <p className="text-xs sm:text-sm font-dm leading-relaxed text-[#665D82] font-normal">
                   {p.description}
                 </p>
               </div>
