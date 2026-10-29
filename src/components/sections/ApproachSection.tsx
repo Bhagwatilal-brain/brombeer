@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -119,20 +120,13 @@ export const ApproachSection: React.FC = () => {
           
           {/* Left Column: Heading & CTA */}
           <div className="lg:col-span-5 lg:sticky lg:top-36 self-start space-y-6">
-            <ScrollReveal>
-              <span className="text-[11px] sm:text-xs font-mono tracking-[0.24em] text-[#A69FBA] uppercase block">
-                HOW WE WORK
-              </span>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] font-serif text-[#F2F2F8] tracking-tight leading-[1.2] max-w-[340px] font-normal">
-                From AI Opportunity to Operational Impact
-              </h2>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <div className="pt-2">
+            <ScrollTextReveal
+              eyebrow="HOW WE WORK"
+              eyebrowClassName="text-[11px] sm:text-xs font-mono tracking-[0.24em] text-[#A69FBA]"
+              title="From AI Opportunity to Operational Impact"
+              titleClassName="text-2xl sm:text-3xl lg:text-[2.25rem] font-serif text-[#F2F2F8] tracking-tight leading-[1.2] max-w-[340px] font-normal"
+              maxWidth="max-w-[380px]"
+              action={
                 <a
                   href="/approach"
                   className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#7B6BB2]/50 bg-white/[0.03] hover:bg-white/[0.09] hover:border-[#C3B5FC] text-[#D8D2EB] hover:text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 backdrop-blur-sm group"
@@ -140,8 +134,8 @@ export const ApproachSection: React.FC = () => {
                   <span>Start Your AI Journey</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#C3B5FC] transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
-              </div>
-            </ScrollReveal>
+              }
+            />
           </div>
 
           {/* Right Column: Timeline & Running Flow */}

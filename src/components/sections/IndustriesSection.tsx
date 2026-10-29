@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 
 interface IndustryItem {
   id: string;
@@ -66,27 +68,22 @@ export const IndustriesSection: React.FC = () => {
         {/* Header Block with Explore Industry Solutions CTA */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-14">
           <div className="max-w-2xl">
-            <ScrollReveal direction="up" delay={0.05}>
-              <span className="text-xs sm:text-[12.5px] font-semibold text-violet-primary tracking-[0.18em] uppercase block mb-3.5">
-                INDUSTRY SOLUTIONS
-              </span>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-normal text-[#111014] tracking-tight leading-[1.08] mb-5">
-                AI for the Challenges That Matter <br className="hidden sm:inline" />
-                Most
-              </h2>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.15}>
-              <p className="text-text-secondary text-[14.5px] sm:text-[15.5px] leading-relaxed font-light">
-                We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector.
-              </p>
-            </ScrollReveal>
+            <ScrollTextReveal
+              eyebrow="INDUSTRY SOLUTIONS"
+              title="AI for the Challenges That Matter Most"
+              titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-normal text-[#111014] tracking-tight leading-[1.08] mb-5"
+              description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
+              maxWidth="max-w-2xl"
+            />
           </div>
 
-          <ScrollReveal direction="up" delay={0.2} className="flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false, amount: 0.25, margin: '0px 0px -60px 0px' }}
+            transition={{ duration: 0.5, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-shrink-0"
+          >
             <a
               href="/industries"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-[#111014] border border-[#111014]/50 hover:border-violet-primary hover:bg-[#FAF9FF] transition-all duration-300 text-sm font-medium group select-none shadow-sm hover:shadow"
@@ -94,7 +91,7 @@ export const IndustriesSection: React.FC = () => {
               <span>Explore Industry Solutions</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#111014] group-hover:text-violet-primary" />
             </a>
-          </ScrollReveal>
+          </motion.div>
         </div>
 
         {/* 6 Industry Solutions Bounded Bento Container */}

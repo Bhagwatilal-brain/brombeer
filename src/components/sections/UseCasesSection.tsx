@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 
 interface UseCaseCard {
   id: string;
@@ -76,24 +77,13 @@ export const UseCasesSection: React.FC = () => {
       <Container size="wide">
         {/* Left-Aligned Editorial Header Block */}
         <div className="max-w-3xl mb-12 sm:mb-14">
-          <ScrollReveal direction="up" delay={0.05}>
-            <span className="text-xs sm:text-[12.5px] font-semibold text-violet-primary tracking-[0.18em] uppercase block mb-3.5">
-              AI USE CASES
-            </span>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-normal text-[#111014] tracking-tight leading-[1.08] mb-4">
-              Real Problems. Intelligent <br className="hidden sm:inline" />
-              Possibilities.
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={0.15}>
-            <p className="text-text-secondary text-[14.5px] sm:text-[15.5px] leading-relaxed font-light">
-              Explore how AI can support practical business workflows.
-            </p>
-          </ScrollReveal>
+          <ScrollTextReveal
+            eyebrow="AI USE CASES"
+            title="Real Problems. Intelligent Possibilities."
+            titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-serif font-normal text-[#111014] tracking-tight leading-[1.08] mb-4"
+            description="Explore how AI can support practical business workflows."
+            maxWidth="max-w-3xl"
+          />
         </div>
 
         {/* 6 Use Case Cards Grid (3 Columns x 2 Rows) */}

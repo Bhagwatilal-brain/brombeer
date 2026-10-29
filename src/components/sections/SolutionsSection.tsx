@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Bot, MessageSquareText, Eye, TrendingUp, FileText, Boxes, Compass } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 
 interface SolutionCardItem {
   id: string;
@@ -103,27 +105,21 @@ export const SolutionsSection: React.FC = () => {
             {/* Reference Image Soft Circular Backdrop behind Title */}
             <div className="absolute -top-8 -left-8 w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-[#E5DEFB]/65 blur-[1px] pointer-events-none -z-10" />
 
-            <ScrollReveal direction="up" delay={0.05}>
-              <span className="text-xs sm:text-[12.5px] font-semibold text-violet-primary tracking-[0.18em] uppercase block mb-3.5">
-                OUR AI SOLUTIONS
-              </span>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-serif font-normal text-[#111014] tracking-tight leading-[1.08] mb-4">
-                Intelligent Technology. <br className="hidden sm:inline" />
-                Purposeful Outcomes.
-              </h2>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.15}>
-              <p className="text-text-secondary text-[14.5px] sm:text-[15.5px] leading-relaxed font-light">
-                We build AI capabilities that address different stages of the business value chain, from understanding information to automating decisions and improving operational performance.
-              </p>
-            </ScrollReveal>
+            <ScrollTextReveal
+              eyebrow="OUR AI SOLUTIONS"
+              title="Intelligent Technology. Purposeful Outcomes."
+              description="We build AI capabilities that address different stages of the business value chain, from understanding information to automating decisions and improving operational performance."
+              maxWidth="max-w-2xl"
+            />
           </div>
 
-          <ScrollReveal direction="up" delay={0.2} className="flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false, amount: 0.25, margin: '0px 0px -60px 0px' }}
+            transition={{ duration: 0.5, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-shrink-0"
+          >
             <a
               href="/solutions"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-[#111014] border border-[#111014]/40 hover:border-violet-primary hover:bg-[#FAF9FF] transition-all duration-300 text-sm font-medium group select-none shadow-sm hover:shadow"
@@ -131,7 +127,7 @@ export const SolutionsSection: React.FC = () => {
               <span>All AI Solutions</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#111014] group-hover:text-violet-primary" />
             </a>
-          </ScrollReveal>
+          </motion.div>
         </div>
 
         {/* 8 Cards Grid (4 Columns x 2 Rows) */}

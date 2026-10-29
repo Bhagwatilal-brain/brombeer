@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Container } from '../layout/Container';
 import { SectionHeading } from '../ui/SectionHeading';
 import { ScrollReveal } from '../animations/ScrollReveal';
@@ -85,16 +86,19 @@ export const ResponsibleAISection: React.FC = () => {
           <div className="relative max-w-2xl">
             {/* Reference Image Soft Circular Backdrop behind Title */}
             <div className="absolute -top-8 -left-8 w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-[#E5DEFB]/70 blur-[1px] pointer-events-none -z-10" />
-            <ScrollReveal>
-              <SectionHeading
-                eyebrow="RESPONSIBLE AI"
-                title="Innovation You Can Understand and Govern."
-                description="Enterprise AI engineered with output reliability, data privacy, access controls, and explicit human oversight."
-              />
-            </ScrollReveal>
+            <SectionHeading
+              eyebrow="RESPONSIBLE AI"
+              title="Innovation You Can Understand and Govern."
+              description="Enterprise AI engineered with output reliability, data privacy, access controls, and explicit human oversight."
+            />
           </div>
 
-          <ScrollReveal delay={0.15}>
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false, amount: 0.25, margin: '0px 0px -60px 0px' }}
+            transition={{ duration: 0.5, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          >
             <Button
               asLink
               href="/responsible-ai"
@@ -105,7 +109,7 @@ export const ResponsibleAISection: React.FC = () => {
             >
               Explore Governance Framework
             </Button>
-          </ScrollReveal>
+          </motion.div>
         </div>
 
         {/* 6 Visual Trust Cards */}

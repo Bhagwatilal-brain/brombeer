@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '../layout/Container';
 import { WHY_BROMBEER_PILLARS } from '../../data/siteContent';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { EmotionalMetrics } from '../minimal/EmotionalMetrics';
 
 export const WhyBrombeerSection: React.FC = () => {
@@ -9,26 +10,16 @@ export const WhyBrombeerSection: React.FC = () => {
     <section id="why-brombeer" className="py-12 sm:py-16 bg-[#FCFCFF] relative overflow-hidden">
       <Container>
         {/* Header Area (Left-aligned matching reference image) */}
-        <div className="max-w-4xl space-y-4 mb-10 sm:mb-12">
-          <ScrollReveal>
-            <span className="text-[11px] sm:text-xs font-mono tracking-[0.24em] text-[#8E7EB8] uppercase block font-semibold">
-              WHY BROMBEER AI?
-            </span>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.08}>
-            <h2 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-serif text-[#1E1142] tracking-tight leading-[1.08] font-normal">
-              More Than AI Technology. A <br className="hidden sm:inline" />
-              Partner in Practical <br className="hidden sm:inline" />
-              Transformation.
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.16}>
-            <p className="text-[#665D82] text-sm sm:text-base leading-relaxed max-w-2xl font-light pt-1">
-              Successful AI implementation requires more than access to a model. It requires an understanding of the business, dependable engineering, reliable data, thoughtful integration, and clear accountability.
-            </p>
-          </ScrollReveal>
+        <div className="max-w-4xl mb-10 sm:mb-12">
+          <ScrollTextReveal
+            eyebrow="WHY BROMBEER AI?"
+            eyebrowClassName="text-[11px] sm:text-xs font-mono tracking-[0.24em] text-[#8E7EB8] font-semibold"
+            title="More Than AI Technology. A Partner in Practical Transformation."
+            titleClassName="text-3xl sm:text-5xl lg:text-[3.5rem] font-serif text-[#1E1142] tracking-tight leading-[1.08] font-normal"
+            description="Successful AI implementation requires more than access to a model. It requires an understanding of the business, dependable engineering, reliable data, thoughtful integration, and clear accountability."
+            descriptionClassName="text-[#665D82] text-sm sm:text-base leading-relaxed max-w-2xl font-light pt-1"
+            maxWidth="max-w-4xl"
+          />
         </div>
 
         {/* 5 Horizontal Pillar Rows with text slide right effect */}

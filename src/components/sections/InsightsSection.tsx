@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 
 const INSIGHTS_TOPICS = [
   { label: 'Artificial intelligence', slug: 'ai' },
@@ -21,17 +23,20 @@ export const InsightsSection: React.FC = () => {
             
             {/* Top Row: Eyebrow + Title on Left, Button on Right */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8">
-              <div className="max-w-3xl">
-                <span className="text-xs sm:text-[12.5px] font-semibold text-violet-primary tracking-[0.18em] uppercase block mb-3.5">
-                  INSIGHTS
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-serif font-normal text-[#111014] tracking-tight leading-[1.12]">
-                  Ideas, Perspectives, and Practical <br className="hidden sm:inline" />
-                  AI Guidance.
-                </h2>
-              </div>
+              <ScrollTextReveal
+                eyebrow="INSIGHTS"
+                title="Ideas, Perspectives, and Practical AI Guidance."
+                titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-serif font-normal text-[#111014] tracking-tight leading-[1.12]"
+                maxWidth="max-w-3xl"
+              />
 
-              <div className="flex-shrink-0 self-start md:self-center">
+              <motion.div
+                initial={{ opacity: 0, y: 16, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.25, margin: '0px 0px -60px 0px' }}
+                transition={{ duration: 0.5, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="flex-shrink-0 self-start md:self-center"
+              >
                 <a
                   href="/insights"
                   className="inline-flex items-center gap-2.5 px-6 py-2.5 sm:px-7 sm:py-3 rounded-full bg-white text-[#111014] border border-[#111014]/50 hover:border-violet-primary hover:bg-[#FAF9FF] transition-all duration-300 shadow-sm hover:shadow text-sm font-medium group select-none"
@@ -39,7 +44,7 @@ export const InsightsSection: React.FC = () => {
                   <span>Visit Insights</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#111014] group-hover:text-violet-primary" />
                 </a>
-              </div>
+              </motion.div>
             </div>
 
             {/* Bottom Row: Topic Chips */}

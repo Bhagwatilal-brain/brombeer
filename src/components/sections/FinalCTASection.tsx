@@ -3,6 +3,7 @@ import { Container } from '../layout/Container';
 import { Button } from '../ui/Button';
 import { ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
 import { ScrollReveal } from '../animations/ScrollReveal';
+import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { LiquidEffect } from '../animations/LiquidEffect';
 
 export const FinalCTASection: React.FC = () => {
@@ -25,58 +26,47 @@ export const FinalCTASection: React.FC = () => {
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-white/80 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-violet-light/30 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-2xl mx-auto space-y-7">
-          <ScrollReveal>
-            <span className="eyebrow inline-flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-violet-primary" />
-              START YOUR TRANSFORMATION
-            </span>
-          </ScrollReveal>
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <ScrollTextReveal
+            eyebrow="START YOUR TRANSFORMATION"
+            eyebrowIcon={<Sparkles className="w-3.5 h-3.5 text-violet-primary" />}
+            title="Your Next Business Advantage Could Start with AI."
+            titleClassName="text-3xl sm:text-5xl md:text-6xl font-serif text-text-primary tracking-tight leading-[1.05]"
+            description="Tell us what you want to improve, automate, or build. We will help you architect a tailored AI strategy and production roadmap."
+            descriptionClassName="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl mx-auto font-light"
+            align="center"
+            maxWidth="max-w-2xl mx-auto"
+            action={
+              <div className="space-y-4">
+                <div className="pt-2 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                  <Button
+                    asLink
+                    href="/contact"
+                    variant="primary"
+                    size="lg"
+                    icon={<ArrowRight className="w-4 h-4" />}
+                    className="shadow-xl shadow-violet-primary/25 hover:scale-105 transition-transform"
+                  >
+                    Discuss an AI Project
+                  </Button>
 
-          <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-text-primary tracking-tight leading-[1.05]">
-              Your Next Business Advantage <br />
-              <span className="italic text-violet-primary">Could Start with AI.</span>
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl mx-auto font-light">
-              Tell us what you want to improve, automate, or build. We will help you architect a tailored AI strategy and production roadmap.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.3}>
-            <div className="pt-3 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-              <Button
-                asLink
-                href="/contact"
-                variant="primary"
-                size="lg"
-                icon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-xl shadow-violet-primary/25 hover:scale-105 transition-transform"
-              >
-                Discuss an AI Project
-              </Button>
-
-              <Button
-                asLink
-                href="/contact"
-                variant="secondary"
-                size="lg"
-                icon={<MessageSquare className="w-4 h-4" />}
-                className="hover:scale-105 transition-transform bg-white/80"
-              >
-                Contact Our Team
-              </Button>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.4}>
-            <p className="text-xs text-text-secondary pt-2">
-              Start with a conversation • Identify the opportunity • Build with purpose
-            </p>
-          </ScrollReveal>
+                  <Button
+                    asLink
+                    href="/contact"
+                    variant="secondary"
+                    size="lg"
+                    icon={<MessageSquare className="w-4 h-4" />}
+                    className="hover:scale-105 transition-transform bg-white/80"
+                  >
+                    Contact Our Team
+                  </Button>
+                </div>
+                <p className="text-xs text-text-secondary pt-2">
+                  Start with a conversation • Identify the opportunity • Build with purpose
+                </p>
+              </div>
+            }
+          />
         </div>
       </div>
     </section>
