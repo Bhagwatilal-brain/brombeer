@@ -13,7 +13,7 @@ export const SolutionsPage: React.FC = () => {
           <span className="eyebrow block">OUR CAPABILITIES</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             AI Solutions Built{' '}
-            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+            <span className="text-violet-primary">
               Around Your Business.
             </span>
           </h1>
@@ -42,7 +42,7 @@ export const SolutionsPage: React.FC = () => {
           </span>
           <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
             One AI Strategy.{' '}
-            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+            <span className="text-violet-primary">
               The Right Capabilities for Each Challenge.
             </span>
           </h2>

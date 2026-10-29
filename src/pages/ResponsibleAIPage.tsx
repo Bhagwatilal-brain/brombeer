@@ -15,7 +15,7 @@ export const ResponsibleAIPage: React.FC = () => {
           <span className="eyebrow block">RESPONSIBLE AI GOVERNANCE</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             Build AI with Confidence,{' '}
-            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+            <span className="text-violet-primary">
               Control, and Accountability.
             </span>
           </h1>
@@ -45,7 +45,7 @@ export const ResponsibleAIPage: React.FC = () => {
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-extrabold text-text-primary tracking-[-0.03em]">
               Our{' '}
-              <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+              <span className="text-violet-primary">
                 Responsible AI Framework
               </span>
             </h2>

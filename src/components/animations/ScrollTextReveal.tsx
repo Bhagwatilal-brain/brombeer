@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { cn } from '../../lib/utils';
 
@@ -40,8 +39,6 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
   once = false,
 }) => {
   const prefersReduced = useReducedMotion();
-  const sweepRef = useRef<gsap.core.Tween | null>(null);
-  const highlightedSpansRef = useRef<HTMLSpanElement[]>([]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -128,32 +125,6 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
     },
   };
 
-  const triggerSweep = () => {
-    if (prefersReduced) return;
-    const elements = highlightedSpansRef.current.filter(Boolean);
-    if (!elements.length) return;
-
-    sweepRef.current?.kill();
-    sweepRef.current = gsap.fromTo(
-      elements,
-      { backgroundPosition: '160% 0%' },
-      {
-        backgroundPosition: '-60% 0%',
-        duration: 1.5,
-        ease: 'power2.inOut',
-        stagger: 0.04,
-      }
-    );
-  };
-
-  const handleViewportEnter = () => {
-    if (prefersReduced) return;
-    const timer = setTimeout(() => {
-      triggerSweep();
-    }, (delay + 0.35) * 1000);
-    return () => clearTimeout(timer);
-  };
-
   const isWordHighlighted = (word: string, idx: number, allWords: string[]): boolean => {
     const clean = word.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (!clean) return false;
@@ -170,7 +141,7 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
       return idx > periodIdx;
     }
 
-    // Auto-detection fallback: highlight the trailing ~40% of words
+    // Auto-detection fallback: highlight trailing ~40% of words
     const splitPoint = Math.max(1, Math.floor(allWords.length * 0.58));
     return idx >= splitPoint;
   };
@@ -178,8 +149,6 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
   const renderTitleWords = () => {
     if (typeof title === 'string') {
       const words = title.split(/\s+/).filter(Boolean);
-      highlightedSpansRef.current = [];
-      let highlightCounter = 0;
       const isDarkSection =
         titleClassName?.includes('text-[#F2F2F8]') || titleClassName?.includes('text-white');
 
@@ -193,25 +162,14 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
           >
             <motion.span
               variants={wordVariants}
-              ref={(el) => {
-                if (isHighlighted && el) {
-                  highlightedSpansRef.current[highlightCounter++] = el;
-                }
-              }}
-              data-highlighted={isHighlighted ? 'true' : 'false'}
               className={cn(
                 'inline-block will-change-transform will-change-[filter]',
                 isHighlighted
                   ? isDarkSection
-                    ? 'bg-gradient-to-r from-[#D6CBFC] via-[#A78BFA] to-[#C084FC] bg-[length:200%_100%] bg-clip-text text-transparent drop-shadow-sm pb-[0.06em]'
-                    : 'bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-[length:200%_100%] bg-clip-text text-transparent drop-shadow-sm pb-[0.06em]'
+                    ? 'text-[#C4B3FD]'
+                    : 'text-violet-primary'
                   : 'text-current'
               )}
-              style={
-                isHighlighted && !prefersReduced
-                  ? { backgroundPosition: '160% 0%' }
-                  : undefined
-              }
             >
               {word}
             </motion.span>
@@ -227,7 +185,6 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
       initial={prefersReduced ? 'visible' : 'hidden'}
       whileInView="visible"
       viewport={{ once, amount: 0.25, margin: '0px 0px -60px 0px' }}
-      onViewportEnter={handleViewportEnter}
       variants={containerVariants}
       className={cn(
         align === 'center' && 'text-center mx-auto',
@@ -250,10 +207,9 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
         </motion.div>
       )}
 
-      {/* Headline Title with Hero iridescent sweep and hover */}
+      {/* Headline Title with static color */}
       <motion.div variants={headlineContainerVariants}>
         <TitleTag
-          onMouseEnter={triggerSweep}
           className={cn(
             'text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.08] mb-4 select-none cursor-default',
             titleClassName

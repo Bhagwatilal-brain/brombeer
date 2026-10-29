@@ -11,7 +11,7 @@ export const InsightsPage: React.FC = () => {
           <span className="eyebrow block">RESEARCH & PERSPECTIVES</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.06]">
             Ideas, Perspectives, and{' '}
-            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+            <span className="text-violet-primary">
               Practical AI Guidance.
             </span>
           </h1>

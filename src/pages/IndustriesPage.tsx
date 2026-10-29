@@ -13,7 +13,7 @@ export const IndustriesPage: React.FC = () => {
           <span className="eyebrow block">SECTOR SPECIALIZATION</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-[-0.03em] leading-[1.05]">
             AI That Understands{' '}
-            <span className="bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-clip-text text-transparent">
+            <span className="text-violet-primary">
               Your Industry.
             </span>
           </h1>
