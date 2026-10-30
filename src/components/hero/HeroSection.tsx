@@ -3,13 +3,12 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Globe } from './Globe';
-import { CapabilitiesTicker } from './CapabilitiesTicker';
 import { GsapTextEffect } from '../animations/GsapTextEffect';
 import { Container } from '../layout/Container';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative w-full bg-gradient-to-b from-[#F5F2FD] via-[#ECE7FA] to-[#F2EEFC] overflow-hidden pt-6 pb-6 sm:pt-10 sm:pb-8 md:pt-12 md:pb-10 lg:pt-14 lg:pb-12 border-b border-[#6853A5]/10">
+    <section className="relative w-full bg-gradient-to-b from-[#F5F2FD] via-[#ECE7FA] to-[#F2EEFC] overflow-hidden pt-6 pb-10 sm:pt-10 sm:pb-14 md:pt-12 md:pb-16 lg:pt-14 lg:pb-16">
       {/* Soft ambient radial gradients across full-length background */}
       <div
         className="wave absolute inset-0 pointer-events-none"
@@ -122,11 +121,6 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
       </Container>
-
-      {/* Capabilities Ticker Strip */}
-      <div className="mt-6 sm:mt-10">
-        <CapabilitiesTicker fadeColor="from-[#F2EEFC]" />
-      </div>
     </section>
   );
 };

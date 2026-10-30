@@ -4,9 +4,13 @@ import { Sparkles } from 'lucide-react';
 
 interface CapabilitiesTickerProps {
   fadeColor?: string;
+  className?: string;
 }
 
-export const CapabilitiesTicker: React.FC<CapabilitiesTickerProps> = ({ fadeColor = 'from-background' }) => {
+export const CapabilitiesTicker: React.FC<CapabilitiesTickerProps> = ({
+  fadeColor = 'from-white/70',
+  className = '',
+}) => {
   // Duplicate array multiple times to guarantee an unbroken infinite loop
   const tickerItems = [
     ...CAPABILITIES_TICKER,
@@ -16,7 +20,7 @@ export const CapabilitiesTicker: React.FC<CapabilitiesTickerProps> = ({ fadeColo
   ];
 
   return (
-    <div className="w-full py-2.5 sm:py-3.5 mt-2 relative overflow-hidden select-none">
+    <div className={`w-full py-1 relative overflow-hidden select-none ${className}`}>
       {/* Soft gradient edge fade mask for seamless entrance/exit */}
       <div className={`absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r ${fadeColor} to-transparent z-10 pointer-events-none`} />
       <div className={`absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l ${fadeColor} to-transparent z-10 pointer-events-none`} />
