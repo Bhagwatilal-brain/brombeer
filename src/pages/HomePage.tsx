@@ -7,7 +7,6 @@ import { ApproachSection } from '../components/sections/ApproachSection';
 import { IndustriesSection } from '../components/sections/IndustriesSection';
 import { UseCasesSection } from '../components/sections/UseCasesSection';
 import { ResponsibleAISection } from '../components/sections/ResponsibleAISection';
-import { InsightsSection } from '../components/sections/InsightsSection';
 import { FinalCTASection } from '../components/sections/FinalCTASection';
 
 export const HomePage: React.FC = () => {
@@ -37,10 +36,7 @@ export const HomePage: React.FC = () => {
       {/* 8. Responsible AI (6 Framework Pillars) */}
       <ResponsibleAISection />
 
-      {/* 9. Insights Banner Card */}
-      <InsightsSection />
-
-      {/* 10. Final Call to Action */}
+      {/* 9. Final Call to Action */}
       <FinalCTASection />
     </div>
   );
