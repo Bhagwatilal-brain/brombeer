@@ -76,6 +76,8 @@ export interface HalftoneWordmarkFooterProps {
   transparentCanvas?: boolean
   /** Custom header replacing default columns layout. */
   customHeader?: React.ReactNode
+  /** Whether to render the default hairline rule with back-to-top button. Defaults to true. */
+  showDefaultRule?: boolean
   /** Custom children inside footer. */
   children?: React.ReactNode
 }
@@ -234,6 +236,7 @@ export default function HalftoneWordmarkFooter({
   backgroundImage,
   transparentCanvas,
   customHeader,
+  showDefaultRule = true,
   children,
 }: HalftoneWordmarkFooterProps) {
   const colors = { ...(PRESETS[preset] || PRESETS.night), ...(palette || {}) }
@@ -336,10 +339,23 @@ export default function HalftoneWordmarkFooter({
       const wordmarkVisualHeight = c > 0 ? Math.round(cap * (1 - c)) : Math.round(cap + descent)
       const spacerHeight = Math.round(gapTop + wordmarkVisualHeight + gapBottom)
 
-      if (spacerRef.current && (o.height === "auto" || !o.height)) {
-        const curH = parseFloat(spacerRef.current.style.height || "0")
-        if (Math.abs(curH - spacerHeight) > 1) {
-          spacerRef.current.style.height = `${spacerHeight}px`
+      const slotEl = root.querySelector(".hwf-wordmark-slot") as HTMLElement | null
+
+      if (slotEl) {
+        const desiredSlotHeight = Math.round(wordmarkVisualHeight + gapBottom)
+        const curSlotH = parseFloat(slotEl.style.height || "0")
+        if (Math.abs(curSlotH - desiredSlotHeight) > 1) {
+          slotEl.style.height = `${desiredSlotHeight}px`
+        }
+        if (spacerRef.current) {
+          spacerRef.current.style.height = "0px"
+        }
+      } else {
+        if (spacerRef.current && (o.height === "auto" || !o.height)) {
+          const curH = parseFloat(spacerRef.current.style.height || "0")
+          if (Math.abs(curH - spacerHeight) > 1) {
+            spacerRef.current.style.height = `${spacerHeight}px`
+          }
         }
       }
 
@@ -347,9 +363,15 @@ export default function HalftoneWordmarkFooter({
       canvas.width = Math.round(w * dpr)
       canvas.height = Math.round(h * dpr)
 
-      const ruleEl = root.querySelector(".hwf-rule") as HTMLElement | null
-      const ruleBottom = ruleEl ? ruleEl.getBoundingClientRect().bottom - rect.top : 0
-      const wordmarkTop = ruleBottom + gapTop
+      let wordmarkTop = 0
+      if (slotEl) {
+        const slotRect = slotEl.getBoundingClientRect()
+        wordmarkTop = slotRect.top - rect.top
+      } else {
+        const ruleEl = root.querySelector(".hwf-rule") as HTMLElement | null
+        const ruleBottom = ruleEl ? ruleEl.getBoundingClientRect().bottom - rect.top : 0
+        wordmarkTop = ruleBottom + gapTop
+      }
       const baselineY = wordmarkTop + cap
 
       // Set the word once on mask
@@ -514,7 +536,7 @@ export default function HalftoneWordmarkFooter({
     }
     const onDown = (e: PointerEv) => {
       if (!opts.current.interactive || reduced) return
-      if ((e.target as HTMLElement).closest("a,button")) return
+      if ((e.target as HTMLElement).closest("a,button,input,textarea")) return
       const p = toLocal(e)
       ring = { x: p[0], y: p[1], t: performance.now() }
       wake()
@@ -617,13 +639,13 @@ export default function HalftoneWordmarkFooter({
         </div>
       )}
       {children}
-      <div className="hwf-rule">
-        {backToTop ? (
+      {backToTop && showDefaultRule !== false ? (
+        <div className="hwf-rule">
           <button type="button" className="hwf-up" onClick={toTop}>
             Back to top ↑
           </button>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
       <div ref={spacerRef} className="hwf-wordmark-spacer" aria-hidden="true" />
     </footer>
   )
