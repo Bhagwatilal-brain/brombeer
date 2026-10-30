@@ -60,11 +60,11 @@ export const Footer: React.FC = () => {
       {/* 2. Giant Wordmark Anchor Slot (Halftone Dots Canvas Renders Here!) */}
       <div className="hwf-wordmark-slot relative w-full pointer-events-none select-none my-2 md:my-4" />
 
-      {/* 3. Middle 4-Column Section (Tagline, Contact, Circular Seal, Newsletter) */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_1.1fr_0.9fr_1.4fr] gap-8 lg:gap-10 pt-4 pb-14 px-6 md:px-12">
+      {/* 3. Middle Section: Tagline, Contact, Newsletter */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_1.1fr_1.4fr] gap-8 lg:gap-16 pt-4 pb-14 px-6 md:px-12">
         {/* Col 1: Tagline */}
         <div className="space-y-3 flex flex-col justify-start">
-          <p className="text-white/75 font-dm text-[15px] leading-relaxed max-w-[280px]">
+          <p className="text-white/75 font-dm text-[15px] leading-relaxed max-w-[320px]">
             AI agents to help you win and automate enterprise operations.
           </p>
         </div>
@@ -90,18 +90,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Col 3: Circular Compliance / Security Seal */}
-        <div className="flex items-start lg:justify-center">
-          <div className="relative w-24 h-24 rounded-full border border-white/20 bg-gradient-to-b from-white/[0.07] to-transparent flex flex-col items-center justify-center text-center select-none shadow-[0_0_25px_rgba(255,255,255,0.03)] hover:border-white/40 transition-colors">
-            {/* Inner dashed ring */}
-            <div className="absolute inset-1.5 rounded-full border border-dashed border-white/15 pointer-events-none" />
-            <span className="font-mono text-[8.5px] tracking-[0.2em] text-white/50 uppercase">AICPA</span>
-            <span className="font-sans font-extrabold text-base text-white tracking-wider my-0.5">SOC</span>
-            <span className="font-mono text-[7px] tracking-[0.14em] text-white/40 uppercase">ENTERPRISE</span>
-          </div>
-        </div>
-
-        {/* Col 4: Stay Up To Date (Newsletter) */}
+        {/* Col 3: Stay Up To Date (Newsletter) */}
         <div className="flex flex-col justify-start">
           <h3 className="text-white/45 font-mono text-[10.5px] tracking-[0.2em] uppercase font-medium mb-3">
             STAY UP TO DATE
