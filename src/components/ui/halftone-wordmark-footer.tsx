@@ -70,6 +70,14 @@ export interface HalftoneWordmarkFooterProps {
   height?: string
   /** Extra root class names. */
   className?: string
+  /** Background image behind the halftone canvas (e.g. desert etching). */
+  backgroundImage?: string
+  /** Whether the canvas itself should clear transparently so background images/gradients show through. */
+  transparentCanvas?: boolean
+  /** Custom header replacing default columns layout. */
+  customHeader?: React.ReactNode
+  /** Custom children inside footer. */
+  children?: React.ReactNode
 }
 
 const PRESETS: { [K in HalftonePreset]: HalftonePalette } = {
@@ -145,9 +153,32 @@ const HWF_CSS = `
   position: relative; width: 100%; overflow: hidden; isolation: isolate;
   background: var(--hwf-bg); color: var(--hwf-ink); -webkit-font-smoothing: antialiased;
 }
-.hwf-root canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; max-width: none; }
+.hwf-bg-wrapper {
+  position: absolute; inset: 0; pointer-events: none; user-select: none; overflow: hidden; z-index: 0;
+}
+.hwf-bg-image {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: auto; min-height: 48%; max-height: 560px;
+  object-fit: cover; object-position: bottom center; opacity: 0.95;
+}
+.hwf-bg-fade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--hwf-bg) 0%,
+    var(--hwf-bg) 24%,
+    rgba(8, 4, 16, 0.75) 44%,
+    rgba(8, 4, 16, 0.15) 70%,
+    transparent 100%
+  );
+}
+.hwf-root canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block; max-width: none; z-index: 1;
+}
+.hwf-top, .hwf-custom-header, .hwf-rule {
+  position: relative; z-index: 2;
+}
 .hwf-top {
-  position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 1fr));
+  display: grid; grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 1fr));
   gap: 24px; padding: clamp(22px, 3.4vw, 40px) clamp(20px, 3.4vw, 44px) 0;
   font-family: var(--hwf-mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; line-height: 1.75;
 }
@@ -155,22 +186,22 @@ const HWF_CSS = `
 .hwf-brand span { opacity: .45; }
 .hwf-col h3 { margin: 0; font: inherit; opacity: .4; font-weight: 500; }
 .hwf-col ul { list-style: none; margin: 0; padding: 0; }
-.hwf-col a, .hwf-up {
+.hwf-col a, .hwf-up, .hwf-link {
   color: inherit; text-decoration: none; opacity: .78; background: none; border: 0; padding: 0;
   font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer;
   background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px;
   background-repeat: no-repeat; background-position: 0 100%; transition: opacity .25s ease, background-size .35s cubic-bezier(.2,.7,.1,1);
 }
-.hwf-col a:hover, .hwf-up:hover { opacity: 1; background-size: 100% 1px; }
-.hwf-col a:focus-visible, .hwf-up:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; opacity: 1; }
+.hwf-col a:hover, .hwf-up:hover, .hwf-link:hover { opacity: 1; background-size: 100% 1px; }
+.hwf-col a:focus-visible, .hwf-up:focus-visible, .hwf-link:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; opacity: 1; }
 .hwf-rule {
-  position: relative; z-index: 1; display: flex; justify-content: flex-end; align-items: center; gap: 16px;
+  position: relative; z-index: 2; display: flex; justify-content: flex-end; align-items: center; gap: 16px;
   margin: clamp(16px, 2.2vw, 26px) clamp(20px, 3.4vw, 44px) 0; padding-top: 10px;
   border-top: 0.5px solid color-mix(in srgb, var(--hwf-ink) 16%, transparent);
   font-family: var(--hwf-mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
 }
 .hwf-wordmark-spacer {
-  position: relative; width: 100%; pointer-events: none;
+  position: relative; width: 100%; pointer-events: none; z-index: 2;
 }
 .hwf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 720px) {
@@ -178,7 +209,7 @@ const HWF_CSS = `
   .hwf-brand { grid-column: 1 / -1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hwf-col a, .hwf-up { transition: none; }
+  .hwf-col a, .hwf-up, .hwf-link { transition: none; }
 }
 `
 
@@ -200,14 +231,56 @@ export default function HalftoneWordmarkFooter({
   monoFamily = MONO_STACK,
   height = "auto",
   className = "",
+  backgroundImage,
+  transparentCanvas,
+  customHeader,
+  children,
 }: HalftoneWordmarkFooterProps) {
   const colors = { ...(PRESETS[preset] || PRESETS.night), ...(palette || {}) }
+  const isTransparentCanvas = !!backgroundImage || !!transparentCanvas || colors.background === "transparent"
   const rootRef = React.useRef(null as HTMLElement | null)
   const canvasRef = React.useRef(null as HTMLCanvasElement | null)
   const spacerRef = React.useRef(null as HTMLDivElement | null)
-  const opts = React.useRef({ colors, dotGap, radius, crop, grain, interactive, fontFamily, fontWeight, wordmark, height })
-  opts.current = { colors, dotGap, radius, crop, grain, interactive, fontFamily, fontWeight, wordmark, height }
-  const key = [wordmark, dotGap, crop, grain, fontFamily, fontWeight, colors.background, colors.ink, colors.warm, height].join("|")
+  const opts = React.useRef({
+    colors,
+    dotGap,
+    radius,
+    crop,
+    grain,
+    interactive,
+    fontFamily,
+    fontWeight,
+    wordmark,
+    height,
+    transparentCanvas: isTransparentCanvas,
+  })
+  opts.current = {
+    colors,
+    dotGap,
+    radius,
+    crop,
+    grain,
+    interactive,
+    fontFamily,
+    fontWeight,
+    wordmark,
+    height,
+    transparentCanvas: isTransparentCanvas,
+  }
+  const key = [
+    wordmark,
+    dotGap,
+    crop,
+    grain,
+    fontFamily,
+    fontWeight,
+    colors.background,
+    colors.ink,
+    colors.warm,
+    height,
+    backgroundImage,
+    isTransparentCanvas,
+  ].join("|")
 
   React.useEffect(() => {
     const root = rootRef.current
@@ -275,7 +348,7 @@ export default function HalftoneWordmarkFooter({
       canvas.height = Math.round(h * dpr)
 
       const ruleEl = root.querySelector(".hwf-rule") as HTMLElement | null
-      const ruleBottom = ruleEl ? ruleEl.offsetTop + ruleEl.offsetHeight : 0
+      const ruleBottom = ruleEl ? ruleEl.getBoundingClientRect().bottom - rect.top : 0
       const wordmarkTop = ruleBottom + gapTop
       const baselineY = wordmarkTop + cap
 
@@ -336,8 +409,12 @@ export default function HalftoneWordmarkFooter({
     const draw = (now: number) => {
       const o = opts.current
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      ctx.fillStyle = o.colors.background
-      ctx.fillRect(0, 0, w, h)
+      if (o.transparentCanvas || o.colors.background === "transparent") {
+        ctx.clearRect(0, 0, w, h)
+      } else {
+        ctx.fillStyle = o.colors.background
+        ctx.fillRect(0, 0, w, h)
+      }
 
       const r = o.interactive && !reduced ? Math.max(0, o.radius) : 0
       const ringAge = ring.t < 0 ? 1e9 : now - ring.t
@@ -393,7 +470,7 @@ export default function HalftoneWordmarkFooter({
         ctx.fill()
       }
 
-      if (grainTile && o.grain > 0) {
+      if (grainTile && o.grain > 0 && !o.transparentCanvas && o.colors.background !== "transparent") {
         ctx.globalAlpha = Math.min(1, o.grain) * 0.09
         ctx.globalCompositeOperation = "overlay"
         const pattern = ctx.createPattern(grainTile, "repeat")
@@ -505,26 +582,41 @@ export default function HalftoneWordmarkFooter({
       }
     >
       <style>{HWF_CSS}</style>
+      {backgroundImage && (
+        <div className="hwf-bg-wrapper" aria-hidden="true">
+          <img
+            src={backgroundImage}
+            alt=""
+            className="hwf-bg-image"
+          />
+          <div className="hwf-bg-fade" />
+        </div>
+      )}
       <canvas ref={canvasRef} aria-hidden="true" />
       <span className="hwf-sr">{wordmark}</span>
-      <div className="hwf-top">
-        <div className="hwf-brand">
-          <strong>{label}</strong>
-          <span>{meta}</span>
+      {customHeader ? (
+        <div className="hwf-custom-header">{customHeader}</div>
+      ) : (
+        <div className="hwf-top">
+          <div className="hwf-brand">
+            <strong>{label}</strong>
+            <span>{meta}</span>
+          </div>
+          {columns.map((col) => (
+            <nav className="hwf-col" key={col.title} aria-label={col.title}>
+              <h3>{col.title}</h3>
+              <ul>
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <a href={l.href || "#"}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
-        {columns.map((col) => (
-          <nav className="hwf-col" key={col.title} aria-label={col.title}>
-            <h3>{col.title}</h3>
-            <ul>
-              {col.links.map((l) => (
-                <li key={l.label}>
-                  <a href={l.href || "#"}>{l.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ))}
-      </div>
+      )}
+      {children}
       <div className="hwf-rule">
         {backToTop ? (
           <button type="button" className="hwf-up" onClick={toTop}>
