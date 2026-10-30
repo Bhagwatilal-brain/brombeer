@@ -157,17 +157,17 @@ const HWF_CSS = `
   position: absolute; inset: 0; pointer-events: none; user-select: none; overflow: hidden; z-index: 0;
 }
 .hwf-bg-image {
-  position: absolute; bottom: 0; left: 0; width: 100%; height: auto; min-height: 48%; max-height: 560px;
-  object-fit: cover; object-position: bottom center; opacity: 0.95;
+  position: absolute; bottom: 0; left: 0; width: 100%; height: auto; min-height: 52%; max-height: 680px;
+  object-fit: cover; object-position: bottom center; opacity: 0.96;
 }
 .hwf-bg-fade {
   position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(
     to bottom,
     var(--hwf-bg) 0%,
-    var(--hwf-bg) 24%,
-    rgba(8, 4, 16, 0.75) 44%,
-    rgba(8, 4, 16, 0.15) 70%,
+    var(--hwf-bg) 22%,
+    rgba(8, 4, 16, 0.72) 42%,
+    rgba(8, 4, 16, 0.12) 68%,
     transparent 100%
   );
 }
