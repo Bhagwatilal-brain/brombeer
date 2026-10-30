@@ -114,30 +114,33 @@ export const IndustriesSection: React.FC = () => {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section id="industries" className="py-14 sm:py-20 lg:py-26 bg-background relative overflow-hidden">
-      <Container size="wide">
-        {/* Main Bounded Container Housing Header on Left and Interactive Accordion on Right */}
-        <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-br from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] border border-[#6853A5]/20 p-6 sm:p-8 md:p-9 lg:p-10 xl:p-12 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-10 items-center">
-            
-            {/* Left Column: Heading Block & Copy */}
-            <div className="lg:col-span-4 xl:col-span-4">
-              <ScrollTextReveal
-                eyebrow="INDUSTRY SOLUTIONS"
-                title="AI for the Challenges That Matter Most"
-                highlightWords={['That', 'Matter', 'Most']}
-                titleClassName="text-3xl sm:text-4xl lg:text-[44px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1] mb-4"
-                description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
-                descriptionClassName="text-text-secondary text-[14px] sm:text-[15.5px] leading-relaxed font-light"
-                maxWidth="max-w-md"
-              />
-            </div>
+    <section id="industries" className="py-14 sm:py-18 lg:py-24 bg-gradient-to-b from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] relative overflow-hidden border-b border-[#6853A5]/10">
+      {/* Background Soft Accents & Radial Gradients */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-[#E2D9F8]/40 via-[#EDE7FB]/20 to-transparent pointer-events-none border border-[#7650E8]/10" />
+      <div className="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-gradient-to-tr from-[#EBE3FC]/30 to-transparent pointer-events-none" />
+      <div className="absolute -bottom-24 right-1/4 w-72 h-72 rounded-full bg-gradient-to-t from-[#EDE7FB]/25 to-transparent pointer-events-none" />
 
-            {/* Right Column: Interactive Horizontal Accordion Deck */}
-            <div className="lg:col-span-8 xl:col-span-8 w-full">
-              <ScrollReveal direction="up" delay={0.15}>
-                {/* Horizontal Deck with expanded height so cards have maximum breathing room */}
-                <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 h-[530px] sm:h-[560px] lg:h-[580px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
+      <Container size="wide" className="relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+          
+          {/* Left Column: Heading Block & Copy */}
+          <div className="lg:col-span-4 xl:col-span-4">
+            <ScrollTextReveal
+              eyebrow="INDUSTRY SOLUTIONS"
+              title="AI for the Challenges That Matter Most"
+              highlightWords={['That', 'Matter', 'Most']}
+              titleClassName="text-3xl sm:text-4xl lg:text-[44px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1] mb-4"
+              description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
+              descriptionClassName="text-text-secondary text-[14px] sm:text-[15.5px] leading-relaxed font-light"
+              maxWidth="max-w-md"
+            />
+          </div>
+
+          {/* Right Column: Interactive Horizontal Accordion Deck */}
+          <div className="lg:col-span-8 xl:col-span-8 w-full">
+            <ScrollReveal direction="up" delay={0.15}>
+              {/* Horizontal Deck with expanded height so cards have maximum breathing room */}
+              <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 h-[530px] sm:h-[560px] lg:h-[580px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
                   {INDUSTRY_ITEMS.map((item, idx) => {
                     const isExpanded = activeIndex === idx;
                     const Icon = item.icon;
@@ -252,11 +255,9 @@ export const IndustriesSection: React.FC = () => {
                 </div>
               </ScrollReveal>
             </div>
-
           </div>
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
   );
 };
 
