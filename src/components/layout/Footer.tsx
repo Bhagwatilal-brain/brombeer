@@ -233,7 +233,7 @@ export const Footer: React.FC = () => {
       <HalftoneWordmarkFooter
         wordmark="brombeer"
         customHeader={customHeader}
-        backgroundImage="/images/footer/Starry Desert Engraving Panorama.png"
+        backgroundImage="/images/footer/Panoramic Deep Blue Starfield.png"
         backToTop={true}
         preset="night"
         palette={{
