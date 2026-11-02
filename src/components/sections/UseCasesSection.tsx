@@ -1,74 +1,74 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { 
+  Database, 
+  FileCheck, 
+  Bot, 
+  TrendingUp, 
+  Scan, 
+  Workflow, 
+  ArrowRight 
+} from 'lucide-react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
 import { ScrollTextReveal } from '../animations/ScrollTextReveal';
-import {
-  KnowledgeAssistantVisual,
-  DocumentProcessingVisual,
-  ServiceAssistantVisual,
-  InventoryIntelligenceVisual,
-  QualityAssessmentVisual,
-  WorkflowIntelligenceVisual,
-} from './use-cases/UseCaseVisuals';
 
-interface UseCaseCard {
+interface UseCaseItem {
   id: string;
-  badge: string;
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
   href: string;
-  visual: React.ComponentType;
+  pills: string[];
 }
 
-const USE_CASES_LIST: UseCaseCard[] = [
+const USE_CASES: UseCaseItem[] = [
   {
     id: 'knowledge-assistant',
-    badge: 'ENTERPRISE RAG',
+    icon: Database,
     title: 'Enterprise Knowledge Assistant',
-    description: 'Enable employees to ask questions about authorized internal documents and receive answers grounded in verified source citations.',
+    description: 'Query verified internal documents, policy repositories, and technical SOPs with grounded source citations and role-based access.',
     href: '/use-cases#knowledge-assistant',
-    visual: KnowledgeAssistantVisual,
+    pills: ['Hybrid BM25 + Vectors', 'Source Grounding', 'Role-Based ACL', 'Zero Leakage', 'SAML / SSO'],
   },
   {
     id: 'document-processing',
-    badge: 'MULTIMODAL OCR',
+    icon: FileCheck,
     title: 'Intelligent Document Processing',
-    description: 'Extract, classify, and validate information from structured forms, invoices, technical specs, and business documents.',
+    description: 'Extract, classify, and validate complex structured data from forms, invoices, contracts, and regulatory filings with high precision.',
     href: '/use-cases#document-processing',
-    visual: DocumentProcessingVisual,
+    pills: ['Multimodal OCR', 'Key-Value Extraction', 'Table Parsing', 'Schema Validation', 'ERP Export'],
   },
   {
     id: 'service-assistant',
-    badge: 'AUTONOMOUS AGENTS',
+    icon: Bot,
     title: 'AI-Powered Service Assistant',
-    description: 'Help users navigate complex information, resolve routine enquiries, and autonomously route edge cases to specialized teams.',
+    description: 'Resolve high-volume client and internal inquiries instantly, orchestrate multi-turn actions, and intelligently route edge cases.',
     href: '/use-cases#service-assistant',
-    visual: ServiceAssistantVisual,
+    pills: ['Autonomous Agents', 'Sentiment Routing', 'SLA Escalation', 'CRM Integration', 'Omnichannel API'],
   },
   {
     id: 'inventory-intelligence',
-    badge: 'PREDICTIVE ML',
+    icon: TrendingUp,
     title: 'Predictive Inventory Intelligence',
-    description: 'Use historical and operational data to support demand forecasting, stock reorder planning, and supply chain anomaly detection.',
+    description: 'Leverage historical time-series data and operational signals to forecast demand surges, optimize reorder cycles, and prevent stockouts.',
     href: '/use-cases#inventory-intelligence',
-    visual: InventoryIntelligenceVisual,
+    pills: ['Demand Forecasting', 'Anomaly Detection', 'Lead Time Tuning', 'Safety Stock Alerts'],
   },
   {
     id: 'quality-assessment',
-    badge: 'EDGE VISION',
+    icon: Scan,
     title: 'Visual Quality Assessment',
-    description: 'Apply computer vision to inspect physical products, spot sub-millimeter defects, and maintain rigorous industrial tolerances.',
+    description: 'Deploy high-speed edge computer vision to detect physical surface defects, verify assembly tolerances, and automate visual inspection.',
     href: '/use-cases#quality-assessment',
-    visual: QualityAssessmentVisual,
+    pills: ['Defect Detection', 'Edge Inference', 'Sub-Millimeter Precision', 'Automated Sorting'],
   },
   {
     id: 'workflow-intelligence',
-    badge: 'ORCHESTRATION',
+    icon: Workflow,
     title: 'Workflow Intelligence',
-    description: 'Combine language models, business rules, and approved integrations to orchestrate multi-step processes with audit trails.',
+    description: 'Combine foundation models with enterprise business rules to orchestrate multi-system operational flows with full audit trails.',
     href: '/use-cases#workflow-intelligence',
-    visual: WorkflowIntelligenceVisual,
+    pills: ['Event Triggers', 'Rule Engine', 'Human-in-the-Loop', 'Audit Trails', 'Webhook Writeback'],
   },
 ];
 
@@ -92,52 +92,49 @@ export const UseCasesSection: React.FC = () => {
           />
         </div>
 
-        {/* 6 Rich Visual Use Case Cards Grid (3 Columns x 2 Rows) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-10 sm:mb-12">
-          {USE_CASES_LIST.map((card, idx) => {
-            const Visual = card.visual;
+        {/* Unified White Container Housing the 6 Use Cases Grid */}
+        <ScrollReveal direction="up" delay={0.1}>
+          <div className="rounded-[2.5rem] bg-white border border-[#6853A5]/18 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] p-8 sm:p-12 lg:p-14 mb-10 sm:mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 sm:gap-x-12 lg:gap-x-14 gap-y-12 sm:gap-y-14">
+              {USE_CASES.map((item) => {
+                const Icon = item.icon;
 
-            return (
-              <ScrollReveal key={card.id} direction="up" delay={0.08 * (idx % 3)}>
-                <a
-                  href={card.href}
-                  className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-[0_4px_24px_-4px_rgba(75,45,168,0.06),0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_44px_-10px_rgba(118,80,232,0.16)] hover:-translate-y-1.5 hover:border-violet-primary/40 transition-all duration-300 min-h-[380px] sm:min-h-[400px] overflow-hidden select-none"
-                >
-                  {/* Top Glowing Accent Indicator on Hover */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                return (
+                  <div key={item.id} className="group flex flex-col justify-between">
+                    <div>
+                      {/* Circular Icon Badge */}
+                      <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#F0EAFA] border border-[#7650E8]/18 flex items-center justify-center text-[#7650E8] mb-5 shadow-xs group-hover:scale-105 group-hover:bg-[#E8DCF9] transition-all duration-300">
+                        <Icon className="w-6 h-6 text-[#7650E8]" />
+                      </div>
 
-                  <div>
-                    {/* Interactive Animated Visual Stage */}
-                    <div className="mb-5 transition-transform duration-300 group-hover:scale-[1.01]">
-                      <Visual />
+                      {/* Title */}
+                      <h3 className="font-sans font-bold text-xl sm:text-[21px] text-[#111014] tracking-tight leading-snug mb-3 group-hover:text-violet-primary transition-colors duration-200">
+                        {item.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-[#555263] text-[13.5px] sm:text-[14px] font-dm leading-relaxed font-normal mb-5">
+                        {item.description}
+                      </p>
                     </div>
 
-                    {/* Capability Badge Pill */}
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider font-semibold text-[#7650E8] bg-[#F3EEFC] border border-[#7650E8]/18 mb-3">
-                      {card.badge}
-                    </span>
-
-                    {/* Card Title */}
-                    <h3 className="font-sans font-bold text-[18px] sm:text-[19px] lg:text-[20px] text-[#111014] tracking-tight leading-snug mb-2.5 group-hover:text-violet-primary transition-colors duration-200">
-                      {card.title}
-                    </h3>
-
-                    {/* Card Description */}
-                    <p className="text-[#666371] text-[13px] sm:text-[13.5px] font-dm leading-relaxed font-normal">
-                      {card.description}
-                    </p>
+                    {/* Pill Badges */}
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {item.pills.map((pill) => (
+                        <span
+                          key={pill}
+                          className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-[12px] font-medium text-[#463B6E] bg-white border border-[#6853A5]/22 shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:border-[#7650E8]/60 hover:text-[#7650E8] hover:bg-[#FAF8FE] transition-all duration-200 cursor-default select-none"
+                        >
+                          {pill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  {/* Bottom Action Link with Animated Arrow */}
-                  <div className="pt-5 mt-auto flex items-center gap-1.5 text-xs font-semibold text-[#7650E8] group-hover:text-[#5B38D4] transition-colors">
-                    <span>Explore Use Case</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
-                </a>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+                );
+              })}
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* Bottom CTA Button: Explore AI Use Cases */}
         <ScrollReveal direction="up" delay={0.2}>
