@@ -1,8 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
 import { ScrollTextReveal } from '../animations/ScrollTextReveal';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 import {
   KnowledgeAssistantVisual,
   DocumentProcessingVisual,
@@ -73,6 +75,40 @@ const USE_CASES_LIST: UseCaseCard[] = [
 ];
 
 export const UseCasesSection: React.FC = () => {
+  const prefersReduced = useReducedMotion();
+
+  // Staggered cascade entrance for the 6 cards as the user scrolls into view
+  const gridContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.08,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 48,
+      scale: 0.94,
+      rotateX: 6,
+      filter: 'blur(6px)',
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateX: 0,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1], // fluid deceleration curve
+      },
+    },
+  };
+
   return (
     <section id="use-cases" className="py-14 sm:py-20 lg:py-26 bg-gradient-to-b from-[#FAF8FE] via-[#F8F5FD] to-[#F3EDFC] relative overflow-hidden border-b border-[#6853A5]/10">
       {/* Background Soft Accents & Ambient Violet Radial Glows */}
@@ -92,23 +128,36 @@ export const UseCasesSection: React.FC = () => {
           />
         </div>
 
-        {/* 6 Rich Visual Use Case Cards Grid (3 Columns x 2 Rows) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-10 sm:mb-12">
-          {USE_CASES_LIST.map((card, idx) => {
+        {/* 6 Rich Visual Use Case Cards Grid with Dynamic Cascading Scroll Appearance */}
+        <motion.div
+          initial={prefersReduced ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.12, margin: '0px 0px -40px 0px' }}
+          variants={gridContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-10 sm:mb-12 [perspective:1200px]"
+        >
+          {USE_CASES_LIST.map((card) => {
             const Visual = card.visual;
 
             return (
-              <ScrollReveal key={card.id} direction="up" delay={0.08 * (idx % 3)}>
+              <motion.div
+                key={card.id}
+                variants={cardVariants}
+                className="h-full"
+              >
                 <a
                   href={card.href}
-                  className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-[0_4px_24px_-4px_rgba(75,45,168,0.06),0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_44px_-10px_rgba(118,80,232,0.16)] hover:-translate-y-1.5 hover:border-violet-primary/40 transition-all duration-300 min-h-[380px] sm:min-h-[400px] overflow-hidden select-none"
+                  className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-[0_4px_24px_-4px_rgba(75,45,168,0.06),0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_22px_48px_-10px_rgba(118,80,232,0.18)] hover:-translate-y-2 hover:border-violet-primary/45 transition-all duration-300 min-h-[380px] sm:min-h-[400px] h-full overflow-hidden select-none"
                 >
                   {/* Top Glowing Accent Indicator on Hover */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
+                  {/* Ambient Violet Glow on Card Hover */}
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#7650E8]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
                   <div>
                     {/* Interactive Animated Visual Stage */}
-                    <div className="mb-5 transition-transform duration-300 group-hover:scale-[1.01]">
+                    <div className="mb-5 transition-transform duration-300 group-hover:scale-[1.015]">
                       <Visual />
                     </div>
 
@@ -134,10 +183,10 @@ export const UseCasesSection: React.FC = () => {
                     <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </a>
-              </ScrollReveal>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Bottom CTA Button: Explore AI Use Cases */}
         <ScrollReveal direction="up" delay={0.2}>
