@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
 
         <a
           href="/contact"
-          className="inline-flex items-center self-start sm:self-auto bg-[#FF5A00] hover:bg-[#FF6F15] text-white font-mono font-bold text-xs tracking-[0.16em] uppercase transition-colors shrink-0 shadow-lg shadow-[#FF5A00]/20"
+          className="inline-flex items-center self-start sm:self-auto bg-[#10B981] hover:bg-[#059669] text-white font-mono font-bold text-xs tracking-[0.16em] uppercase transition-colors shrink-0 shadow-lg shadow-[#10B981]/25"
         >
           <span className="px-5 md:px-6 py-3.5 md:py-4">BOOK A DEMO</span>
           <span className="border-l border-white/25 px-4 py-3.5 md:py-4 flex items-center justify-center">
