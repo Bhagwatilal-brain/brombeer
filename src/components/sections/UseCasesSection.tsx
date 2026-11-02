@@ -50,27 +50,6 @@ const USE_CASES_LIST: UseCaseCard[] = [
   },
 ];
 
-// Branded { • } Brackets Node Icon matching the reference screenshot
-const UseCaseGlyphIcon: React.FC = () => (
-  <svg
-    className="w-5 h-5 text-violet-primary mb-5"
-    viewBox="0 0 20 20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    {/* Left curly bracket */}
-    <path d="M6 4c-1.5 0-2 1-2 2.5v1.5c0 1-.5 1.5-1.5 2 1 .5 1.5 1 1.5 2v1.5c0 1.5.5 2.5 2 2.5" />
-    {/* Center node */}
-    <circle cx="10" cy="10" r="1.5" fill="currentColor" stroke="none" />
-    {/* Right curly bracket */}
-    <path d="M14 4c1.5 0 2 1 2 2.5v1.5c0 1 .5 1.5 1.5 2-1 .5-1.5 1-1.5 2v1.5c0 1.5-.5 2.5-2 2.5" />
-  </svg>
-);
-
 export const UseCasesSection: React.FC = () => {
   return (
     <section id="use-cases" className="py-14 sm:py-18 lg:py-24 bg-background relative overflow-hidden">
@@ -96,9 +75,6 @@ export const UseCasesSection: React.FC = () => {
                 className="group flex flex-col justify-between p-7 sm:p-8 rounded-[1.75rem] bg-white border border-[#6853A5]/14 shadow-[0_4px_24px_-4px_rgba(75,45,168,0.06),0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_36px_-6px_rgba(118,80,232,0.12)] hover:-translate-y-1.5 hover:border-violet-primary/30 transition-all duration-300 min-h-[220px] sm:min-h-[235px]"
               >
                 <div>
-                  {/* Top Glyph Icon */}
-                  <UseCaseGlyphIcon />
-
                   {/* Title */}
                   <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#111014] leading-snug mb-3 group-hover:text-violet-primary transition-colors duration-200">
                     {card.title}
