@@ -27,6 +27,8 @@ interface IndustryCardData {
   badgeBg: string;
   image: string;
   imageClassName?: string;
+  containerClassName?: string;
+  maskStyle?: React.CSSProperties;
 }
 
 const INDUSTRY_ITEMS: IndustryCardData[] = [
@@ -42,7 +44,6 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     accentColor: '#7650E8',
     badgeBg: 'bg-gradient-to-tr from-[#6366F1] to-[#8B5CF6]',
     image: '/images/industry_solutions/Lavender Capitol in the Mist.png',
-    imageClassName: '-translate-x-6 sm:-translate-x-10 lg:-translate-x-12',
   },
   {
     id: 'defence-security',
@@ -160,15 +161,24 @@ export const IndustriesSection: React.FC = () => {
                         style={{ flex: 7.2 }}
                         className="min-w-[340px] sm:min-w-[460px] lg:min-w-0 relative rounded-[2.25rem] sm:rounded-[2.5rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-2xl shadow-violet-primary/10 p-8 sm:p-10 lg:p-12 flex flex-col justify-between overflow-hidden select-none cursor-default"
                       >
-                        {/* Background Artwork Illustration with Smooth Gradient Mist Mask */}
-                        <div className="absolute top-0 right-0 bottom-0 w-[58%] sm:w-[65%] lg:w-[68%] pointer-events-none select-none overflow-hidden flex items-center justify-end">
+                        {/* Background Artwork Illustration: Full front view with smooth mist fade on the rightmost edge */}
+                        <div
+                          className={`absolute top-0 right-0 bottom-0 pointer-events-none select-none overflow-hidden flex items-center justify-end ${
+                            item.containerClassName || 'w-full'
+                          }`}
+                        >
                           <img
                             src={item.image}
                             alt={item.title}
-                            className={`w-full h-full object-cover object-center mix-blend-multiply opacity-40 sm:opacity-45 transition-all duration-500 ${item.imageClassName || ''}`}
+                            className={`h-full w-auto max-w-none object-cover object-right mix-blend-multiply opacity-40 sm:opacity-45 transition-all duration-500 ${
+                              item.imageClassName || ''
+                            }`}
                             style={{
-                              maskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 12%, black 40%, black 86%, transparent 100%)',
-                              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 12%, black 40%, black 86%, transparent 100%)',
+                              maskImage:
+                                'linear-gradient(to right, black 0%, black 82%, rgba(0, 0, 0, 0.35) 92%, transparent 100%)',
+                              WebkitMaskImage:
+                                'linear-gradient(to right, black 0%, black 82%, rgba(0, 0, 0, 0.35) 92%, transparent 100%)',
+                              ...item.maskStyle,
                             }}
                             loading="lazy"
                           />
