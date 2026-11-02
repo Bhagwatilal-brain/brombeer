@@ -13,7 +13,7 @@ interface TrustPillarItem {
   badge: string;
   guarantee: string;
   icon: React.ComponentType<{ className?: string }>;
-  badgeBg: string;
+  hoverThemeBg: string;
 }
 
 const TRUST_PILLARS: TrustPillarItem[] = [
@@ -24,7 +24,7 @@ const TRUST_PILLARS: TrustPillarItem[] = [
     badge: 'UAE Sovereign Ready',
     guarantee: 'Your data remains within your authorized tenancy boundaries and is never used to train public models.',
     icon: Shield,
-    badgeBg: 'bg-gradient-to-tr from-[#3B82F6] to-[#60A5FA] shadow-md shadow-blue-500/20 text-white',
+    hoverThemeBg: 'bg-gradient-to-tr from-[#6542E0] to-[#8E6DF8] shadow-lg shadow-[#7650E8]/30',
   },
   {
     number: '02',
@@ -33,7 +33,7 @@ const TRUST_PILLARS: TrustPillarItem[] = [
     badge: 'Zero-Trust Architecture',
     guarantee: 'Granular SAML/OAuth user permissions filter every query before semantic retrieval executes.',
     icon: Lock,
-    badgeBg: 'bg-gradient-to-tr from-[#6366F1] to-[#8B5CF6] shadow-md shadow-indigo-500/20 text-white',
+    hoverThemeBg: 'bg-gradient-to-tr from-[#7650E8] to-[#9E7DFF] shadow-lg shadow-[#7650E8]/35',
   },
   {
     number: '03',
@@ -42,7 +42,7 @@ const TRUST_PILLARS: TrustPillarItem[] = [
     badge: 'Citation Grounded',
     guarantee: 'Every synthesized response is mathematically matched against source documents with confidence scoring.',
     icon: CheckCircle2,
-    badgeBg: 'bg-gradient-to-tr from-[#10B981] to-[#34D399] shadow-md shadow-emerald-500/20 text-white',
+    hoverThemeBg: 'bg-gradient-to-tr from-[#5830D4] to-[#8460F6] shadow-lg shadow-[#7650E8]/30',
   },
   {
     number: '04',
@@ -51,7 +51,7 @@ const TRUST_PILLARS: TrustPillarItem[] = [
     badge: 'Audited Authority',
     guarantee: 'Financial writebacks, civic casework, and policy changes always route through human verification gates.',
     icon: UserCheck,
-    badgeBg: 'bg-gradient-to-tr from-[#EC4899] to-[#F43F5E] shadow-md shadow-pink-500/20 text-white',
+    hoverThemeBg: 'bg-gradient-to-tr from-[#6F43EA] to-[#9773FF] shadow-lg shadow-[#7650E8]/35',
   },
   {
     number: '05',
@@ -60,7 +60,7 @@ const TRUST_PILLARS: TrustPillarItem[] = [
     badge: '100% Provenance',
     guarantee: 'Complete cryptographic audit trail of all model prompts, retrieved passages, and agent tool calls.',
     icon: Eye,
-    badgeBg: 'bg-gradient-to-tr from-[#7C3AED] to-[#A78BFA] shadow-md shadow-purple-500/20 text-white',
+    hoverThemeBg: 'bg-gradient-to-tr from-[#7650E8] to-[#A688FF] shadow-lg shadow-[#7650E8]/35',
   },
   {
     number: '06',
@@ -69,7 +69,7 @@ const TRUST_PILLARS: TrustPillarItem[] = [
     badge: 'Real-Time Health',
     guarantee: 'Active telemetry tracks model performance, output drift, latency anomalies, and API token spend.',
     icon: Activity,
-    badgeBg: 'bg-gradient-to-tr from-[#F59E0B] to-[#FBBF24] shadow-md shadow-amber-500/20 text-white',
+    hoverThemeBg: 'bg-gradient-to-tr from-[#522BB8] to-[#7E5AF6] shadow-lg shadow-[#7650E8]/30',
   },
 ];
 
@@ -167,10 +167,19 @@ export const ResponsibleAISection: React.FC = () => {
                   <div className="space-y-4 relative z-10">
                     {/* Header: Circular Icon Badge + Badge */}
                     <div className="flex items-center justify-between">
-                      <div className={`w-13 h-13 sm:w-14 sm:h-14 rounded-full ${principle.badgeBg} flex items-center justify-center border-2 border-white/60 group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="w-6 h-6 text-white" />
+                      <div className="relative w-13 h-13 sm:w-14 sm:h-14 rounded-full flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        {/* 1. Initial State: Grayish dull circle with muted icon */}
+                        <div className="absolute inset-0 rounded-full bg-[#EDE8F5]/90 border border-[#D6CEE4] flex items-center justify-center shadow-xs transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
+                          <Icon className="w-6 h-6 text-[#8E869E] transition-colors duration-300" />
+                        </div>
+
+                        {/* 2. Hovered State: Our website theme colors (violet/purple gradient with crisp white icon & purple glow) */}
+                        <div className={`absolute inset-0 rounded-full ${principle.hoverThemeBg} border-2 border-white/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}>
+                          <Icon className="w-6 h-6 text-white" />
+                        </div>
                       </div>
-                      <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#6355A4] border border-[#6355A4]/25 font-medium select-none shadow-sm transition-colors duration-200 group-hover:border-violet-primary/40 group-hover:text-violet-primary">
+
+                      <span className="text-[10.5px] font-mono tracking-wider px-3 py-1 rounded-full bg-white text-[#7C7490] border border-[#D8D1E6] font-medium select-none shadow-xs transition-all duration-300 group-hover:border-violet-primary/40 group-hover:text-violet-primary group-hover:bg-[#FAF9FF]">
                         {principle.badge}
                       </span>
                     </div>
