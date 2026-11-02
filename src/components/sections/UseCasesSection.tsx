@@ -92,49 +92,66 @@ export const UseCasesSection: React.FC = () => {
           />
         </div>
 
-        {/* Unified White Container Housing the 6 Use Cases Grid */}
-        <ScrollReveal direction="up" delay={0.1}>
-          <div className="rounded-[2.5rem] bg-white border border-[#6853A5]/18 shadow-[0_20px_50px_-20px_rgba(118,80,232,0.08),0_2px_6px_rgba(0,0,0,0.02)] p-8 sm:p-12 lg:p-14 mb-10 sm:mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 sm:gap-x-12 lg:gap-x-14 gap-y-12 sm:gap-y-14">
-              {USE_CASES.map((item) => {
-                const Icon = item.icon;
+        {/* 6 High-Contrast Animated Use Case Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 mb-10 sm:mb-12">
+          {USE_CASES.map((item, idx) => {
+            const Icon = item.icon;
 
-                return (
-                  <div key={item.id} className="group flex flex-col justify-between">
-                    <div>
-                      {/* Circular Icon Badge */}
-                      <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#F0EAFA] border border-[#7650E8]/18 flex items-center justify-center text-[#7650E8] mb-5 shadow-xs group-hover:scale-105 group-hover:bg-[#E8DCF9] transition-all duration-300">
-                        <Icon className="w-6 h-6 text-[#7650E8]" />
-                      </div>
+            return (
+              <ScrollReveal key={item.id} direction="up" delay={0.06 * (idx % 3)}>
+                <a
+                  href={item.href}
+                  className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-[0_4px_24px_-4px_rgba(75,45,168,0.06),0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_24px_48px_-12px_rgba(118,80,232,0.18)] hover:-translate-y-2 hover:border-[#7650E8]/40 transition-all duration-300 overflow-hidden select-none min-h-[360px]"
+                >
+                  {/* Top Glowing Violet Laser Line on Hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                      {/* Title */}
-                      <h3 className="font-sans font-bold text-xl sm:text-[21px] text-[#111014] tracking-tight leading-snug mb-3 group-hover:text-violet-primary transition-colors duration-200">
-                        {item.title}
-                      </h3>
+                  {/* Top-Right Ambient Glow Bloom on Hover */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#7650E8]/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                      {/* Description */}
-                      <p className="text-[#555263] text-[13.5px] sm:text-[14px] font-dm leading-relaxed font-normal mb-5">
-                        {item.description}
-                      </p>
+                  <div className="relative z-10">
+                    {/* Circular Icon Badge: Changes to brand violet and scales up on hover */}
+                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#F0EAFA] border border-[#7650E8]/18 flex items-center justify-center text-[#7650E8] mb-5 shadow-xs group-hover:scale-110 group-hover:bg-[#7650E8] group-hover:text-white group-hover:border-[#7650E8] group-hover:shadow-lg group-hover:shadow-[#7650E8]/25 transition-all duration-300">
+                      <Icon className="w-6 h-6 transition-colors duration-300" />
                     </div>
 
+                    {/* Title */}
+                    <h3 className="font-sans font-bold text-xl sm:text-[21px] text-[#111014] tracking-tight leading-snug mb-3 group-hover:text-violet-primary transition-colors duration-200">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[#555263] text-[13.5px] sm:text-[14px] font-dm leading-relaxed font-normal mb-6">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="relative z-10">
                     {/* Pill Badges */}
-                    <div className="flex flex-wrap gap-2 pt-1">
+                    <div className="flex flex-wrap gap-2 pt-1 mb-5">
                       {item.pills.map((pill) => (
                         <span
                           key={pill}
-                          className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-[12px] font-medium text-[#463B6E] bg-white border border-[#6853A5]/22 shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:border-[#7650E8]/60 hover:text-[#7650E8] hover:bg-[#FAF8FE] transition-all duration-200 cursor-default select-none"
+                          className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-[12px] font-medium text-[#463B6E] bg-white sm:bg-[#FAF8FE] border border-[#6853A5]/18 shadow-[0_1px_2px_rgba(0,0,0,0.02)] group-hover:border-[#7650E8]/35 group-hover:bg-white hover:!border-[#7650E8] hover:!text-[#7650E8] hover:!bg-[#F0EAFA] transition-all duration-200 cursor-default select-none"
                         >
                           {pill}
                         </span>
                       ))}
                     </div>
+
+                    {/* Bottom Action Link with Animated Arrow */}
+                    <div className="pt-4 border-t border-[#6853A5]/10 flex items-center justify-between text-xs font-semibold text-[#7650E8] group-hover:text-[#5B38D4] transition-colors">
+                      <span>Explore Use Case</span>
+                      <div className="w-6 h-6 rounded-full bg-[#F0EAFA] group-hover:bg-[#7650E8] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs">
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                      </div>
+                    </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        </ScrollReveal>
+                </a>
+              </ScrollReveal>
+            );
+          })}
+        </div>
 
         {/* Bottom CTA Button: Explore AI Use Cases */}
         <ScrollReveal direction="up" delay={0.2}>
