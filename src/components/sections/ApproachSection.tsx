@@ -75,7 +75,7 @@ export const ApproachSection: React.FC = () => {
       const timelineEl = timelineRef.current;
       if (activeEl && timelineEl) {
         const timelineTop = timelineEl.getBoundingClientRect().top;
-        const dotCenter = activeEl.getBoundingClientRect().top + 9; // center of 14px dot (top 2px + 7px radius)
+        const dotCenter = activeEl.getBoundingClientRect().top + 15; // center of 14px dot aligned with title
         const relativeTop = Math.max(0, dotCenter - timelineTop);
         setLineFillHeight(relativeTop);
       }
@@ -192,9 +192,9 @@ export const ApproachSection: React.FC = () => {
                         }}
                         className="relative pl-14 sm:pl-16 group cursor-pointer transition-all duration-300"
                       >
-                        {/* Solid Circular Point / Dot Sitting Exactly Centered on Line (Width 14px, Center at 7px, Line at 6-8px) */}
+                        {/* Solid Circular Point / Dot Sitting Exactly Centered on Line (Width 14px, Center at 7px, Line at 6-8px, vertically aligned with title) */}
                         <div
-                          className={`absolute left-0 top-[2px] w-[14px] h-[14px] rounded-full bg-[#C3B5FC] transition-all duration-300 ${
+                          className={`absolute left-0 top-1.5 sm:top-2 lg:top-2.5 w-[14px] h-[14px] rounded-full bg-[#C3B5FC] transition-all duration-300 ${
                             isPassedOrActive
                               ? 'opacity-100'
                               : 'opacity-75 group-hover:opacity-100'
@@ -203,15 +203,6 @@ export const ApproachSection: React.FC = () => {
 
                         {/* Step Content */}
                         <div className="space-y-2">
-                          {/* Step Number: "0 1", "0 2", etc. (Horizontally level with the dot, Spaced format) */}
-                          <span
-                            className={`text-[12px] sm:text-[13px] font-mono tracking-[0.25em] block leading-snug transition-colors duration-300 ${
-                              isPassedOrActive ? 'text-[#C3B5FC] font-semibold' : 'text-[#A69FBA]'
-                            }`}
-                          >
-                            {step.displayNumber}
-                          </span>
-
                           {/* Step Title in Plus Jakarta Sans bold font (Exact Sampled Hex: #F2F2F8) */}
                           <h3
                             className={`text-2xl sm:text-3xl lg:text-[2.2rem] font-sans tracking-tight leading-tight font-bold transition-all duration-300 ${
