@@ -124,7 +124,7 @@ export const PrivacyPage: React.FC = () => {
             <div className="p-4 rounded-xl bg-white border border-border-subtle/40 space-y-1 text-xs">
               <p><strong>Email:</strong> contact@brombeersystems.com</p>
               <p><strong>Legal Entity:</strong> Brombeer IT Systems</p>
-              <p><strong>Address:</strong> Abu Dhabi, United Arab Emirates</p>
+              <p><strong>Address:</strong> Gibca Tower, Khalifa Street, Abu Dhabi – UAE</p>
             </div>
           </section>
         </div>

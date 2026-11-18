@@ -237,7 +237,7 @@ export const MinimalCTA: React.FC = () => {
               variant="primary"
               size="lg"
               icon={<ArrowRight className="w-4 h-4" />}
-              className="shadow-xl shadow-violet-primary/25 hover:shadow-violet-primary/40 hover:scale-105 transition-all text-base px-8 py-4 font-semibold"
+              className="shadow-xl shadow-violet-primary/25 hover:shadow-violet-primary/40 hover:scale-105 transition-all text-base font-semibold"
             >
               Discuss an AI Project
             </Button>

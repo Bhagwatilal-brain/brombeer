@@ -14,6 +14,7 @@ import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
 import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { Button } from '../ui/Button';
 
 interface IndustryCardData {
   id: string;
@@ -55,7 +56,8 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     icon: Shield,
     accentColor: '#3B82F6',
     badgeBg: 'bg-gradient-to-tr from-[#3B82F6] to-[#60A5FA]',
-    image: '/images/industry_solutions/Lavender Radar Landscape with Airliner.png',
+    image: '/images/industry_solutions/Violet Defense Forces Over Mountainous Terrain.png',
+    imageClassName: 'object-right',
   },
   {
     id: 'healthcare',
@@ -103,16 +105,18 @@ const INDUSTRY_ITEMS: IndustryCardData[] = [
     shortTitle: 'Enterprise & Professional Services',
     description:
       'Help teams work more efficiently through knowledge assistants, document automation, intelligent search, and AI-enabled business applications.',
-    href: '/industries#financial-services',
+    href: '/industries#enterprise-services',
     icon: Users,
     accentColor: '#7C3AED',
     badgeBg: 'bg-gradient-to-tr from-[#7C3AED] to-[#A78BFA]',
     image: '/images/industry_solutions/Lavender High-Rise Boardroom Panorama.png',
+    imageClassName: 'object-right',
   },
 ];
 
 export const IndustriesSection: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Default to index 3 (Logistics & Supply Chain) as showcased in reference
+  const [activeIndex, setActiveIndex] = useState(3);
   const prefersReduced = useReducedMotion();
 
   return (
@@ -123,95 +127,29 @@ export const IndustriesSection: React.FC = () => {
       <div className="absolute -bottom-24 right-1/4 w-72 h-72 rounded-full bg-gradient-to-t from-[#EDE7FB]/25 to-transparent pointer-events-none" />
 
       <Container size="wide" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+        {/* Header Block Centered Above the Cards Deck */}
+        <div className="mb-8 sm:mb-10 lg:mb-12 w-full text-center">
+          <ScrollTextReveal
+            align="center"
+            eyebrow="INDUSTRY SOLUTIONS"
+            title="AI for the Challenges That Matter Most"
+            highlightWords={['That', 'Matter', 'Most']}
+            titleClassName="text-3xl sm:text-4xl lg:text-[46px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.12] mb-3.5"
+            description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
+            descriptionClassName="text-text-secondary text-[14.5px] sm:text-[16px] leading-relaxed font-normal max-w-3xl lg:max-w-4xl mx-auto"
+            maxWidth="max-w-4xl lg:max-w-5xl mx-auto"
+          />
+        </div>
 
-          {/* Left Column: Heading Block & Copy */}
-          <div className="lg:col-span-4 xl:col-span-4">
-            <ScrollTextReveal
-              eyebrow="INDUSTRY SOLUTIONS"
-              title="AI for the Challenges That Matter Most"
-              highlightWords={['That', 'Matter', 'Most']}
-              titleClassName="text-3xl sm:text-4xl lg:text-[44px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1] mb-4"
-              description="We apply AI to industry-specific problems, taking into account the operational requirements, data environments, and governance considerations of each sector."
-              descriptionClassName="text-text-secondary text-[14px] sm:text-[15.5px] leading-relaxed font-light"
-              maxWidth="max-w-md"
-            />
-          </div>
+        {/* Full-Width Interactive Horizontal Accordion Deck starting from left side */}
+        <div className="w-full">
+          <ScrollReveal direction="up" delay={0.15}>
+            <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 lg:gap-4 h-[540px] sm:h-[580px] lg:h-[620px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-2">
+              {INDUSTRY_ITEMS.map((item, idx) => {
+                const isExpanded = activeIndex === idx;
+                const Icon = item.icon;
 
-          {/* Right Column: Interactive Horizontal Accordion Deck */}
-          <div className="lg:col-span-8 xl:col-span-8 w-full">
-            <ScrollReveal direction="up" delay={0.15}>
-              {/* Horizontal Deck with expanded height so cards have maximum breathing room */}
-              <div className="flex flex-row items-stretch gap-2.5 sm:gap-3.5 h-[530px] sm:h-[560px] lg:h-[580px] w-full overflow-x-auto lg:overflow-x-visible no-scrollbar pb-1">
-                {INDUSTRY_ITEMS.map((item, idx) => {
-                  const isExpanded = activeIndex === idx;
-                  const Icon = item.icon;
-
-                  if (isExpanded) {
-                    return (
-                      <motion.div
-                        key={item.id}
-                        layout={!prefersReduced}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 280,
-                          damping: 28,
-                        }}
-                        style={{ flex: 7.2 }}
-                        className="min-w-[340px] sm:min-w-[460px] lg:min-w-0 relative rounded-[2.25rem] sm:rounded-[2.5rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-2xl shadow-violet-primary/10 p-8 sm:p-10 lg:p-12 flex flex-col justify-between overflow-hidden select-none cursor-default"
-                      >
-                        {/* Background Artwork Illustration with Smooth Gradient Mist Mask */}
-                        <div className="absolute top-0 right-0 bottom-0 w-[58%] sm:w-[65%] lg:w-[68%] pointer-events-none select-none overflow-hidden flex items-center justify-end">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className={`w-full h-full object-cover mix-blend-multiply opacity-40 sm:opacity-45 transition-all duration-500 ${item.imageClassName || 'object-center'}`}
-                            style={{
-                              maskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, black 50%)',
-                              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, black 50%)',
-                            }}
-                            loading="lazy"
-                          />
-                        </div>
-
-                        {/* Top purple glowing line */}
-                        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
-
-                        {/* Expanded Card Content */}
-                        <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[70%] lg:max-w-[65%]">
-                          <div>
-                            {/* Icon Symbol */}
-                            <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-5 sm:mb-6 shadow-sm">
-                              <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-violet-primary" />
-                            </div>
-
-                            {/* Title */}
-                            <h3 className="font-sans font-bold text-2xl sm:text-[30px] lg:text-[32px] text-[#111014] tracking-tight leading-[1.18] mb-4">
-                              {item.title}
-                            </h3>
-
-                            {/* Description */}
-                            <p className="text-xs sm:text-[14px] lg:text-[14.5px] font-dm text-[#666371] leading-relaxed font-normal max-w-md">
-                              {item.description}
-                            </p>
-                          </div>
-
-                          {/* Explore Solutions Pill Button */}
-                          <div className="pt-6">
-                            <a
-                              href={item.href}
-                              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#EDE7FA] hover:bg-[#E3DAF8] text-[#6E48E5] font-dm font-semibold text-xs sm:text-[13px] tracking-wide transition-colors shadow-sm select-none group"
-                            >
-                              <span>Explore Solutions</span>
-                              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                            </a>
-                          </div>
-                        </div>
-                      </motion.div>
-                    );
-                  }
-
-                  // Collapsed Narrow Tab
+                if (isExpanded) {
                   return (
                     <motion.div
                       key={item.id}
@@ -221,42 +159,109 @@ export const IndustriesSection: React.FC = () => {
                         stiffness: 280,
                         damping: 28,
                       }}
-                      style={{ flex: 1 }}
-                      onClick={() => setActiveIndex(idx)}
-                      onMouseEnter={() => setActiveIndex(idx)}
-                      className="min-w-[58px] sm:min-w-[68px] lg:min-w-0 group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 pt-7 sm:pt-8 lg:pt-9 pb-6 sm:pb-7 px-2 sm:px-2.5 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
+                      style={{ flex: 8.5 }}
+                      className="min-w-[340px] sm:min-w-[540px] lg:min-w-[660px] relative rounded-[2.25rem] sm:rounded-[2.5rem] bg-gradient-to-br from-white via-white to-[#F7F3FD] border border-[#6853A5]/20 shadow-2xl shadow-violet-primary/12 p-8 sm:p-10 lg:p-12 flex flex-col justify-between overflow-hidden select-none cursor-default"
                     >
-                      {/* Top Indicator Accent on Hover */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                      {/* Top: Icon Symbol */}
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F4EFFC] flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
-                        <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-violet-primary" />
-                      </div>
-
-                      {/* Center: Vertical Rotated Label */}
-                      <div className="flex-1 flex items-center justify-center py-6 my-auto">
-                        <span
-                          className="font-sans text-[14.5px] sm:text-[15.5px] text-[#1E1142] whitespace-nowrap tracking-tight font-semibold group-hover:text-violet-primary transition-colors"
+                      {/* Background Artwork Illustration with Smooth Gradient Mist Mask */}
+                      <div className="absolute top-0 right-0 bottom-0 w-[55%] sm:w-[64%] lg:w-[70%] pointer-events-none select-none overflow-hidden flex items-center justify-end">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className={`w-full h-full object-cover mix-blend-multiply opacity-50 sm:opacity-55 transition-all duration-500 ${item.imageClassName || 'object-center'}`}
                           style={{
-                            writingMode: 'vertical-rl',
-                            transform: 'rotate(180deg)',
+                            maskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 15%, black 45%)',
+                            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 15%, black 45%)',
                           }}
-                        >
-                          {item.shortTitle}
-                        </span>
+                          loading="lazy"
+                        />
                       </div>
 
-                      {/* Bottom: Upward Arrow Icon */}
-                      <div className="w-6 h-6 flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
-                        <ArrowUpRight className="w-4 h-4 text-violet-primary" />
+                      {/* Top purple glowing line */}
+                      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent" />
+
+                      {/* Expanded Card Content with Enhanced Typography & Breathing Room */}
+                      <div className="relative z-10 flex flex-col justify-between h-full max-w-[85%] sm:max-w-[70%] lg:max-w-[62%]">
+                        <div>
+                          {/* Icon Symbol Badge */}
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#F0EAFB] border border-[#6853A5]/18 flex items-center justify-center text-violet-primary mb-5 sm:mb-6 shadow-sm flex-shrink-0">
+                            <Icon className="w-6 h-6 sm:w-6.5 sm:h-6.5 text-violet-primary" />
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="font-sans font-bold text-2xl sm:text-[32px] lg:text-[36px] text-[#111014] tracking-tight leading-[1.16] mb-4">
+                            {item.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-xs sm:text-[14.5px] lg:text-[15px] font-dm text-[#666371] leading-relaxed font-normal max-w-lg">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        {/* Explore Solutions Button (matching Menubar design) */}
+                        <div className="pt-6">
+                          <Button
+                            asLink
+                            href={item.href}
+                            variant="secondary"
+                            size="md"
+                            textRoll
+                            icon={<ArrowRight className="w-4 h-4" />}
+                            className="border-border-subtle hover:border-violet-primary hover:text-violet-primary font-medium shadow-sm hover:shadow-md hover:shadow-violet-primary/10"
+                          >
+                            Explore Solutions
+                          </Button>
+                        </div>
                       </div>
                     </motion.div>
                   );
-                })}
-              </div>
-            </ScrollReveal>
-          </div>
+                }
+
+                // Collapsed Narrow Tab
+                return (
+                  <motion.div
+                    key={item.id}
+                    layout={!prefersReduced}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 280,
+                      damping: 28,
+                    }}
+                    style={{ flex: 1 }}
+                    onClick={() => setActiveIndex(idx)}
+                    onMouseEnter={() => setActiveIndex(idx)}
+                    className="min-w-[56px] sm:min-w-[68px] lg:min-w-[74px] group relative rounded-[1.75rem] sm:rounded-[2rem] bg-white border border-[#6853A5]/16 shadow-sm hover:shadow-md hover:border-violet-primary/40 pt-7 sm:pt-8 lg:pt-9 pb-6 sm:pb-7 px-2 sm:px-2.5 flex flex-col items-center justify-between cursor-pointer transition-colors select-none overflow-hidden"
+                  >
+                    {/* Top Indicator Accent on Hover */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-violet-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Top: Icon Symbol */}
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F4EFFC] flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
+                      <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-violet-primary" />
+                    </div>
+
+                    {/* Center: Vertical Rotated Label */}
+                    <div className="flex-1 flex items-center justify-center py-6 my-auto">
+                      <span
+                        className="font-sans text-[14px] sm:text-[15.5px] text-[#1E1142] whitespace-nowrap tracking-tight font-semibold group-hover:text-violet-primary transition-colors"
+                        style={{
+                          writingMode: 'vertical-rl',
+                          transform: 'rotate(180deg)',
+                        }}
+                      >
+                        {item.shortTitle}
+                      </span>
+                    </div>
+
+                    {/* Bottom: Upward Arrow Icon */}
+                    <div className="w-6 h-6 flex items-center justify-center text-violet-primary group-hover:scale-110 transition-transform">
+                      <ArrowUpRight className="w-4 h-4 text-violet-primary" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </ScrollReveal>
         </div>
       </Container>
     </section>

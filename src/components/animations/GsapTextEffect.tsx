@@ -41,10 +41,8 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
     if (!elements.length) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay });
-
-      // Step 1: Smooth 3D slide-up entrance without overflow clipping
-      tl.fromTo(
+      // Step 1: Smooth 3D slide-up entrance on page load (without any automatic color sweep)
+      gsap.fromTo(
         elements,
         {
           y: 28,
@@ -58,35 +56,17 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
           rotateX: 0,
           filter: 'blur(0px)',
           duration: 0.8,
+          delay,
           ease: 'power3.out',
           stagger: 0.06,
         }
       );
-
-      // Step 2: Iridescent Light Sweep passing across the highlighted gradient words
-      const highlighted = elements.filter(
-        (el) => el?.dataset.highlighted === 'true'
-      );
-      if (highlighted.length > 0) {
-        tl.fromTo(
-          highlighted,
-          {
-            backgroundPosition: '160% 0%',
-          },
-          {
-            backgroundPosition: '-60% 0%',
-            duration: 1.6,
-            ease: 'power2.inOut',
-            stagger: 0.05,
-          },
-          '-=0.3'
-        );
-      }
     }, containerRef);
 
     return () => ctx.revert();
   }, [lines, words, delay, prefersReduced]);
 
+  // Gentle, subtle sheen animation triggers ONLY on hover
   const handleMouseEnter = () => {
     if (prefersReduced) return;
     const highlighted = wordsRef.current.filter(
@@ -97,12 +77,15 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
     sweepRef.current?.kill();
     sweepRef.current = gsap.fromTo(
       highlighted,
-      { backgroundPosition: '160% 0%' },
+      { backgroundPosition: '100% 0%' },
       {
-        backgroundPosition: '-60% 0%',
+        backgroundPosition: '-100% 0%',
         duration: 1.4,
         ease: 'power2.inOut',
-        stagger: 0.04,
+        stagger: 0.05,
+        onComplete: () => {
+          gsap.set(highlighted, { backgroundPosition: '100% 0%' });
+        },
       }
     );
   };
@@ -143,12 +126,17 @@ export const GsapTextEffect: React.FC<GsapTextEffectProps> = ({
                   className={cn(
                     'inline-block will-change-transform will-change-[filter]',
                     isHighlighted
-                      ? 'bg-gradient-to-r from-violet-deep via-violet-primary to-[#9E7EFF] bg-[length:200%_100%] bg-clip-text text-transparent drop-shadow-sm pb-[0.06em]'
+                      ? 'text-transparent bg-clip-text drop-shadow-sm pb-[0.06em]'
                       : 'text-text-primary'
                   )}
                   style={
-                    isHighlighted && !prefersReduced
-                      ? { backgroundPosition: '160% 0%' }
+                    isHighlighted
+                      ? {
+                          backgroundImage:
+                            'linear-gradient(110deg, #7650E8 0%, #7650E8 35%, #8E6DF5 44%, #A282F8 50%, #8E6DF5 56%, #7650E8 65%, #7650E8 100%)',
+                          backgroundSize: '280% 100%',
+                          backgroundPosition: '100% 0%',
+                        }
                       : undefined
                   }
                 >

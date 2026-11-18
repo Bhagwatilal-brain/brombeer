@@ -182,7 +182,7 @@ export const ScrollMorphSection: React.FC = () => {
                   href={`/use-cases#${activeCase.id}`}
                   variant="primary"
                   size="sm"
-                  icon={<ArrowUpRight className="w-4 h-4" />}
+                  icon={<ArrowRight className="w-4 h-4" />}
                 >
                   Read Full Architecture & Case Study
                 </Button>

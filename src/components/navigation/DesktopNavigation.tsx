@@ -18,7 +18,7 @@ export const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ currentPat
         <img
           src={brmLogo}
           alt="Brombeer AI - Brombeer IT Systems"
-          className="h-10 lg:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+          className="h-11 md:h-[46px] lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </a>
 
@@ -41,6 +41,7 @@ export const DesktopNavigation: React.FC<DesktopNavigationProps> = ({ currentPat
           href="/contact"
           variant="secondary"
           size="sm"
+          textRoll
           icon={<ArrowRight className="w-4 h-4" />}
           className="border-border-subtle hover:border-violet-primary hover:text-violet-primary font-medium"
         >

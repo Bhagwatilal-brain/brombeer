@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import HalftoneWordmarkFooter from '../ui/halftone-wordmark-footer';
 import { ArrowRight, PhoneCall, Check } from 'lucide-react';
+import { Button } from '../ui/Button';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -46,15 +47,17 @@ export const Footer: React.FC = () => {
           Get started today
         </h2>
 
-        <a
+        <Button
+          asLink
           href="/contact"
-          className="inline-flex items-center self-start sm:self-auto bg-[#83b500] hover:bg-[#74a100] text-white font-mono font-bold text-xs tracking-[0.16em] uppercase transition-colors shrink-0 shadow-lg shadow-[#83b500]/25"
+          variant="secondary"
+          size="md"
+          textRoll
+          icon={<ArrowRight className="w-4 h-4" />}
+          className="bg-white hover:bg-white border-border-subtle hover:border-violet-primary hover:text-violet-primary font-medium shadow-md hover:shadow-violet-primary/20 shrink-0 self-start sm:self-auto px-5 md:px-6 py-2.5 md:py-3 text-xs sm:text-sm"
         >
-          <span className="px-5 md:px-6 py-3.5 md:py-4">BOOK A DEMO</span>
-          <span className="border-l border-white/25 px-4 py-3.5 md:py-4 flex items-center justify-center">
-            <ArrowRight className="w-4 h-4" />
-          </span>
-        </a>
+          Book a Demo
+        </Button>
       </div>
 
       {/* 2. Giant Wordmark Anchor Slot (Halftone Dots Canvas Renders Here!) */}
@@ -76,8 +79,8 @@ export const Footer: React.FC = () => {
           </h3>
           <div className="space-y-2.5 font-dm text-[13.5px] text-white/60">
             <p className="leading-snug">
-              Abu Dhabi Global Market<br />
-              Al Maryah Island, Abu Dhabi, UAE
+              Gibca Tower, Khalifa Street<br />
+              Abu Dhabi – UAE
             </p>
             <p className="pt-1">
               <a

@@ -5,14 +5,7 @@ import { Container } from '../layout/Container';
 import { ScrollReveal } from '../animations/ScrollReveal';
 import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
-import {
-  KnowledgeAssistantVisual,
-  DocumentProcessingVisual,
-  ServiceAssistantVisual,
-  InventoryIntelligenceVisual,
-  QualityAssessmentVisual,
-  WorkflowIntelligenceVisual,
-} from './use-cases/UseCaseVisuals';
+import { Button } from '../ui/Button';
 
 interface UseCaseCard {
   id: string;
@@ -20,7 +13,7 @@ interface UseCaseCard {
   title: string;
   description: string;
   href: string;
-  visual: React.ComponentType;
+  image: string;
 }
 
 const USE_CASES_LIST: UseCaseCard[] = [
@@ -30,7 +23,7 @@ const USE_CASES_LIST: UseCaseCard[] = [
     title: 'Enterprise Knowledge Assistant',
     description: 'Enable employees to ask questions about authorized internal documents and receive answers grounded in verified source citations.',
     href: '/use-cases#knowledge-assistant',
-    visual: KnowledgeAssistantVisual,
+    image: '/images/use-cases/knowledge-assistant.jpg',
   },
   {
     id: 'document-processing',
@@ -38,7 +31,7 @@ const USE_CASES_LIST: UseCaseCard[] = [
     title: 'Intelligent Document Processing',
     description: 'Extract, classify, and validate information from structured forms, invoices, technical specs, and business documents.',
     href: '/use-cases#document-processing',
-    visual: DocumentProcessingVisual,
+    image: '/images/use-cases/document-processing.jpg',
   },
   {
     id: 'service-assistant',
@@ -46,7 +39,7 @@ const USE_CASES_LIST: UseCaseCard[] = [
     title: 'AI-Powered Service Assistant',
     description: 'Help users navigate complex information, resolve routine enquiries, and autonomously route edge cases to specialized teams.',
     href: '/use-cases#service-assistant',
-    visual: ServiceAssistantVisual,
+    image: '/images/use-cases/service-assistant.jpg',
   },
   {
     id: 'inventory-intelligence',
@@ -54,7 +47,7 @@ const USE_CASES_LIST: UseCaseCard[] = [
     title: 'Predictive Inventory Intelligence',
     description: 'Use historical and operational data to support demand forecasting, stock reorder planning, and supply chain anomaly detection.',
     href: '/use-cases#inventory-intelligence',
-    visual: InventoryIntelligenceVisual,
+    image: '/images/use-cases/inventory-intelligence.jpg',
   },
   {
     id: 'quality-assessment',
@@ -62,7 +55,7 @@ const USE_CASES_LIST: UseCaseCard[] = [
     title: 'Visual Quality Assessment',
     description: 'Apply computer vision to inspect physical products, spot sub-millimeter defects, and maintain rigorous industrial tolerances.',
     href: '/use-cases#quality-assessment',
-    visual: QualityAssessmentVisual,
+    image: '/images/use-cases/quality-assessment.jpg',
   },
   {
     id: 'workflow-intelligence',
@@ -70,7 +63,7 @@ const USE_CASES_LIST: UseCaseCard[] = [
     title: 'Workflow Intelligence',
     description: 'Combine language models, business rules, and approved integrations to orchestrate multi-step processes with audit trails.',
     href: '/use-cases#workflow-intelligence',
-    visual: WorkflowIntelligenceVisual,
+    image: '/images/use-cases/workflow-intelligence.jpg',
   },
 ];
 
@@ -116,15 +109,20 @@ export const UseCasesSection: React.FC = () => {
       <div className="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-gradient-to-tr from-[#EBE3FC]/25 to-transparent pointer-events-none" />
 
       <Container size="wide" className="relative z-10">
-        {/* Left-Aligned Editorial Header Block */}
-        <div className="max-w-3xl mb-12 sm:mb-14">
+        {/* Header Block Centered Above Cards Grid (matching Industry Solutions) */}
+        <div className="w-full text-center mb-10 sm:mb-12 lg:mb-14 relative">
+          {/* Soft Circular Glow Backdrop centered behind Title */}
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-[#E5DEFB]/50 blur-[2px] pointer-events-none -z-10" />
+
           <ScrollTextReveal
+            align="center"
             eyebrow="AI USE CASES"
             title="Real Problems. Intelligent Possibilities."
             highlightWords={['Intelligent', 'Possibilities.']}
-            titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.08] mb-4"
+            titleClassName="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.2] sm:leading-[1.24] mb-3.5"
             description="Explore how tailored enterprise AI workflows automate operations, extract intelligence, and power critical decisions."
-            maxWidth="max-w-3xl"
+            descriptionClassName="text-text-secondary text-[14.5px] sm:text-[16px] leading-relaxed font-normal max-w-2xl lg:max-w-3xl mx-auto"
+            maxWidth="max-w-4xl lg:max-w-5xl mx-auto"
           />
         </div>
 
@@ -137,8 +135,6 @@ export const UseCasesSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-10 sm:mb-12 [perspective:1200px]"
         >
           {USE_CASES_LIST.map((card) => {
-            const Visual = card.visual;
-
             return (
               <motion.div
                 key={card.id}
@@ -156,9 +152,16 @@ export const UseCasesSection: React.FC = () => {
                   <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#7650E8]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                   <div>
-                    {/* Interactive Animated Visual Stage */}
-                    <div className="mb-5 transition-transform duration-300 group-hover:scale-[1.015]">
-                      <Visual />
+                    {/* Visual 3D Illustration Stage */}
+                    <div className="mb-5 relative rounded-2xl overflow-hidden border border-[#7650E8]/14 bg-[#F5EFFE] aspect-[16/10] sm:aspect-[16/9] shadow-xs group-hover:border-violet-primary/35 transition-all duration-300">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1E1142]/20 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+                      <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5 pointer-events-none" />
                     </div>
 
                     {/* Capability Badge Pill */}
@@ -190,14 +193,18 @@ export const UseCasesSection: React.FC = () => {
 
         {/* Bottom CTA Button: Explore AI Use Cases */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div>
-            <a
+          <div className="flex justify-center">
+            <Button
+              asLink
               href="/use-cases"
-              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white text-[#111014] border border-[#111014]/50 hover:border-violet-primary hover:bg-[#FAF9FF] transition-all duration-300 shadow-sm hover:shadow text-sm font-medium group select-none"
+              variant="secondary"
+              size="md"
+              textRoll
+              icon={<ArrowRight className="w-4 h-4" />}
+              className="border-border-subtle bg-white hover:bg-white hover:border-violet-primary hover:text-violet-primary font-medium shadow-sm hover:shadow-md hover:shadow-violet-primary/10 px-6 py-2.5"
             >
-              <span>Explore AI Use Cases</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#111014] group-hover:text-violet-primary" />
-            </a>
+              Explore AI Use Cases
+            </Button>
           </div>
         </ScrollReveal>
       </Container>

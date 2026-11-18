@@ -17,11 +17,11 @@ export const HomePage: React.FC = () => {
       <HeroSection />
 
       {/* Running Capabilities Ticker Strip with Frosted Glass / Blurry Background */}
-      <div className="relative w-full z-20 overflow-hidden bg-white/45 backdrop-blur-xl border-y border-[#7650E8]/15 py-3 sm:py-3.5 shadow-[0_8px_32px_0_rgba(118,80,232,0.06)]">
+      <div className="relative w-full z-20 overflow-hidden bg-white/60 backdrop-blur-xl border-y border-[#7650E8]/15 py-4 sm:py-5 shadow-[0_8px_32px_0_rgba(118,80,232,0.05)]">
         {/* Soft atmospheric gradient sheen across the blurry bar */}
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-light/15 via-white/50 to-violet-light/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-violet-light/10 via-white/40 to-violet-light/10 pointer-events-none" />
 
-        <CapabilitiesTicker fadeColor="from-white/80" />
+        <CapabilitiesTicker fadeColor="from-white/90" />
       </div>
 
       {/* 2. Trust and Value Proposition ("AI DESIGNED FOR THE REAL WORLD") */}

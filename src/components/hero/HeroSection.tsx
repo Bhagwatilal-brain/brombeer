@@ -98,7 +98,6 @@ export const HeroSection: React.FC = () => {
                 variant="primary"
                 size="lg"
                 icon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-md shadow-violet-primary/15"
               >
                 Discuss an AI Project
               </Button>

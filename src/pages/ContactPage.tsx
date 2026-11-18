@@ -47,11 +47,11 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="py-12 sm:py-20 bg-background">
-      <Container size="narrow">
+      <Container className="max-w-5xl">
         <div className="space-y-12">
           {/* Header */}
           <div className="text-center space-y-4">
-            <span className="eyebrow inline-block">PAGE 9: CONTACT US</span>
+            <span className="eyebrow inline-block">CONTACT US</span>
             <h1 className="text-3xl sm:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
               Let’s Talk About Your AI Project.
             </h1>
@@ -228,8 +228,8 @@ export const ContactPage: React.FC = () => {
                   <label className="text-xs font-semibold text-text-primary">
                     Preferred Contact Method (optional)
                   </label>
-                  <div className="grid grid-cols-3 gap-3">
-                    {['Email', 'Phone', 'Video Call'].map((method) => (
+                  <div className="grid grid-cols-2 gap-3">
+                    {['Email', 'Phone'].map((method) => (
                       <button
                         type="button"
                         key={method}
@@ -280,39 +280,58 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Direct Contact Information Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-            <div className="p-6 rounded-2xl bg-white border border-[#6853A5]/12 shadow-sm flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-surface-lavender text-violet-primary flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-5 pt-4">
+            {/* 1. Direct Email */}
+            <div className="p-3.5 sm:p-4 lg:p-5 rounded-2xl bg-white border border-[#6853A5]/14 shadow-sm hover:border-violet-primary/35 hover:shadow-md hover:shadow-violet-primary/5 transition-all flex items-center gap-2.5 sm:gap-3 lg:gap-3.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-xl bg-[#F4EFFC] text-violet-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Mail className="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 text-violet-primary" />
               </div>
-              <div className="text-xs">
-                <span className="text-text-secondary font-mono block">DIRECT EMAIL</span>
-                <a href="mailto:contact@brombeersystems.com" className="font-semibold text-text-primary hover:text-violet-primary">
+              <div className="flex-1">
+                <span className="text-[10px] sm:text-[10.5px] lg:text-[11px] font-mono font-medium text-text-secondary/80 uppercase tracking-wider block mb-0.5 whitespace-nowrap">
+                  DIRECT EMAIL
+                </span>
+                <a
+                  href="mailto:contact@brombeersystems.com"
+                  className="font-semibold text-[11.5px] sm:text-[12px] lg:text-[13px] text-text-primary hover:text-violet-primary transition-colors block whitespace-nowrap"
+                  title="contact@brombeersystems.com"
+                >
                   contact@brombeersystems.com
                 </a>
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-[#6853A5]/12 shadow-sm flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-surface-lavender text-violet-primary flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5" />
+            {/* 2. Headquarters */}
+            <div className="p-3.5 sm:p-4 lg:p-5 rounded-2xl bg-white border border-[#6853A5]/14 shadow-sm hover:border-violet-primary/35 hover:shadow-md hover:shadow-violet-primary/5 transition-all flex items-center gap-2.5 sm:gap-3 lg:gap-3.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-xl bg-[#F4EFFC] text-violet-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+                <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 text-violet-primary" />
               </div>
-              <div className="text-xs">
-                <span className="text-text-secondary font-mono block">HEADQUARTERS</span>
-                <span className="font-semibold text-text-primary">
-                  Abu Dhabi, UAE
+              <div className="flex-1">
+                <span className="text-[10px] sm:text-[10.5px] lg:text-[11px] font-mono font-medium text-text-secondary/80 uppercase tracking-wider block mb-0.5 whitespace-nowrap">
+                  HEADQUARTERS
+                </span>
+                <span className="font-semibold text-[11px] sm:text-[11.5px] lg:text-[12px] text-text-primary block leading-tight">
+                  Gibca Tower, Khalifa Street<br />Abu Dhabi – UAE
                 </span>
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-[#6853A5]/12 shadow-sm flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-surface-lavender text-violet-primary flex items-center justify-center flex-shrink-0">
-                <Globe className="w-5 h-5" />
+            {/* 3. Company Site */}
+            <div className="p-3.5 sm:p-4 lg:p-5 rounded-2xl bg-white border border-[#6853A5]/14 shadow-sm hover:border-violet-primary/35 hover:shadow-md hover:shadow-violet-primary/5 transition-all flex items-center gap-2.5 sm:gap-3 lg:gap-3.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-xl bg-[#F4EFFC] text-violet-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Globe className="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 text-violet-primary" />
               </div>
-              <div className="text-xs">
-                <span className="text-text-secondary font-mono block">COMPANY SITE</span>
-                <a href="https://brombeersystems.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-text-primary hover:text-violet-primary">
-                  brombeersystems.com ↗
+              <div className="flex-1">
+                <span className="text-[10px] sm:text-[10.5px] lg:text-[11px] font-mono font-medium text-text-secondary/80 uppercase tracking-wider block mb-0.5 whitespace-nowrap">
+                  COMPANY SITE
+                </span>
+                <a
+                  href="https://brombeersystems.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[11.5px] sm:text-[12px] lg:text-[13px] text-text-primary hover:text-violet-primary transition-colors inline-flex items-center gap-1 whitespace-nowrap"
+                >
+                  <span>brombeersystems.com</span>
+                  <span className="text-violet-primary text-xs">↗</span>
                 </a>
               </div>
             </div>

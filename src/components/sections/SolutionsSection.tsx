@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Container } from '../layout/Container';
 import { ScrollTextReveal } from '../animations/ScrollTextReveal';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { Button } from '../ui/Button';
 
 interface SolutionCardItem {
   id: string;
@@ -147,36 +148,21 @@ export const SolutionsSection: React.FC = () => {
       <div className="absolute -bottom-24 right-1/4 w-72 h-72 rounded-full bg-gradient-to-t from-[#EDE7FB]/30 to-transparent pointer-events-none" />
 
       <Container size="wide" className="relative z-10">
-        {/* Header Block: Two-Column Header with All AI Solutions CTA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-14">
-          <div className="max-w-2xl relative">
-            {/* Soft Circular Backdrop behind Title */}
-            <div className="absolute -top-8 -left-8 w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-[#E5DEFB]/65 blur-[1px] pointer-events-none -z-10" />
+        {/* Header Block Centered Above the Solutions Cards Grid (matching Industry Solutions) */}
+        <div className="mb-10 sm:mb-12 lg:mb-14 w-full text-center relative">
+          {/* Soft Circular Backdrop centered behind Title */}
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-[#E5DEFB]/55 blur-[2px] pointer-events-none -z-10" />
 
-            <ScrollTextReveal
-              eyebrow="OUR AI SOLUTIONS"
-              title="Intelligent Technology. Purposeful Outcomes."
-              highlightWords={['Purposeful', 'Outcomes.']}
-              description="We build AI capabilities that address different stages of the business value chain, from understanding information to automating decisions and improving operational performance."
-              maxWidth="max-w-2xl"
-            />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: false, amount: 0.25, margin: '0px 0px -60px 0px' }}
-            transition={{ duration: 0.5, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="flex-shrink-0"
-          >
-            <a
-              href="/solutions"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-[#111014] border border-[#111014]/40 hover:border-violet-primary hover:bg-[#FAF9FF] transition-all duration-300 text-sm font-medium group select-none shadow-sm hover:shadow"
-            >
-              <span>All AI Solutions</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#111014] group-hover:text-violet-primary" />
-            </a>
-          </motion.div>
+          <ScrollTextReveal
+            align="center"
+            eyebrow="OUR AI SOLUTIONS"
+            title="Intelligent Technology. Purposeful Outcomes."
+            highlightWords={['Purposeful', 'Outcomes.']}
+            titleClassName="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.2] sm:leading-[1.24] mb-3.5"
+            description="We build AI capabilities that address different stages of the business value chain, from understanding information to automating decisions and improving operational performance."
+            descriptionClassName="text-text-secondary text-[14.5px] sm:text-[16px] leading-relaxed font-normal max-w-3xl lg:max-w-4xl mx-auto"
+            maxWidth="max-w-4xl lg:max-w-5xl mx-auto"
+          />
         </div>
 
         {/* 8 Cards Grid with Scroll Appearance & Interactive Micro-Animations */}
@@ -190,17 +176,14 @@ export const SolutionsSection: React.FC = () => {
           {SOLUTIONS_CARDS.map((card) => {
             const Icon = card.icon;
             return (
-              <motion.div key={card.id} variants={cardItemVariants} className="h-full">
-                <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/50 hover:shadow-2xl hover:shadow-violet-primary/14 hover:-translate-y-2 transition-all duration-300 overflow-hidden min-h-[340px]">
-                  {/* Top purple glowing line that intensifies on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-75 group-hover:opacity-100 group-hover:h-[3.5px] transition-all duration-300" />
+              <motion.div key={card.id} variants={cardItemVariants} className="h-full relative hover:z-20">
+                <div className="group relative p-7 sm:p-8 rounded-[2rem] h-full flex flex-col justify-between bg-white border border-[#E9E4F5] shadow-[0_10px_35px_-12px_rgba(118,80,232,0.08),0_1px_3px_rgba(0,0,0,0.02)] hover:border-violet-primary/70 hover:ring-1 hover:ring-violet-primary/25 hover:shadow-[0_22px_55px_-10px_rgba(118,80,232,0.22),0_12px_24px_-6px_rgba(118,80,232,0.12)] hover:-translate-y-2.5 hover:scale-[1.015] transition-all duration-300 overflow-hidden min-h-[340px]">
+                  {/* Top-Right Soft Geometry Circle (renders behind top line at z-0) */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB]/50 group-hover:scale-125 transition-transform duration-500 pointer-events-none z-0" />
 
-                  {/* Top-Right Soft Geometry Circle that expands on hover */}
-                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#EFEAFB]/40 group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
-
-                  {/* Bottom-Right Concentric Rings SVG that gently scales and rotates on hover */}
+                  {/* Bottom-Right Concentric Rings SVG that gently scales and rotates on hover (z-0) */}
                   <svg
-                    className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"
+                    className="absolute -right-6 -bottom-6 w-36 h-36 pointer-events-none select-none group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 z-0"
                     viewBox="0 0 120 120"
                     fill="none"
                     aria-hidden="true"
@@ -210,10 +193,13 @@ export const SolutionsSection: React.FC = () => {
                     <circle cx="85" cy="85" r="64" stroke="#111014" strokeWidth="1" opacity="0.1" />
                   </svg>
 
+                  {/* Top purple glowing line: placed at z-20 so it is NEVER overlapped by circular shapes, pops and radiates on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-80 group-hover:opacity-100 group-hover:h-[4px] group-hover:shadow-[0_2px_14px_rgba(118,80,232,0.75)] transition-all duration-300 z-20 pointer-events-none" />
+
                   <div className="space-y-4 relative z-10">
                     {/* Header: Circular Icon Badge with Scale Effect + Pill Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="relative w-13 h-13 sm:w-14 sm:h-14 rounded-full flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                         {/* 1. Initial State: Grayish dull circle with muted icon */}
                         <div className="absolute inset-0 rounded-full bg-[#EDE8F5]/90 border border-[#D6CEE4] flex items-center justify-center shadow-xs transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
                           <Icon className="w-6 h-6 text-[#8E869E] transition-colors duration-300" />
@@ -246,8 +232,9 @@ export const SolutionsSection: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Bottom Action Link with Divider and Arrow Spring on Hover */}
-                  <div className="pt-4 mt-6 border-t border-[#ECE8F5] flex items-center text-xs relative z-10">
+                  {/* Bottom Action Link with Shrunk Divider (comfortably covers link without penetrating concentric rings) */}
+                  <div className="pt-2 mt-6 flex flex-col items-start relative z-10">
+                    <div className="w-28 sm:w-36 h-[1px] bg-[#ECE8F5] mb-3.5" />
                     <a
                       href={`/solutions#${card.id}`}
                       className="text-xs sm:text-[13.5px] font-dm font-semibold text-violet-primary hover:text-violet-deep inline-flex items-center gap-1.5 group/link transition-colors"
@@ -261,6 +248,21 @@ export const SolutionsSection: React.FC = () => {
             );
           })}
         </motion.div>
+
+        {/* Bottom Centered CTA to View All Solutions */}
+        <div className="mt-12 sm:mt-14 flex justify-center">
+          <Button
+            asLink
+            href="/solutions"
+            variant="secondary"
+            size="md"
+            textRoll
+            icon={<ArrowRight className="w-4 h-4" />}
+            className="border-border-subtle bg-white hover:bg-white hover:border-violet-primary hover:text-violet-primary font-medium shadow-sm hover:shadow-md hover:shadow-violet-primary/10 px-6 py-2.5"
+          >
+            Explore All AI Solutions
+          </Button>
+        </div>
       </Container>
     </section>
   );

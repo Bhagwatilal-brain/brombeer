@@ -1,9 +1,9 @@
-﻿export const BRAND = {
+export const BRAND = {
   name: 'Brombeer AI',
   parentCompany: 'Brombeer IT Systems',
   tagline: 'Intelligence That Moves Businesses Forward.',
   subline: 'Practical AI for complex business challenges. Automate workflows. Unlock knowledge. Make better decisions.',
-  location: 'Abu Dhabi, United Arab Emirates',
+  location: 'Gibca Tower, Khalifa Street, Abu Dhabi – UAE',
   parentWebsite: 'https://brombeersystems.com',
   email: 'contact@brombeersystems.com',
   year: new Date().getFullYear(),

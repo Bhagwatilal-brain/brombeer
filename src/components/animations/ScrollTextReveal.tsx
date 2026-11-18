@@ -211,7 +211,7 @@ export const ScrollTextReveal: React.FC<ScrollTextRevealProps> = ({
       <motion.div variants={headlineContainerVariants}>
         <TitleTag
           className={cn(
-            'text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.08] mb-4 select-none cursor-default',
+            'text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.2] sm:leading-[1.24] mb-4 select-none cursor-default',
             titleClassName
           )}
         >

@@ -32,26 +32,31 @@ export const WHY_BROMBEER_PILLARS = [
     number: '01',
     title: 'Built Around Your Business',
     description: 'We begin with your objectives, users, workflows, and constraints. The solution follows the problem, not the other way around.',
+    image: '/images/why_brombeer_section/Built Around Your Business.png',
   },
   {
     number: '02',
     title: 'Designed for Integration',
     description: 'AI should work with the systems your organization already depends on. We design solutions with integration, interoperability, and maintainability in mind.',
+    image: '/images/why_brombeer_section/Designed for Integration_ Connected Systems.png',
   },
   {
     number: '03',
     title: 'Responsible by Design',
     description: 'We consider privacy, security, access control, explainability, testing, and human oversight as part of the implementation approach.',
+    image: '/images/why_brombeer_section/Responsible by Design Shield.png',
   },
   {
     number: '04',
     title: 'From Concept to Implementation',
     description: 'We help move promising AI ideas into practical applications through structured discovery, prototyping, development, integration, and deployment planning.',
+    image: '/images/why_brombeer_section/From Concept to Implementation Roadmap.png',
   },
   {
     number: '05',
     title: 'Focused on Measurable Value',
     description: 'We establish relevant success measures with stakeholders so the project can be evaluated against business outcomes rather than technical novelty alone.',
+    image: '/images/why_brombeer_section/Purple Analytics Dashboard_ Business Growth Metrics.png',
   },
 ];
 

@@ -19,7 +19,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPath 
         <img
           src={brmLogo}
           alt="Brombeer AI - Brombeer IT Systems"
-          className="h-8 sm:h-9 w-auto object-contain"
+          className="h-9 sm:h-[38px] w-auto object-contain"
         />
       </a>
 

@@ -1,12 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { Container } from '../layout/Container';
-import { useReducedMotion } from '../../hooks/useReducedMotion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { SlidingNumber } from '../ui/SlidingNumber';
+import { cn } from '../../lib/utils';
 
 interface MetricItem {
   value: string;
-  targetNum?: number;
-  suffix?: string;
   label: string;
   desc: string;
 }
@@ -14,240 +12,110 @@ interface MetricItem {
 const METRICS: MetricItem[] = [
   {
     value: '95%',
-    targetNum: 95,
-    suffix: '%',
     label: 'Factual Grounding',
     desc: 'Precise extraction from noisy documents',
   },
   {
     value: '38ms',
-    targetNum: 38,
-    suffix: 'ms',
     label: 'Thought Latency',
     desc: 'Real-time responsive intelligence',
   },
   {
-    value: 'Zero',
+    value: '0',
     label: 'Data Leakage',
     desc: 'Absolute tenant & sovereign isolation',
   },
   {
     value: '100%',
-    targetNum: 100,
-    suffix: '%',
     label: 'Human Command',
     desc: 'Consequential decisions stay in your hands',
   },
 ];
 
+// Dashed border dividers between columns to match the reference layout
+const COLUMN_BORDER_CLASSES = [
+  'border-b sm:border-b lg:border-b-0 border-r-0 sm:border-r border-dashed border-[#6853A5]/25',
+  'border-b sm:border-b lg:border-b-0 lg:border-r border-dashed border-[#6853A5]/25',
+  'border-b sm:border-b-0 border-r-0 sm:border-r lg:border-r border-dashed border-[#6853A5]/25',
+  'border-0',
+];
+
 export const EmotionalMetrics: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const valueRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const labelRefs = useRef<(HTMLHeadingElement | null)[]>([]);
-  const descRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-  const prefersReduced = useReducedMotion();
-
-  useEffect(() => {
-    if (prefersReduced) return;
-
-    const section = sectionRef.current;
-    if (!section) return;
-
-    let hasAnimated = false;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !hasAnimated) {
-          hasAnimated = true;
-
-          const ctx = gsap.context(() => {
-            METRICS.forEach((m, idx) => {
-              const valEl = valueRefs.current[idx];
-              const lblEl = labelRefs.current[idx];
-              const dscEl = descRefs.current[idx];
-
-              if (!valEl) return;
-
-              const tl = gsap.timeline({
-                delay: idx * 0.12,
-              });
-
-              // Slide-up with blur-to-focus entrance
-              tl.fromTo(
-                valEl,
-                {
-                  opacity: 0,
-                  y: 40,
-                  filter: 'blur(10px)',
-                  scale: 0.9,
-                },
-                {
-                  opacity: 1,
-                  y: 0,
-                  filter: 'blur(0px)',
-                  scale: 1,
-                  duration: 0.9,
-                  ease: 'power3.out',
-                }
-              );
-
-              // Numeric count-up if it's a numeric metric
-              if (typeof m.targetNum === 'number') {
-                const counter = { val: 0 };
-                tl.to(
-                  counter,
-                  {
-                    val: m.targetNum,
-                    duration: 1.4,
-                    ease: 'power2.out',
-                    onUpdate: () => {
-                      if (valEl) {
-                        valEl.textContent = `${Math.round(counter.val)}${m.suffix || ''}`;
-                      }
-                    },
-                  },
-                  '-=0.7'
-                );
-              }
-
-              // Subtle iridescent sweep across the metric value
-              tl.fromTo(
-                valEl,
-                { backgroundPosition: '160% 0%' },
-                {
-                  backgroundPosition: '-60% 0%',
-                  duration: 1.4,
-                  ease: 'power2.inOut',
-                },
-                '-=0.8'
-              );
-
-              // Staggered reveal for label & description
-              if (lblEl && dscEl) {
-                tl.fromTo(
-                  [lblEl, dscEl],
-                  { opacity: 0, y: 16 },
-                  {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    ease: 'power2.out',
-                  },
-                  '-=0.8'
-                );
-              }
-            });
-          }, section);
-
-          observer.unobserve(section);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(section);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [prefersReduced]);
-
-  const handleCardMouseEnter = (index: number) => {
-    if (prefersReduced) return;
-    const valEl = valueRefs.current[index];
-    if (!valEl) return;
-
-    gsap.to(valEl, {
-      scale: 1.07,
-      y: -3,
-      duration: 0.35,
-      ease: 'power2.out',
-    });
-
-    gsap.fromTo(
-      valEl,
-      { backgroundPosition: '160% 0%' },
-      {
-        backgroundPosition: '-60% 0%',
-        duration: 1.1,
-        ease: 'power2.inOut',
-      }
-    );
-  };
-
-  const handleCardMouseLeave = (index: number) => {
-    if (prefersReduced) return;
-    const valEl = valueRefs.current[index];
-    if (!valEl) return;
-
-    gsap.to(valEl, {
-      scale: 1,
-      y: 0,
-      duration: 0.45,
-      ease: 'power3.out',
-    });
-  };
+  const isInView = useInView(sectionRef, { once: true, margin: '-60px' });
 
   return (
-    <section ref={sectionRef} className="py-24 sm:py-32 bg-[#FAF9FF] relative overflow-hidden select-none">
-      <Container>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center max-w-5xl mx-auto">
+    <section
+      ref={sectionRef}
+      className="w-full relative overflow-hidden select-none"
+    >
+      {/* Full-Width Continuous Blueprint/Technical Metric Frame with Dashed Borders */}
+      <div className="w-full border-y border-dashed border-[#6853A5]/25 bg-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {METRICS.map((m, idx) => (
-            <div
+            <motion.div
               key={m.label}
-              ref={(el) => {
-                cardRefs.current[idx] = el;
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{
+                duration: 0.65,
+                delay: idx * 0.1,
+                ease: [0.16, 1, 0.3, 1],
               }}
-              onMouseEnter={() => handleCardMouseEnter(idx)}
-              onMouseLeave={() => handleCardMouseLeave(idx)}
-              className="space-y-2.5 p-4 rounded-3xl transition-colors duration-300 hover:bg-white/60 cursor-default group"
+              className={cn(
+                'group relative p-8 sm:p-10 md:p-12 xl:px-14 flex flex-col justify-between min-h-[180px] sm:min-h-[210px] transition-colors duration-300 hover:bg-[#FAF9FF]/60 cursor-default',
+                COLUMN_BORDER_CLASSES[idx]
+              )}
             >
-              {/* Animated GSAP Metric Value with Iridescent Sheen */}
-              <div
-                ref={(el) => {
-                  valueRefs.current[idx] = el;
-                }}
-                className="font-sans font-extrabold text-5xl sm:text-6xl text-transparent bg-clip-text bg-[linear-gradient(110deg,#28164D_0%,#28164D_35%,#7650E8_50%,#C8B8FA_56%,#7650E8_65%,#28164D_85%,#28164D_100%)] bg-[length:260%_100%] tracking-tight leading-none will-change-transform will-change-[filter] select-none"
-                style={
-                  prefersReduced
-                    ? undefined
-                    : {
-                        backgroundPosition: '160% 0%',
-                        opacity: 0,
-                      }
-                }
-              >
-                {m.value}
+              {/* Top Row: Big Number & Suffix + 4-Bar Technical Indicator */}
+              <div className="flex items-center justify-between gap-3">
+                <div className="font-sans font-bold text-4xl sm:text-5xl lg:text-[3.5rem] tracking-tight leading-none">
+                  <SlidingNumber
+                    value={m.value}
+                    trigger={isInView}
+                    delay={0.15 + idx * 0.12}
+                    digitClass="text-[#111014] font-bold"
+                    suffixClass="text-violet-primary font-bold ml-0.5"
+                  />
+                </div>
+
+                {/* Technical 4-Bar Indicator: index bar highlighted in brand violet */}
+                <div
+                  className="flex items-center gap-[3px] sm:gap-1 flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  {[0, 1, 2, 3].map((barIdx) => {
+                    const isHighlighted = barIdx === idx;
+                    return (
+                      <span
+                        key={barIdx}
+                        className={cn(
+                          'w-[2.5px] rounded-full transition-all duration-300',
+                          isHighlighted
+                            ? 'h-4 sm:h-5 bg-violet-primary shadow-sm shadow-violet-primary/30'
+                            : 'h-3 sm:h-3.5 bg-[#6853A5]/20 group-hover:bg-[#6853A5]/35'
+                        )}
+                      />
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* Metric Label */}
-              <h4
-                ref={(el) => {
-                  labelRefs.current[idx] = el;
-                }}
-                className="font-sans text-sm font-semibold text-text-primary tracking-tight transition-colors group-hover:text-violet-primary"
-                style={prefersReduced ? undefined : { opacity: 0 }}
-              >
-                {m.label}
-              </h4>
-
-              {/* Metric Description */}
-              <p
-                ref={(el) => {
-                  descRefs.current[idx] = el;
-                }}
-                className="text-xs text-text-secondary/75 font-normal max-w-[185px] mx-auto leading-relaxed"
-                style={prefersReduced ? undefined : { opacity: 0 }}
-              >
-                {m.desc}
-              </p>
-            </div>
+              {/* Bottom Row: Label (Uppercase) & Detailed Description */}
+              <div className="pt-6 sm:pt-8 text-left space-y-1">
+                <h4 className="font-sans text-[11px] sm:text-xs font-bold text-[#111014] tracking-wider uppercase transition-colors group-hover:text-violet-primary">
+                  {m.label}
+                </h4>
+                <p className="text-xs text-text-secondary/70 font-normal leading-relaxed line-clamp-2">
+                  {m.desc}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 };
+
+export default EmotionalMetrics;
