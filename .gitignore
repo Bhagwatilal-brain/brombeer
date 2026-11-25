@@ -34,6 +34,15 @@ scratch/
 public/models/
 public/videos/
 
+# Timesheets & Task Sheets (internal only, do not track)
+TIME_SHEET.md
+TIMESHEET.md
+task_sheet.md
+TASKSHEET.md
+*timesheet*.md
+*task_sheet*.md
+
+
 
 
 
