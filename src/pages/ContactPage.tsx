@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from '../components/layout/Container';
 import { Button } from '../components/ui/Button';
-import { CheckCircle2, AlertCircle, Send, Mail, MapPin, Globe } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Send, Mail, Globe, Phone } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ContactFormData } from '../types';
 
@@ -19,30 +19,70 @@ export const ContactPage: React.FC = () => {
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!formData.fullName || !formData.businessEmail || !formData.company || !formData.challenge || !formData.privacyAccepted) {
+    if (
+      !formData.fullName ||
+      !formData.businessEmail ||
+      !formData.company ||
+      !formData.challenge ||
+      !formData.privacyAccepted
+    ) {
+      setErrorMessage('Please fill in all required fields and ensure the privacy checkbox is marked.');
       setStatus('error');
       return;
     }
 
     setStatus('submitting');
+    setErrorMessage('');
 
-    setTimeout(() => {
-      setStatus('success');
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 60,
-          origin: { y: 0.6 },
-          colors: ['#7650E8', '#9E7EFF', '#C8B8FA'],
-        });
-      } catch (err) {
-        // fallback
+    try {
+      const payload = new FormData();
+      payload.append('access_key', '16a0f47e-5fd6-427b-8b13-238e6d360f44');
+      payload.append('subject', `New AI Project Enquiry: ${formData.fullName} (${formData.company})`);
+      payload.append('from_name', 'Brombeer AI Website');
+      payload.append('name', formData.fullName);
+      payload.append('email', formData.businessEmail);
+      payload.append('company', formData.company);
+      payload.append('job_title', formData.jobTitle || 'Not specified');
+      payload.append('country', formData.country);
+      payload.append('area_of_interest', formData.areaOfInterest);
+      payload.append('preferred_contact', formData.preferredContact || 'Email');
+      payload.append('message', formData.challenge);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: payload,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        try {
+          confetti({
+            particleCount: 80,
+            spread: 60,
+            origin: { y: 0.6 },
+            colors: ['#7650E8', '#9E7EFF', '#C8B8FA'],
+          });
+        } catch {
+          // fallback
+        }
+      } else {
+        setStatus('error');
+        setErrorMessage(data.message || 'We could not submit your enquiry. Please try again.');
       }
-    }, 900);
+    } catch {
+      setStatus('error');
+      setErrorMessage('A network error occurred. Please verify your connection, call +971 (02) 884 4561, or email contact@brombeersystems.com directly.');
+    }
   };
 
   return (
@@ -68,15 +108,16 @@ export const ContactPage: React.FC = () => {
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-sans font-bold text-text-primary">
-                  Enquiry Received
+                  Thank You for Connecting With Us!
                 </h3>
-                <p className="text-text-secondary text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you for contacting Brombeer AI. Your enquiry has been received. Our team will review the information and contact you if your request is within our service scope.
+                <p className="text-text-secondary text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+                  Thank you for contacting Brombeer AI. We have received your message and will connect with you soon.
                 </p>
                 <div className="pt-4">
                   <Button
                     onClick={() => {
                       setStatus('idle');
+                      setErrorMessage('');
                       setFormData({
                         fullName: '',
                         businessEmail: '',
@@ -110,7 +151,7 @@ export const ContactPage: React.FC = () => {
                 {status === 'error' && (
                   <div className="p-4 rounded-xl bg-red-50 text-red-700 text-xs flex items-center gap-2 border border-red-200">
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    <span>We could not submit your enquiry. Please check the required fields and ensure the privacy checkbox is marked.</span>
+                    <span>{errorMessage || 'We could not submit your enquiry. Please check the required fields and ensure the privacy checkbox is marked.'}</span>
                   </div>
                 )}
 
@@ -121,6 +162,7 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -135,6 +177,7 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       value={formData.businessEmail}
                       onChange={(e) => setFormData({ ...formData, businessEmail: e.target.value })}
@@ -151,6 +194,7 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="company"
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -165,6 +209,7 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="job_title"
                       value={formData.jobTitle}
                       onChange={(e) => setFormData({ ...formData, jobTitle: e.target.value })}
                       placeholder="e.g. Chief Technology Officer"
@@ -180,6 +225,7 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="country"
                       required
                       value={formData.country}
                       onChange={(e) => setFormData({ ...formData, country: e.target.value })}
@@ -193,6 +239,7 @@ export const ContactPage: React.FC = () => {
                       Area of Interest *
                     </label>
                     <select
+                      name="area_of_interest"
                       value={formData.areaOfInterest}
                       onChange={(e) => setFormData({ ...formData, areaOfInterest: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-border-subtle bg-[#FAF9FF] focus:bg-white focus:outline-none focus:ring-2 focus:ring-violet-primary/30 text-sm"
@@ -215,6 +262,7 @@ export const ContactPage: React.FC = () => {
                     Tell Us About Your Challenge *
                   </label>
                   <textarea
+                    name="message"
                     required
                     rows={4}
                     value={formData.challenge}
@@ -300,18 +348,22 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* 2. Headquarters */}
+            {/* 2. Direct Phone */}
             <div className="p-3.5 sm:p-4 lg:p-5 rounded-2xl bg-white border border-[#6853A5]/14 shadow-sm hover:border-violet-primary/35 hover:shadow-md hover:shadow-violet-primary/5 transition-all flex items-center gap-2.5 sm:gap-3 lg:gap-3.5">
               <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-xl bg-[#F4EFFC] text-violet-primary flex items-center justify-center flex-shrink-0 shadow-sm">
-                <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 text-violet-primary" />
+                <Phone className="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 text-violet-primary" />
               </div>
               <div className="flex-1">
                 <span className="text-[10px] sm:text-[10.5px] lg:text-[11px] font-mono font-medium text-text-secondary/80 uppercase tracking-wider block mb-0.5 whitespace-nowrap">
-                  HEADQUARTERS
+                  DIRECT PHONE
                 </span>
-                <span className="font-semibold text-[11px] sm:text-[11.5px] lg:text-[12px] text-text-primary block leading-tight">
-                  Gibca Tower, Khalifa Street<br />Abu Dhabi – UAE
-                </span>
+                <a
+                  href="tel:+97128844561"
+                  className="font-semibold text-[11.5px] sm:text-[12px] lg:text-[13px] text-text-primary hover:text-violet-primary transition-colors block whitespace-nowrap"
+                  title="+971 (02) 884 4561"
+                >
+                  +971 (02) 884 4561
+                </a>
               </div>
             </div>
 

@@ -82,14 +82,24 @@ export const Footer: React.FC = () => {
               Gibca Tower, Khalifa Street<br />
               Abu Dhabi – UAE
             </p>
-            <p className="pt-1">
-              <a
-                href="mailto:contact@brombeersystems.com"
-                className="text-white/80 hover:text-white transition-colors underline-offset-4 hover:underline"
-              >
-                contact@brombeersystems.com
-              </a>
-            </p>
+            <div className="pt-1 space-y-1">
+              <p>
+                <a
+                  href="mailto:contact@brombeersystems.com"
+                  className="text-white/80 hover:text-white transition-colors underline-offset-4 hover:underline"
+                >
+                  contact@brombeersystems.com
+                </a>
+              </p>
+              <p>
+                <a
+                  href="tel:+97128844561"
+                  className="text-white/80 hover:text-white transition-colors underline-offset-4 hover:underline"
+                >
+                  +971 (02) 884 4561
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 

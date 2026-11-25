@@ -204,22 +204,16 @@ export const IndustryScrollStackSection: React.FC = () => {
                       className="pointer-events-none absolute inset-x-8 xl:inset-x-12 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#9581EF]/55 to-transparent"
                     />
 
-                    {/* Split Content: Left (Number + Kicker + Heading + Subtext), Right (16:9 Image) */}
+                    {/* Split Content: Left (Heading + Subtext), Right (16:9 Image) */}
                     <div className="relative z-10 grid grid-cols-12 gap-5 xl:gap-8 items-center h-full">
                       {/* LEFT COLUMN */}
-                      <div className="col-span-6 flex items-start gap-3.5 xl:gap-5">
-                        <span className="font-sans font-bold text-3xl xl:text-4xl text-[#9581EF] leading-none pt-0.5 shrink-0 tabular-nums select-none">
-                          {card.number}
-                        </span>
-
-                        <div className="flex flex-col">
-                          <h3 className="font-sans text-[17px] sm:text-[19px] lg:text-[21px] xl:text-[23px] text-[#7650E8] font-bold tracking-tight leading-[1.22] mb-2">
-                            {card.title}
-                          </h3>
-                          <p className="text-[12px] sm:text-[13px] xl:text-[14px] font-dm leading-relaxed text-[#665D82] font-normal">
-                            {card.description}
-                          </p>
-                        </div>
+                      <div className="col-span-6 flex flex-col justify-center">
+                        <h3 className="font-sans text-[17px] sm:text-[19px] lg:text-[21px] xl:text-[23px] text-[#7650E8] font-bold tracking-tight leading-[1.22] mb-2">
+                          {card.title}
+                        </h3>
+                        <p className="text-[12px] sm:text-[13px] xl:text-[14px] font-dm leading-relaxed text-[#665D82] font-normal">
+                          {card.description}
+                        </p>
                       </div>
 
                       {/* RIGHT COLUMN: Image */}
@@ -283,18 +277,13 @@ export const IndustryScrollStackSection: React.FC = () => {
                   zIndex: idx + 1,
                 }}
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <span className="font-sans font-bold text-2xl sm:text-3xl text-[#9581EF] leading-none pt-0.5 shrink-0">
-                    {card.number}
-                  </span>
-                  <div>
-                    <h3 className="font-sans text-lg sm:text-xl text-[#7650E8] font-bold tracking-tight mb-1.5">
-                      {card.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-dm leading-relaxed text-[#665D82]">
-                      {card.description}
-                    </p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="font-sans text-lg sm:text-xl text-[#7650E8] font-bold tracking-tight mb-1.5">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-dm leading-relaxed text-[#665D82]">
+                    {card.description}
+                  </p>
                 </div>
 
                 <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden border border-[#E1DFEF] bg-[#F8F6FF]">

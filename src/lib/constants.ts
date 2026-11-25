@@ -6,6 +6,8 @@ export const BRAND = {
   location: 'Gibca Tower, Khalifa Street, Abu Dhabi – UAE',
   parentWebsite: 'https://brombeersystems.com',
   email: 'contact@brombeersystems.com',
+  phone: '+971 (02) 884 4561',
+  phoneTel: 'tel:+97128844561',
   year: new Date().getFullYear(),
 };
 

@@ -52,6 +52,7 @@ export const FOOTER_SECTIONS = [
     title: 'Contact & Legal',
     links: [
       { label: 'Email: contact@brombeersystems.com', href: 'mailto:contact@brombeersystems.com' },
+      { label: 'Phone: +971 (02) 884 4561', href: 'tel:+97128844561' },
       { label: 'Location: Abu Dhabi, UAE', href: '/contact' },
       { label: 'Brombeer IT Systems ↗', href: 'https://brombeersystems.com', isExternal: true },
       { label: 'Privacy Policy', href: '/privacy' },

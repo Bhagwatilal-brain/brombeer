@@ -122,7 +122,8 @@ export const PrivacyPage: React.FC = () => {
             <h3 className="text-xl font-sans font-bold text-text-primary">11. Contact Us</h3>
             <p>For privacy-related enquiries, contact:</p>
             <div className="p-4 rounded-xl bg-white border border-border-subtle/40 space-y-1 text-xs">
-              <p><strong>Email:</strong> contact@brombeersystems.com</p>
+              <p><strong>Email:</strong> <a href="mailto:contact@brombeersystems.com" className="text-violet-primary hover:underline">contact@brombeersystems.com</a></p>
+              <p><strong>Phone:</strong> <a href="tel:+97128844561" className="text-violet-primary hover:underline">+971 (02) 884 4561</a></p>
               <p><strong>Legal Entity:</strong> Brombeer IT Systems</p>
               <p><strong>Address:</strong> Gibca Tower, Khalifa Street, Abu Dhabi – UAE</p>
             </div>
