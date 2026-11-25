@@ -164,19 +164,13 @@ export const WhyBrombeerSection: React.FC = () => {
                     {/* Clean Split Content: Left (Number + Heading + Subtext below), Right (Image) */}
                     <div className="relative z-10 grid grid-cols-12 gap-9 xl:gap-14 items-center h-full">
                       {/* LEFT COLUMN */}
-                      <div className="col-span-6 flex items-start gap-6">
-                        <span className="font-sans font-bold text-4xl xl:text-[42px] text-[#9581EF] leading-none pt-1 shrink-0 tabular-nums select-none">
-                          {pillar.number}
-                        </span>
-
-                        <div className="flex flex-col">
-                          <h3 className="font-sans text-[28px] xl:text-[34px] text-[#7650E8] font-bold tracking-tight leading-[1.18] mb-4">
-                            {pillar.title}
-                          </h3>
-                          <p className="text-[15px] xl:text-[16.5px] font-dm leading-relaxed text-[#665D82] font-normal max-w-xl">
-                            {pillar.description}
-                          </p>
-                        </div>
+                      <div className="col-span-6 flex flex-col justify-center">
+                        <h3 className="font-sans text-[28px] xl:text-[34px] text-[#7650E8] font-bold tracking-tight leading-[1.18] mb-4">
+                          {pillar.title}
+                        </h3>
+                        <p className="text-[15px] xl:text-[16.5px] font-dm leading-relaxed text-[#665D82] font-normal max-w-xl">
+                          {pillar.description}
+                        </p>
                       </div>
 
                       {/* RIGHT COLUMN: Image */}
@@ -236,18 +230,13 @@ export const WhyBrombeerSection: React.FC = () => {
                   zIndex: idx + 1,
                 }}
               >
-                <div className="flex items-start gap-4 mb-5">
-                  <span className="font-sans font-bold text-2xl sm:text-3xl text-[#9581EF] leading-none pt-0.5 shrink-0">
-                    {pillar.number}
-                  </span>
-                  <div>
-                    <h3 className="font-sans text-xl sm:text-2xl text-[#7650E8] font-bold tracking-tight mb-2">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-dm leading-relaxed text-[#665D82]">
-                      {pillar.description}
-                    </p>
-                  </div>
+                <div className="mb-5">
+                  <h3 className="font-sans text-xl sm:text-2xl text-[#7650E8] font-bold tracking-tight mb-2">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-dm leading-relaxed text-[#665D82]">
+                    {pillar.description}
+                  </p>
                 </div>
                 <div className="aspect-[16/9] w-full rounded-xl overflow-hidden border border-[#E1DFEF] bg-[#F8F6FF]">
                   <img
