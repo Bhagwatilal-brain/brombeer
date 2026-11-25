@@ -7,33 +7,50 @@ import brmLogo from '../../assets/images/brombeer-logo-brand.png';
 
 interface MobileNavigationProps {
   currentPath?: string;
+  scrolled?: boolean;
 }
 
-export const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPath = '/' }) => {
+export const MobileNavigation: React.FC<MobileNavigationProps> = ({
+  currentPath = '/',
+  scrolled = false,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="md:hidden flex items-center justify-between w-full">
-      {/* Brand Logo */}
-      <a href="/" className="flex items-center group select-none py-1">
-        <img
-          src={brmLogo}
-          alt="Brombeer AI - Brombeer IT Systems"
-          className="h-9 sm:h-[38px] w-auto object-contain"
-        />
+      {/* Brand Logo — continuous scroll-driven GPU scale */}
+      <a href="/" className="flex items-center group select-none py-0.5">
+        <span
+          className="inline-flex items-center origin-left will-change-transform"
+          style={{
+            transform: 'scale(calc(1 - var(--nav-p, 0) * 0.14))',
+          }}
+        >
+          <img
+            src={brmLogo}
+            alt="Brombeer AI - Brombeer IT Systems"
+            className="h-9 sm:h-[38px] w-auto object-contain"
+          />
+        </span>
       </a>
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 rounded-xl text-text-primary hover:bg-surface-lavender transition-colors"
+        className="p-2 rounded-full text-text-primary hover:bg-surface-lavender transition-colors"
         aria-label="Toggle menu"
       >
-        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="fixed inset-x-0 top-16 bg-white/95 backdrop-blur-xl border-b border-border-subtle p-6 space-y-5 shadow-2xl z-50">
+        <div
+          className={`fixed bg-white/95 backdrop-blur-xl p-6 space-y-5 shadow-2xl z-50 transition-all duration-300 ${
+            scrolled
+              ? 'inset-x-4 top-[78px] rounded-2xl border border-[#6853A5]/15'
+              : 'inset-x-0 top-20 border-b border-border-subtle'
+          }`}
+        >
           <nav className="flex flex-col space-y-2">
             {NAV_LINKS.map((link) => (
               <a
@@ -49,7 +66,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPath 
                 {link.label}
               </a>
             ))}
-            <a
+            {/* <a
               href="/responsible-ai"
               onClick={() => setIsOpen(false)}
               className={`text-base font-medium py-2 px-3 rounded-lg transition-colors ${
@@ -59,7 +76,7 @@ export const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPath 
               }`}
             >
               Responsible AI
-            </a>
+            </a> */}
           </nav>
 
           <div className="pt-2 border-t border-border-subtle">

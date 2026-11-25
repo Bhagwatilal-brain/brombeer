@@ -1,19 +1,21 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Sparkles } from "lucide-react"
 
 export type TiltStackCard = {
+  number?: string
   title: string
-  /** Small line above the title, e.g. "7 days · Dolomites". */
+  /** Small line above the title, e.g. "TACTICAL AIR-GAP · ZERO EGRESS". */
   kicker?: string
   description: string
   image: string
   alt?: string
   /** Short chips under the copy. */
   tags?: string[]
-  /** Big figure on the right, e.g. "€1,840". */
+  /** Big figure on the right, e.g. "<80ms". */
   price?: string
   priceNote?: string
   cta?: string
@@ -26,6 +28,7 @@ export type TiltStackScrollProps = {
   cards: TiltStackCard[]
   eyebrow?: string
   heading?: string
+  subheading?: string
   /** Height of the sticky stage; the section scrolls one stage per card. */
   height?: string
   /** Settle on the nearest card when scrolling stops. */
@@ -49,11 +52,11 @@ export function pose(p: number, i: number, reduced: boolean): Pose {
     return { y: 0, scale: 1, rx: 0, rz: 0, shade: Math.min(depth, 1) * 0.5, opacity: enter >= 1 ? 1 : enter }
   const e = easeOut(enter)
   return {
-    y: (1 - e) * 130 - depth * 3.2,
-    scale: (1 - depth * 0.07) * (0.9 + 0.1 * e),
-    rx: (1 - e) * 22 - depth * 9,
-    rz: (1 - e) * (i % 2 ? 5 : -5) + 0,
-    shade: Math.min(depth, 2) * 0.34,
+    y: (1 - e) * 115 - depth * 1.5,
+    scale: (1 - depth * 0.05) * (0.94 + 0.06 * e),
+    rx: (1 - e) * 14 - depth * 5,
+    rz: (1 - e) * (i % 2 ? 3 : -3),
+    shade: Math.min(depth, 2) * 0.28,
     opacity: depth > 2.6 ? clamp((3 - depth) / 0.4, 0, 1) : 1,
   }
 }
@@ -64,72 +67,58 @@ export const toTransform = (q: Pose) =>
 export const pad2 = (n: number) => (n < 10 ? "0" : "") + n
 // #endregion
 
-const SERIF = '"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif'
-const MONO = 'ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace'
-
 const CSS =
   ".tss-track{position:relative;width:100%}" +
-  ".tss-stage{position:sticky;top:0;display:flex;flex-direction:column;overflow:hidden;background:var(--color-background);color:var(--color-foreground);box-sizing:border-box;padding:clamp(20px,4vh,44px) 16px clamp(20px,4vh,40px)}" +
-  ".tss-head{position:relative;z-index:5;width:100%;max-width:1040px;margin:0 auto 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}" +
-  ".tss-eyebrow{font:500 11px/1 " + MONO + ";letter-spacing:.2em;text-transform:uppercase;color:var(--color-muted-foreground);margin:0 0 12px}" +
-  ".tss-h{font:400 clamp(30px,5.2vw,58px)/.98 " + SERIF + ";letter-spacing:-.02em;margin:0;max-width:16ch}" +
-  ".tss-h span{display:inline-block}" +
-  ".tss-count{flex:none;font:500 12px/1 " + MONO + ";letter-spacing:.12em;color:var(--color-muted-foreground);display:flex;align-items:center;gap:12px}" +
-  ".tss-count b{font-weight:500;color:var(--color-foreground);font-size:22px;letter-spacing:0}" +
-  ".tss-rail{width:90px;height:2px;border-radius:2px;background:var(--color-border);overflow:hidden}" +
-  ".tss-rail i{display:block;height:100%;width:100%;background:var(--color-foreground);transform-origin:0 50%;transform:scaleX(0)}" +
-  ".tss-deck{position:relative;flex:1;width:100%;max-width:1040px;margin:clamp(24px,6vh,60px) auto 0;min-height:0}" +
-  ".tss-card{position:absolute;inset:0;border-radius:30px;overflow:hidden;transform-origin:50% 0;will-change:transform;backface-visibility:hidden;background:#0c0c0e;color:#fff;" +
-  "box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 0 0 1px rgba(0,0,0,.08),0 50px 90px -40px rgba(8,10,20,.55),0 18px 40px -20px rgba(8,10,20,.45)}" +
-  ".tss-card>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;transform:scale(1.06)}" +
-  ".tss-card::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,7,12,.82) 0%,rgba(6,7,12,.55) 38%,rgba(6,7,12,0) 70%),linear-gradient(0deg,rgba(6,7,12,.6),rgba(6,7,12,0) 45%)}" +
-  ".tss-shade{position:absolute;inset:0;z-index:4;background:#05060a;opacity:0;pointer-events:none}" +
-  ".tss-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(22px,3.4vw,44px)}" +
-  ".tss-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}" +
-  ".tss-num{font:400 clamp(56px,9vw,112px)/.8 " + SERIF + ";letter-spacing:-.04em;color:rgba(255,255,255,.92);font-feature-settings:'lnum'}" +
-  ".tss-kick{font:500 11px/1 " + MONO + ";letter-spacing:.18em;text-transform:uppercase;padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap}" +
-  ".tss-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:28px}" +
-  ".tss-copy{max-width:470px}" +
-  ".tss-title{font:400 clamp(32px,4.6vw,60px)/.96 " + SERIF + ";letter-spacing:-.02em;margin:0 0 14px}" +
-  ".tss-desc{font:400 clamp(14px,1.3vw,16px)/1.55 ui-sans-serif,system-ui,sans-serif;color:rgba(255,255,255,.76);margin:0 0 18px}" +
-  ".tss-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}" +
-  ".tss-tags li{display:flex;align-items:center;gap:7px;font:500 12px/1 ui-sans-serif,system-ui,sans-serif;padding:8px 11px;border-radius:999px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.14)}" +
-  ".tss-tags li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--tss-accent)}" +
-  ".tss-buy{flex:none;text-align:right}" +
-  ".tss-price{font:400 clamp(28px,3.4vw,44px)/1 " + SERIF + ";letter-spacing:-.02em}" +
-  ".tss-note{display:block;font:500 11px/1 " + MONO + ";letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:8px 0 16px}" +
-  ".tss-cta{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 ui-sans-serif,system-ui,sans-serif;color:#0b0b0d;background:var(--tss-accent);padding:14px 18px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;" +
-  "box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 10px 24px -10px var(--tss-accent);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}" +
-  ".tss-cta:hover{transform:translateY(-2px) scale(1.03)}" +
-  ".tss-cta:active{transform:scale(.97)}" +
-  ".tss-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}" +
-  ".tss-cta svg{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}" +
-  ".tss-cta:hover svg{transform:translateX(3px)}" +
-  "@media (max-width:640px){.tss-bottom{flex-direction:column;align-items:flex-start;gap:18px}.tss-buy{text-align:left;display:flex;align-items:center;gap:16px;width:100%;justify-content:space-between}.tss-note{margin:6px 0 0}" +
-  ".tss-card::before{background:linear-gradient(0deg,rgba(6,7,12,.92) 0%,rgba(6,7,12,.6) 55%,rgba(6,7,12,.1) 100%)}.tss-desc{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.tss-head{flex-direction:column;align-items:flex-start;gap:14px}.tss-card{border-radius:24px}}" +
-  "@media (prefers-reduced-motion:reduce){.tss-cta,.tss-cta svg{transition:none}}"
+  ".tss-stage{position:relative;width:100%;height:calc(100vh - 84px);min-height:560px;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;padding:clamp(20px,3vh,36px) 24px clamp(24px,3vh,36px);overflow:hidden;background:var(--color-background);color:var(--color-foreground)}" +
+  ".tss-head{position:relative;z-index:10;width:100%;max-width:960px;margin:0 auto clamp(14px,2vh,22px);text-align:center;flex:none}" +
+  ".tss-deck{position:relative;width:100%;max-width:1040px;margin:0 auto;height:340px;min-height:320px;max-height:380px}" +
+  "@media (min-width:1280px){.tss-deck{height:370px;max-height:400px}}" +
+  ".tss-card{position:absolute;inset:0;border-radius:26px;overflow:hidden;transform-origin:50% 0;will-change:transform;backface-visibility:hidden;" +
+  "background:linear-gradient(135deg,#ffffff 0%,#fdfcff 50%,#f6f2ff 100%);border:1px solid #dfd8f5;border-bottom:3px solid #cec3f2;" +
+  "box-shadow:0 20px 50px -20px rgba(118,80,232,.16),0 1px 0 rgba(255,255,255,.9) inset;padding:clamp(18px,2.5vw,32px) clamp(20px,3.5vw,48px);color:#111014}" +
+  ".tss-card-bevel{pointer-events:none;position:absolute;inset-inline:2.5rem;top:0;height:1.5px;background:linear-gradient(90deg,transparent 0%,rgba(149,129,239,0.55) 50%,transparent 100%)}" +
+  ".tss-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(18px,2.5vw,36px);align-items:center;height:100%;position:relative;z-index:10}" +
+  ".tss-left{grid-column:span 6;display:flex;align-items:flex-start;gap:clamp(12px,1.8vw,22px)}" +
+  ".tss-number{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(28px,3vw,40px);color:#9581EF;line-height:1;padding-top:2px;flex-shrink:0;user-select:none;font-variant-numeric:tabular-nums}" +
+  ".tss-info{display:flex;flex-direction:column}" +
+  ".tss-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(17px,1.6vw,22px);line-height:1.25;letter-spacing:-.02em;color:#7650E8;margin:0 0 8px}" +
+  ".tss-desc{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(12px,1vw,14px);line-height:1.5;color:#665D82;margin:0}" +
+  ".tss-right{grid-column:span 6}" +
+  ".tss-img-wrap{position:relative;aspect-ratio:16/9;max-height:210px;width:100%;border-radius:18px;overflow:hidden;border:1px solid #E1DFEF;background:#F8F6FF;box-shadow:0 18px 42px -16px rgba(118,80,232,.2)}" +
+  ".tss-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}" +
+  ".tss-shade{position:absolute;inset:0;z-index:20;background:#2E1A6B;opacity:0;pointer-events:none;border-radius:26px}" +
+  "@media (max-width:768px){" +
+  ".tss-stage{padding:14px 12px 16px;height:auto;min-height:540px}" +
+  ".tss-deck{height:360px}" +
+  ".tss-card{padding:16px;border-radius:20px}" +
+  ".tss-grid{display:flex;flex-direction:column;gap:10px;justify-content:center}" +
+  ".tss-left{gap:10px}" +
+  ".tss-number{font-size:22px}" +
+  ".tss-title{font-size:15px;margin-bottom:4px}" +
+  ".tss-desc{font-size:11.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}" +
+  ".tss-img-wrap{aspect-ratio:16/9;max-height:130px}" +
+  "}" +
+  "@media (prefers-reduced-motion:reduce){.tss-card{transition:none}}"
 
 export default function TiltStackScroll({
   cards,
-  eyebrow = "Routes",
-  heading = "Five ways up the mountain",
-  height = "100svh",
-  snap = true,
+  eyebrow,
+  heading = "Tactical Edge Inference Under. Extreme Electronic Jamming.",
+  subheading,
+  height = "calc(100vh - 84px)",
+  snap = false,
   className = "",
 }: TiltStackScrollProps) {
   const track = useRef(null as HTMLDivElement | null)
+  const stage = useRef(null as HTMLElement | null)
   const els = useRef([] as (HTMLElement | null)[])
   const shades = useRef([] as (HTMLDivElement | null)[])
-  const count = useRef(null as HTMLElement | null)
-  const rail = useRef(null as HTMLElement | null)
-  const headWords = useRef(null as HTMLHeadingElement | null)
   const n = cards.length
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
     let reduced = mq.matches
-    let last = -1
     let p = 0
 
     const paint = () => {
@@ -142,34 +131,29 @@ export default function TiltStackScroll({
         const sh = shades.current[i]
         if (sh) sh.style.opacity = String(q.shade)
       }
-      const idx = Math.round(p)
-      if (idx !== last && count.current) {
-        last = idx
-        count.current.textContent = pad2(idx + 1)
-      }
-      if (rail.current) rail.current.style.transform = "scaleX(" + (n > 1 ? p / (n - 1) : 1).toFixed(4) + ")"
     }
 
+    // GSAP ScrollTrigger with rock-solid PINNING
     const trigger = ScrollTrigger.create({
       trigger: track.current,
-      start: "top top",
+      start: "top 84px",
       end: "bottom bottom",
+      pin: stage.current,
+      pinSpacing: false,
+      invalidateOnRefresh: true,
       onUpdate: (self) => {
         p = self.progress * Math.max(n - 1, 0)
         paint()
       },
-      snap: snap && !reduced && n > 1 ? { snapTo: 1 / (n - 1), duration: { min: 0.25, max: 0.7 }, delay: 0.08, ease: "power2.inOut" } : undefined,
+      snap: snap && !reduced && n > 1 ? { snapTo: 1 / (n - 1), duration: { min: 0.25, max: 0.6 }, delay: 0.1, ease: "power2.inOut" } : undefined,
     })
     paint()
 
-    const ctx = gsap.context(() => {
-      if (reduced) return
-      const intro = gsap.timeline({ defaults: { ease: "expo.out" } })
-      const words = headWords.current ? headWords.current.querySelectorAll(".tss-w") : []
-      intro.from(words, { yPercent: 110, opacity: 0, rotate: 4, duration: 1.1, stagger: 0.06 }, 0.1)
-      if (els.current[0]) intro.from(els.current[0], { yPercent: 18, rotateX: 18, scale: 0.92, opacity: 0, duration: 1.4, clearProps: "rotateX" }, 0.25)
-      intro.eventCallback("onComplete", paint)
-    })
+    // Refresh ScrollTrigger after DOM has settled
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh()
+      paint()
+    }, 150)
 
     const on = () => {
       reduced = mq.matches
@@ -177,36 +161,83 @@ export default function TiltStackScroll({
     }
     mq.addEventListener("change", on)
     return () => {
+      clearTimeout(refreshTimer)
       mq.removeEventListener("change", on)
       trigger.kill()
-      ctx.revert()
-      paint()
     }
   }, [n, snap])
 
-  return (
-    <div ref={track} className={"tss-track " + className} style={{ height: "calc(" + height + " * " + Math.max(n, 1) + ")" }}>
-      <style>{CSS}</style>
-      <section className="tss-stage" style={{ height }} aria-roledescription="carousel" aria-label={heading}>
-        <header className="tss-head">
-          <div>
-            <p className="tss-eyebrow">{eyebrow}</p>
-            <h2 className="tss-h" ref={headWords}>
-              {heading.split(" ").map((w, i) => (
-                <span key={i} style={{ overflow: "hidden", paddingBottom: 4 }}>
-                  <span className="tss-w">{w}</span>
-                  {"\u00A0"}
-                </span>
-              ))}
-            </h2>
-          </div>
-          <div className="tss-count" aria-hidden="true">
-            <b ref={count}>01</b> / {pad2(n)}
-            <span className="tss-rail">
-              <i ref={rail} />
+  // Split heading cleanly into base + signature Brombeer gradient accent
+  const renderHeading = (text: string) => {
+    // If text has periods (e.g. "Sentence one. Sentence two.")
+    if (text.includes(".")) {
+      const parts = text.split(".").map(s => s.trim()).filter(Boolean)
+      if (parts.length >= 2) {
+        return (
+          <>
+            <span>{parts[0]}. </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-primary via-[#6366F1] to-violet-deep">
+              {parts.slice(1).join(". ")}.
             </span>
-          </div>
+          </>
+        )
+      }
+    }
+    const words = text.split(" ")
+    if (words.length <= 3) {
+      return (
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-primary via-[#6366F1] to-violet-deep">
+          {text}
+        </span>
+      )
+    }
+    const cutoff = Math.max(words.length - 3, 2)
+    const firstPart = words.slice(0, cutoff).join(" ")
+    const secondPart = words.slice(cutoff).join(" ")
+    return (
+      <>
+        <span>{firstPart}{" "}</span>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-primary via-[#6366F1] to-violet-deep">
+          {secondPart}
+        </span>
+      </>
+    )
+  }
+
+  return (
+    <div
+      ref={track}
+      className={"tss-track " + className}
+      style={{ height: "calc(100vh + " + Math.max(n - 1, 1) * 80 + "vh)" }}
+    >
+      <style>{CSS}</style>
+      <section
+        ref={stage}
+        className="tss-stage"
+        aria-roledescription="carousel"
+        aria-label={heading}
+      >
+        {/* Brombeer Brand Styled Header with Generous White Space Above & Below */}
+        <header className="tss-head text-center">
+          {eyebrow && (
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#6853A5]/20 shadow-xs text-xs font-semibold text-violet-primary mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-violet-primary" />
+              <span className="font-mono uppercase text-[11px] tracking-wider">
+                {eyebrow}
+              </span>
+            </div>
+          )}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.16] text-center mx-auto">
+            {renderHeading(heading)}
+          </h2>
+          {subheading && (
+            <p className="text-[#666371] text-xs sm:text-sm font-dm leading-relaxed mt-2 max-w-2xl mx-auto text-center">
+              {subheading}
+            </p>
+          )}
         </header>
+
+        {/* 3D Stacking Deck - Fits 100% inside stage without overflowing */}
         <div className="tss-deck">
           {cards.map((c, i) => (
             <article
@@ -215,44 +246,41 @@ export default function TiltStackScroll({
               ref={(el) => {
                 els.current[i] = el
               }}
-              style={{ zIndex: i + 1, ["--tss-accent" as string]: c.accent ?? "#f4d35e" }}
+              style={{ zIndex: i + 1, ["--tss-accent" as string]: c.accent ?? "#7650E8" }}
               aria-roledescription="slide"
               aria-label={pad2(i + 1) + " of " + pad2(n) + ": " + c.title}
             >
-              <img src={c.image} alt={c.alt ?? ""} draggable={false} loading={i < 2 ? "eager" : "lazy"} />
-              <div className="tss-body">
-                <div className="tss-top">
-                  <span className="tss-num">{pad2(i + 1)}</span>
-                  {c.kicker && <span className="tss-kick">{c.kicker}</span>}
-                </div>
-                <div className="tss-bottom">
-                  <div className="tss-copy">
-                    <h3 className="tss-title">{c.title}</h3>
-                    <p className="tss-desc">{c.description}</p>
-                    {c.tags && c.tags.length > 0 && (
-                      <ul className="tss-tags">
-                        {c.tags.map((t) => (
-                          <li key={t}>{t}</li>
-                        ))}
-                      </ul>
-                    )}
+              {/* Crisp Top-Edge 3D Bevel Light Line */}
+              <div aria-hidden="true" className="tss-card-bevel" />
+
+              {/* Clean Split Content: Left (Number + Heading + Subtext), Right (Image) */}
+              <div className="tss-grid">
+                {/* LEFT COLUMN */}
+                <div className="tss-left">
+                  <span className="tss-number">
+                    {c.number ?? pad2(i + 1)}
+                  </span>
+
+                  <div className="tss-info">
+                    <h3 className="tss-title">
+                      {c.title}
+                    </h3>
+                    <p className="tss-desc">
+                      {c.description}
+                    </p>
                   </div>
-                  {(c.price || c.cta) && (
-                    <div className="tss-buy">
-                      {c.price && (
-                        <div>
-                          <div className="tss-price">{c.price}</div>
-                          {c.priceNote && <span className="tss-note">{c.priceNote}</span>}
-                        </div>
-                      )}
-                      <a className="tss-cta" href={c.href ?? "#"} onClick={c.href ? undefined : (e) => e.preventDefault()}>
-                        {c.cta ?? "View route"}
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
-                    </div>
-                  )}
+                </div>
+
+                {/* RIGHT COLUMN: Image */}
+                <div className="tss-right">
+                  <div className="tss-img-wrap">
+                    <img
+                      src={c.image}
+                      alt={c.alt ?? c.title}
+                      draggable={false}
+                      loading={i < 2 ? "eager" : "lazy"}
+                    />
+                  </div>
                 </div>
               </div>
               <div

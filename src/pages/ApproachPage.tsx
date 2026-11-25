@@ -1,201 +1,64 @@
 import React from 'react';
 import { Container } from '../components/layout/Container';
-import { PROCESS_PHASES, PRINCIPLES, SUCCESS_METRICS } from '../data/siteContent';
 import { Button } from '../components/ui/Button';
-import { ArrowRight, CheckCircle2, ShieldCheck, Compass, Sparkles, TrendingUp, BarChart3, Clock, CheckCheck } from 'lucide-react';
-import { ScrollReveal } from '../components/animations/ScrollReveal';
+import { ArrowRight } from 'lucide-react';
+import { CTA3DScene } from '../components/animations/CTA3DScene';
+import { ApproachHeroSection } from '../components/sections/approach/ApproachHeroSection';
+import { ApproachPhasesAccordionSection } from '../components/sections/approach/ApproachPhasesAccordionSection';
+import { ApproachOutcomeTimelineSection } from '../components/sections/approach/ApproachOutcomeTimelineSection';
+import { ApproachPrinciplesSection } from '../components/sections/approach/ApproachPrinciplesSection';
 
 export const ApproachPage: React.FC = () => {
   return (
-    <div className="py-12 sm:py-20 space-y-24 bg-background">
-      {/* Hero Header */}
+    <div className="bg-background relative overflow-x-clip space-y-20 sm:space-y-28 pb-20">
+      {/* 1. Atmospheric Hero Section with Interactive 3D Delivery Engine & Phase Jump Pills */}
+      <ApproachHeroSection />
+
+      {/* 2. Six Delivery Phases Interactive Horizontal Accordion (matching Home Page Industry Solutions deck) */}
+      <ApproachPhasesAccordionSection />
+
+      {/* 3. Outcome-Focused Metrics Horizontal Scroll Timeline (Define Outcomes Before Measuring Results) */}
+      <ApproachOutcomeTimelineSection />
+
+      {/* 4. Our Principles - Interactive Fanned Arc Deck */}
+      <ApproachPrinciplesSection />
+
+      {/* Process CTA with Real-Time 3D Interactive Scene & Atmospheric Gradients */}
       <Container>
-        <div className="max-w-3xl space-y-6">
-          <span className="eyebrow block">OUR APPROACH</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold text-text-primary tracking-tight leading-[1.05]">
-            A Clear Path from AI Idea to{' '}
-            <span className="text-violet-primary">
-              Implementation.
-            </span>
-          </h1>
-          <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
-            AI projects work best when business objectives, technical decisions, risk management, and delivery expectations are aligned from the beginning. Brombeer AI follows a structured approach that helps organizations evaluate opportunities, test assumptions, and develop solutions suited to their operating environment.
-          </p>
-          <div className="pt-2">
-            <Button
-              asLink
-              href="/contact"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight className="w-4 h-4" />}
-            >
-              Start an AI Discussion
-            </Button>
-          </div>
-        </div>
-      </Container>
+        <div className="rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-b from-[#F6F3FE] via-[#F0EAFB] to-[#F7F4FD] border border-[#6853A5]/20 p-8 sm:p-12 md:p-16 lg:p-20 text-center relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(118,80,232,0.12)]">
+          {/* Top purple glowing hairline accent */}
+          <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7650E8] to-transparent opacity-80" />
 
-      {/* 6 Phases Detailed Breakdown */}
-      <Container>
-        <div className="space-y-10">
-          <div className="border-b border-border-subtle/40 pb-6">
-            <span className="text-xs uppercase tracking-wider text-violet-primary font-mono font-semibold block mb-2">
-              METHODICAL EXECUTION
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-bold text-text-primary">
-              The Six-Phase Delivery Lifecycle
+          {/* Professional Real-time 3D Interactive Scene (Neural Wave + Floating Glass Knot + Gyroscopic Core) */}
+          <CTA3DScene className="opacity-95" />
+
+          {/* Soft Radial Vignette Mask to protect center readability */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_75%_at_50%_50%,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.45)_55%,transparent_100%)] pointer-events-none" />
+
+          {/* Soft atmospheric gradient halos on outer bounds */}
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-white/70 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-violet-light/25 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+            <span className="eyebrow inline-block">LET'S COLLABORATE</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-[#111014] tracking-[-0.03em] leading-[1.1]">
+              Let’s Define the Right First Step.
             </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {PROCESS_PHASES.map((phase) => (
-              <div
-                key={phase.number}
-                className="p-8 sm:p-10 rounded-3xl bg-white border border-[#6853A5]/15 shadow-sm hover:shadow-xl hover:border-violet-primary/40 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div className="space-y-5">
-                  <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-2xl bg-surface-lavender text-violet-primary font-semibold flex items-center justify-center text-sm border border-violet-light/30">
-                      {phase.number}
-                    </span>
-                    <span className="text-xs font-mono uppercase tracking-widest text-text-secondary">
-                      PHASE {phase.number}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-sans font-bold text-text-primary tracking-tight">
-                      Phase {phase.number}: {phase.name}
-                    </h3>
-                    <p className="text-sm font-medium text-violet-primary mt-1">
-                      {phase.tagline}
-                    </p>
-                    <p className="text-xs sm:text-sm text-text-secondary mt-3 leading-relaxed">
-                      {phase.description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-2 pt-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-text-primary block">
-                      Core Activities
-                    </span>
-                    <ul className="space-y-1.5">
-                      {phase.activities.map((act, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-text-secondary">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-violet-primary flex-shrink-0 mt-0.5" />
-                          <span>{act}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-border-subtle/40 bg-surface-lavender/30 p-4 rounded-2xl border border-white">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-violet-deep block mb-1">
-                    Deliverable:
-                  </span>
-                  <p className="text-xs text-text-primary font-medium leading-relaxed">
-                    {phase.deliverable}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Container>
-
-      {/* How We Measure Success */}
-      <section className="py-16 bg-[#FAF9FF] border-y border-border-subtle/30">
-        <Container>
-          <div className="max-w-3xl mb-12 space-y-3">
-            <span className="eyebrow block">OUTCOME-FOCUSED METRICS</span>
-            <h2 className="text-3xl sm:text-4xl font-sans font-bold text-text-primary tracking-tight">
-              Define Outcomes Before Measuring Results.
-            </h2>
-            <p className="text-text-secondary text-sm sm:text-base leading-relaxed">
-              Success measures depend on the business problem. We work with stakeholders to select metrics that are relevant, measurable, and realistic.
+            <p className="text-text-secondary text-sm sm:text-base font-dm max-w-xl mx-auto leading-relaxed">
+              Whether you need an initial assessment, a proof of concept, or a tailored AI application, we can help determine an appropriate path forward.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SUCCESS_METRICS.map((metric, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-white border border-white shadow-sm hover:border-violet-light/50 transition-all space-y-2"
+            <div className="pt-2 flex justify-center">
+              <Button
+                asLink
+                href="/contact"
+                variant="primary"
+                size="lg"
+                icon={<ArrowRight className="w-4 h-4" />}
+                className="shadow-xl shadow-violet-primary/25 hover:scale-105 transition-transform"
               >
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-violet-primary" />
-                  <h4 className="text-sm font-semibold text-text-primary">{metric.label}</h4>
-                </div>
-                <p className="text-xs text-text-secondary leading-relaxed">
-                  {metric.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-5 rounded-2xl bg-white/70 border border-[#6853A5]/10 text-xs text-text-secondary max-w-4xl">
-            <strong>Methodology Note:</strong> Baseline measurements and post-implementation evaluations should be compared using an agreed methodology. We do not assume that a model’s technical performance automatically translates into business value.
-          </div>
-        </Container>
-      </section>
-
-      {/* Our Principles */}
-      <Container>
-        <div className="space-y-10">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="eyebrow block">GUIDING ETHOS</span>
-            <h2 className="text-3xl sm:text-4xl font-sans font-bold text-text-primary tracking-tight">
-              Our Principles
-            </h2>
-            <p className="text-xs sm:text-sm text-text-secondary">
-              Five foundational commitments that govern every architecture and implementation we deliver.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {PRINCIPLES.map((pr, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-3xl bg-white border border-[#6853A5]/12 shadow-sm space-y-3 flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-xs font-mono font-semibold text-violet-primary block mb-2">
-                    0{idx + 1}
-                  </span>
-                  <h3 className="font-sans font-bold text-lg text-text-primary leading-snug">
-                    {pr.title}
-                  </h3>
-                </div>
-                <p className="text-xs text-text-secondary leading-relaxed pt-2 border-t border-border-subtle/20">
-                  {pr.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Container>
-
-      {/* Process CTA */}
-      <Container>
-        <div className="rounded-[2.5rem] bg-gradient-to-b from-[#F2EDFD] via-[#ECE6FA] to-[#F5F2FE] border border-white p-10 sm:p-14 text-center space-y-6 shadow-xl shadow-violet-primary/10">
-          <span className="eyebrow inline-block">LET'S COLLABORATE</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-extrabold text-text-primary tracking-tight">
-            Let’s Define the Right First Step.
-          </h2>
-          <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Whether you need an initial assessment, a proof of concept, or a tailored AI application, we can help determine an appropriate path forward.
-          </p>
-          <div className="pt-2">
-            <Button
-              asLink
-              href="/contact"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight className="w-4 h-4" />}
-            >
-              Discuss Your AI Project
-            </Button>
+                Discuss Your AI Project
+              </Button>
+            </div>
           </div>
         </div>
       </Container>

@@ -29,3 +29,11 @@ dist-ssr
 .env.*
 !.env.example
 
+# Temporary and scratch files
+scratch/
+public/models/
+public/videos/
+
+
+
+

@@ -142,18 +142,18 @@ export const Footer: React.FC = () => {
           <a href="/use-cases" className="hover:text-white transition-colors">
             USE CASES
           </a>
-          <a href="/responsible-ai" className="hover:text-white transition-colors">
+          {/* <a href="/responsible-ai" className="hover:text-white transition-colors">
             RESPONSIBLE AI
-          </a>
+          </a> */}
           <a href="/about" className="hover:text-white transition-colors">
             ABOUT
           </a>
           <a href="/insights" className="hover:text-white transition-colors">
             INSIGHTS
           </a>
-          <a href="/privacy" className="hover:text-white transition-colors">
+          {/* <a href="/privacy" className="hover:text-white transition-colors">
             SECURITY
-          </a>
+          </a> */}
           <a href="/privacy" className="hover:text-white transition-colors">
             PRIVACY
           </a>
@@ -176,10 +176,10 @@ export const Footer: React.FC = () => {
           <span>Site by Brombeer AI</span>
         </div>
 
-        {/* Floating / Anchored Pill: SPEAK TO AN AI AGENT */}
+        {/* Anchored Pill: SPEAK TO AN AI AGENT (Static/relative on mobile, anchored in footer on desktop) */}
         <a
           href="/contact"
-          className="fixed sm:absolute bottom-5 right-5 sm:bottom-4 sm:right-12 z-40 inline-flex items-center gap-2 bg-white text-black font-mono font-bold text-[11px] tracking-wider uppercase px-4 py-2.5 shadow-2xl hover:bg-white/90 hover:scale-[1.02] transition-all cursor-pointer"
+          className="relative sm:absolute sm:bottom-4 sm:right-12 mt-3 sm:mt-0 inline-flex items-center gap-2 bg-white text-black font-mono font-bold text-[11px] tracking-wider uppercase px-4 py-2.5 shadow-2xl hover:bg-white/90 hover:scale-[1.02] transition-all cursor-pointer"
         >
           <PhoneCall className="w-3.5 h-3.5 text-black shrink-0" />
           <span>SPEAK TO AN AI AGENT</span>
@@ -189,7 +189,7 @@ export const Footer: React.FC = () => {
   );
 
   return (
-    <div className="w-full mt-20 bg-black">
+    <div data-site-footer="true" className="w-full mt-20 bg-black">
       <HalftoneWordmarkFooter
         wordmark="brombeer"
         customHeader={customHeader}

@@ -196,11 +196,10 @@ export const VisualHeroSection: React.FC = () => {
                     <button
                       key={node.id}
                       onClick={() => setActiveNodeId(node.id)}
-                      className={`p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between group ${
-                        isSelected
-                          ? 'bg-[#F4EFFF] border-violet-primary shadow-xs'
-                          : 'bg-white border-[#E8E2F4] hover:border-violet-primary/40 hover:bg-[#FAF9FF]'
-                      }`}
+                      className={`p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between group ${isSelected
+                        ? 'bg-[#F4EFFF] border-violet-primary shadow-xs'
+                        : 'bg-white border-[#E8E2F4] hover:border-violet-primary/40 hover:bg-[#FAF9FF]'
+                        }`}
                     >
                       <div className="flex items-center justify-between mb-1.5">
                         <Icon className={`w-4 h-4 ${isSelected ? 'text-violet-primary' : 'text-[#8E869E] group-hover:text-violet-primary'}`} />

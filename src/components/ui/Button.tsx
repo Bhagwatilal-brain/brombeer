@@ -54,7 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
     // Primary: Outlined pill at start with a purple circle + tilted arrow.
     // On hover, the arrow rotates straight right and the purple circle spreads across the outline button.
     primary:
-      'bg-transparent text-[#111014] border-2 border-[#111014] hover:border-[#111014] hover:shadow-xl hover:shadow-violet-primary/25 shadow-none',
+      'bg-transparent text-[#111014] border border-[#111014]/30 hover:border-violet-primary hover:shadow-xl hover:shadow-violet-primary/25 shadow-none',
     secondary:
       'bg-white/80 backdrop-blur-md text-[#111014] border border-[#6853A5]/20 hover:border-violet-primary hover:bg-white shadow-sm hover:shadow-md hover:shadow-violet-primary/10',
     outline:
